@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, minimal-ui, viewport-fit=cover" />
+        <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+
+        <title><%= htmlWebpackPlugin.options.title %></title>
+
+        <!-- WebApp Capable -->
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="application-name" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta name="msapplication-tooltip" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.title %>" />
+		<meta name="theme-color" content="<%= htmlWebpackPlugin.options.colors.primary %>" />
+		<meta name="msapplication-TileColor" content="<%= htmlWebpackPlugin.options.colors.primary %>" />
+		<meta name="msapplication-navbutton-color" content="<%= htmlWebpackPlugin.options.colors.primary %>" />
+
+		<!-- Add to home screen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="apple-mobile-web-app-title" content="form" />
+
+    </head>
+    <body>
+
+        <noscript>
+            <strong>
+                We're sorry but tailwind doesn't work properly without JavaScript enabled. Please enable it to continue.
+            </strong>
+        </noscript>
+
+        <div id="app"></div>
+
+        <!-- built files will be auto injected -->
+    </body>
+</html>

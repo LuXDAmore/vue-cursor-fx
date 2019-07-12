@@ -1,0 +1,51 @@
+.cursor {
+
+    /*
+    @apply .hidden;
+
+    z-index: 4;
+
+    @screen lg {
+
+        @apply .block;
+
+    }
+
+    &:not(.loaded),
+    &.touch {
+
+        @apply .hidden;
+
+    }
+
+    .cursor__inner {
+
+        @apply .absolute .pointer-events-none .pin-t .pin-l .rounded-full;
+
+        z-index: 6;
+        will-change: transform;
+
+    }
+
+    .cursor__inner--circle {
+
+        @apply .border-primary;
+
+        width: 64px;
+        height: 64px;
+        border: 1px solid;
+        z-index: 7;
+
+    }
+
+    .cursor__inner--dot {
+
+        width: 6px;
+        height: 6px;
+        background: #fff;
+        z-index: 8;
+
+    }
+
+    */
+}

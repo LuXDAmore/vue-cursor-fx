@@ -1,0 +1,47 @@
+{
+    // See http://go.microsoft.com/fwlink/?LinkId=827846 to learn about workspace recommendations.
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    // List of extensions which should be recommended for users of this workspace.
+    "recommendations": [
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "kevinkyang.auto-comment-blocks",
+        "dzannotti.vscode-babel-coloring",
+        "editorconfig.editorconfig",
+        "davidanson.vscode-markdownlint",
+        "dbaeumer.vscode-eslint",
+        "mohseenrm.lit-it",
+        "mubaidr.vuejs-extension-pack",
+        "jeremyrajan.webpack",
+        "sysoev.language-stylus",
+        "mikestead.dotenv",
+        "eg2.vscode-npm-script",
+        "wallabyjs.quokka-vscode",
+        "robinbentley.sass-indented",
+        "mrmlnc.vscode-attrs-sorter",
+        "wayou.vscode-todo-highlight",
+        "shinnn.stylelint",
+        "jock.svg",
+        "octref.vetur",
+        "dariofuzinato.vue-peek",
+        "christian-kohler.npm-intellisense",
+        "sdras.vue-vscode-snippets",
+        "redhat.vscode-yaml",
+        "hookyqr.beautify",
+        "wmaurer.change-case",
+        "naumovs.color-highlight",
+        "wix.vscode-import-cost",
+        "xabikos.javascriptsnippets",
+        "esbenp.prettier-vscode",
+        "cssho.vscode-svgviewer",
+        "dotjoshjohnson.xml",
+        "cpylua.language-postcss",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "bradlc.vscode-tailwindcss",
+        "kumar-harsh.graphql-for-vscode",
+        "tombonnike.vscode-status-bar-format-toggle"
+    ],
+    // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
+    "unwantedRecommendations": []
+}

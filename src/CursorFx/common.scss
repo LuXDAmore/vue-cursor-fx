@@ -1,0 +1,21 @@
+.is-custom-cursor {
+
+    &,
+    * {
+
+        cursor: none;
+
+    }
+
+    &.is-player-in-fullscreen {
+
+        &,
+        * {
+
+            cursor: default;
+
+        }
+
+    }
+
+}

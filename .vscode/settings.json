@@ -1,0 +1,35 @@
+{
+    // CSS
+    "css.validate": false,
+    "less.validate": false,
+    "scss.validate": false,
+    "html.validate.styles": false,
+    // Markdown
+    "markdownlint.ignore": [
+        "CHANGELOG.md"
+    ],
+    // Prettier
+    "prettier.eslintIntegration": true,
+    "prettier.stylelintIntegration": true,
+    // ESLint
+    "eslint.enable": true,
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.options": {
+        "extensions": [
+            ".js",
+            ".vue"
+        ]
+    },
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        {
+            "language": "vue",
+            "autoFix": true
+        }
+    ],
+    "stylelint.enable": true,
+    // Vue
+    "vetur.format.styleInitialIndent": true
+}

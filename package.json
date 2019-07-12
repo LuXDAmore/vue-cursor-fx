@@ -1,0 +1,84 @@
+{
+    "name": "@luca-iaconelli/vue-cursor-fx",
+    "version": "1.0.0",
+    "description": "An animated custom cursor effects for interactive elements like navigations - w/ VueJS - SSR Compatible",
+    "author": "Luca Iaconelli <lucabelli@msn.com> (https://lucaiaconelli.it)",
+    "homepage": "https://luxdamore.github.io/vue-cursor-fx/",
+    "main": "dist/CursorFx.js",
+    "umd": "dist/CursorFx.js",
+    "unpkg": "dist/CursorFx.min.js",
+    "commonjs": "dist/CursorFx.js",
+    "browser": "dist/CursorFx.js",
+    "style": "dist/CursorFx.css",
+    "keywords": [
+        "vuejs",
+        "nuxtjs",
+        "cursor",
+        "effects",
+        "design",
+        "tympanus",
+        "codrops"
+    ],
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build --dest ./dist --target lib --name CursorFx ./src/CursorFx/CursorFx.vue",
+        "check-linting": "vue-cli-service lint",
+        "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+        "lint-fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+        "precommit": "npm run lint"
+    },
+    "dependencies": {
+        "vue": "^2.6.10"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.9.2",
+        "@vue/cli-plugin-eslint": "^3.9.2",
+        "@vue/cli-service": "^3.9.2",
+        "@vue/eslint-config-prettier": "^4.0.1",
+        "babel-eslint": "^10.0.2",
+        "eslint": "^6.0.1",
+        "eslint-config-standard": "^13.0.1",
+        "eslint-loader": "^2.2.1",
+        "eslint-plugin-compat": "^3.2.0",
+        "eslint-plugin-import": "^2.18.0",
+        "eslint-plugin-promise": "^4.2.1",
+        "eslint-plugin-standard": "^4.0.0",
+        "eslint-plugin-unicorn": "^9.1.1",
+        "eslint-plugin-vue": "^5.2.3",
+        "lint-staged": "^9.2.0",
+        "node-sass": "^4.12.0",
+        "sass-loader": "^7.1.0",
+        "stylelint-config-rational-order": "^0.1.2",
+        "stylelint-config-sass-guidelines": "^6.0.0",
+        "stylelint-config-standard": "^18.3.0",
+        "stylelint-no-unsupported-browser-features": "^3.0.2",
+        "vue-template-compiler": "^2.6.10"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LuXDAmore/vue-cursor-fx.git"
+    },
+    "bugs": {
+        "url": "https://github.com/LuXDAmore/vue-cursor-fx/issues"
+    },
+    "engines": {
+        "node": ">=8.12.0",
+        "npm": ">=5.6.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "lint-staged": {
+        "*.js": [
+            "vue-cli-service lint",
+            "git add"
+        ],
+        "*.vue": [
+            "vue-cli-service lint",
+            "git add"
+        ]
+    },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    }
+}
