@@ -1,0 +1,68 @@
+:root {
+
+    font-size: 16px;
+
+}
+
+// Skeleton
+body {
+
+    line-height: 1.15;
+
+}
+
+button {
+
+    display: inline-block;
+    margin: 6px;
+    font-size: inherit;
+    line-height: 1.42;
+    padding: 0.7em 1.4em;
+    font-weight: normal;
+    border-width: 3px;
+    border-style: solid;
+    background: transparent;
+    border-radius: 0;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: bottom;
+    position: relative;
+    transform: translate(.5em, -0.4em);
+    transition: transform 0.2s;
+
+    color: var(--text-color, #333);
+    border-color: var(--text-color, #333);
+
+    &::before {
+
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        transform: translate(0.6em, -0.3em);
+        transition: transform 0.2s, background-color 0.2s;
+
+        opacity: .36;
+        background-color: var(--text-color, #333);
+
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+
+        transform: translate(0.2em, -0.1em);
+
+        &::before {
+
+            transform: translate(-0.4em, 0.4em);
+
+        }
+
+    }
+
+}

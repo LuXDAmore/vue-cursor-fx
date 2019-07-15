@@ -221,7 +221,7 @@
 
 <style
     lang="scss"
-    src="./common.scss"
+    src="./global.scss"
 ></style>
 
 <style
