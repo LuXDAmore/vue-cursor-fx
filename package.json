@@ -1,5 +1,5 @@
 {
-    "name": "@luca-iaconelli/vue-cursor-fx",
+    "name": "@luxdamore/vue-cursor-fx",
     "version": "1.0.0",
     "description": "An animated custom cursor effects for interactive elements like navigations - w/ VueJS - SSR Compatible",
     "author": "Luca Iaconelli <lucabelli@msn.com> (https://lucaiaconelli.it)",
