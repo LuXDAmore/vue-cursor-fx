@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
+        <base href="<%= htmlWebpackPlugin.options.base_url %>">
+        <link rel="canonical" href="<%= htmlWebpackPlugin.options.base_url %>" />
 
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, minimal-ui, viewport-fit=cover" />
         <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
 
@@ -23,7 +25,26 @@
 		<!-- Add to home screen for Safari on iOS -->
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-		<meta name="apple-mobile-web-app-title" content="form" />
+        <meta name="apple-mobile-web-app-title" content="form" />
+
+        <!-- SEO -->
+        <meta name="generator" content="Luca Iaconelli" />
+        <meta property="description" content="<%= htmlWebpackPlugin.options.description %>" />
+        <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+        <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>" />
+        <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
+        <meta property="og:url" content="<%= htmlWebpackPlugin.options.base_url %>" />
+        <meta property="og:locale" content="en_US" />
+        <script type="application/ld+json">
+            {
+                "@type": "WebSite",
+                "url": "<%= htmlWebpackPlugin.options.base_url %>",
+                "headline": "Cursor-FX",
+                "name": "vue-cursor-fx",
+                "description": "An animated custom cursor effects for interactive elements like navigations - w/ VueJS - SSR Compatible",
+                "@context": "http://schema.org"
+            }
+        </script>
 
     </head>
     <body>
