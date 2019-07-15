@@ -23,6 +23,7 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --dest ./dist --target lib --name CursorFx ./src/CursorFx/CursorFx.vue",
         "build:docs": "vue-cli-service build --modern --dest ./docs --modern",
+        "publish": "npm run build && npm run build:docs",
         "check-linting": "vue-cli-service lint",
         "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
         "lint-fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
