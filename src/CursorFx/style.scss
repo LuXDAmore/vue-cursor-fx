@@ -1,40 +1,36 @@
 .cursor {
 
-    /*
-    @apply .hidden;
+    $lightColor: #FFF;
+    $darkColor: #333;
 
-    z-index: 4;
+    --main-color: #{$lightColor};
 
-    @screen lg {
+    &.dark {
 
-        @apply .block;
-
-    }
-
-    &:not(.loaded),
-    &.touch {
-
-        @apply .hidden;
+        --main-color: #{$darkColor};
 
     }
 
     .cursor__inner {
 
-        @apply .absolute .pointer-events-none .pin-t .pin-l .rounded-full;
+        position: absolute;
+        pointer-events: none;
 
-        z-index: 6;
+        top: 0;
+        left: 0;
+
+        border-radius: 100%;
+
         will-change: transform;
 
     }
 
     .cursor__inner--circle {
 
-        @apply .border-primary;
-
         width: 64px;
         height: 64px;
         border: 1px solid;
-        z-index: 7;
+        border-color: var(--main-color);
 
     }
 
@@ -42,10 +38,8 @@
 
         width: 6px;
         height: 6px;
-        background: #fff;
-        z-index: 8;
+        background-color: var(--main-color);
 
     }
 
-    */
 }
