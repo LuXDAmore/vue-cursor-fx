@@ -1,9 +1,11 @@
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: (
+        process.env.NODE_ENV === 'production'
         ? '/vue-cursor-fx/'
-        : '/',
+        : '/'
+    ),
+    lintOnSave: process.env.NODE_ENV !== 'production',
     productionSourceMap: false,
-    lintOnSave: true,
     pages: {
         index: {
             entry: './src/main.js',
