@@ -4,7 +4,10 @@
     Instagram: @luxdamore
 	From: Faenza, Italia
 
+	Front end developer: Luca Ucciero
+	From: Faenza, Italia
+
 /* SITE */
-	Language: English
+	Language: Italian
 	Doctype: HTML5
 	IDE: Visual Studio Code
