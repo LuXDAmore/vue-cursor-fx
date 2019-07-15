@@ -1,9 +1,9 @@
 <template>
-    <main class="app">
+    <main class="app" :class="{ dark }">
 
         <h1>Vue Cursor Fx</h1>
 
-        <cursor-fx dark />
+        <cursor-fx :dark="dark" />
 
     </main>
 </template>
@@ -12,6 +12,11 @@
     // App
     export default {
         name: 'v-app',
+        data: () => (
+            {
+                dark: false,
+            }
+        ),
     };
 </script>
 
