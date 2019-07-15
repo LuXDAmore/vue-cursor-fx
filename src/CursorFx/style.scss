@@ -21,8 +21,12 @@
 
         border-radius: 100%;
 
-        will-change: transform;
-        transition: all .2s ease-in;
+        will-change: color, background-color, border-color, transition;
+
+        transition-property: color, background-color, border-color;
+        transition-duration: .2s;
+        transition-timing-function: ease-in;
+        transition-delay: 0s;
 
         &--circle {
 
