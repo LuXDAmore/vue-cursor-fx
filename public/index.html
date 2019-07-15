@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        
-        <base href="<%= htmlWebpackPlugin.options.base_url %>">
-        <link rel="canonical" href="<%= htmlWebpackPlugin.options.base_url %>" />
+
+        <base href="<%= BASE_URL %>">
+        <link rel="canonical" href="<%= BASE_URL %>" />
+        <link rel="icon" href="/favicon.ico" />
+        <link type="text/plain" rel="author" href="/humans.txt" />
 
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, minimal-ui, viewport-fit=cover" />
-        <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
-
-        <title><%= htmlWebpackPlugin.options.title %></title>
 
         <!-- WebApp Capable -->
 		<meta name="format-detection" content="telephone=no" />
@@ -28,21 +27,29 @@
         <meta name="apple-mobile-web-app-title" content="form" />
 
         <!-- SEO -->
-        <meta name="generator" content="Luca Iaconelli" />
+        <title><%= htmlWebpackPlugin.options.title %></title>
         <meta property="description" content="<%= htmlWebpackPlugin.options.description %>" />
+        <meta name="generator" content="<%= htmlWebpackPlugin.options.author %>" />
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site" content="<%= htmlWebpackPlugin.options.twitter %>">
+        <meta name="twitter:creator" content="<%= htmlWebpackPlugin.options.twitter %>">
+		<meta name="twitter:domain" content="<%= BASE_URL %>" />
+		<meta name="twitter:image:alt" content="<%= htmlWebpackPlugin.options.description %>" />
+		<meta property="article:author" content="https://www.facebook.com/<%= htmlWebpackPlugin.options.facebook %>" />
+		<meta property="article:publisher" content="https://www.facebook.com/<%= htmlWebpackPlugin.options.facebook %>" />
         <meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
-        <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>" />
+        <meta property="og:site_name" content="<%= htmlWebpackPlugin.options.library %>" />
         <meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>" />
-        <meta property="og:url" content="<%= htmlWebpackPlugin.options.base_url %>" />
+        <meta property="og:url" content="<%= BASE_URL %>" />
         <meta property="og:locale" content="en_US" />
         <script type="application/ld+json">
             {
+                "@context": "http://schema.org",
                 "@type": "WebSite",
-                "url": "<%= htmlWebpackPlugin.options.base_url %>",
-                "headline": "Cursor-FX",
-                "name": "vue-cursor-fx",
-                "description": "An animated custom cursor effects for interactive elements like navigations - w/ VueJS - SSR Compatible",
-                "@context": "http://schema.org"
+                "url": "<%= BASE_URL %>",
+                "headline": "<%= htmlWebpackPlugin.options.title %>",
+                "name": "<%= htmlWebpackPlugin.options.library %>",
+                "description": "<%= htmlWebpackPlugin.options.description %>"
             }
         </script>
 

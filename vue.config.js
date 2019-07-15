@@ -12,9 +12,12 @@ module.exports = {
     pages: {
         index: {
             entry: './src/main.js',
-            title: process.env.title,
-            description: process.env.description,
-            base_url: BASE_URL,
+            title: process.env.TITLE,
+            description: process.env.DESCRIPTION,
+            library: process.env.LIBRARY,
+            author: process.env.AUTHOR,
+            twitter: process.env.TWITTER,
+            facebook: process.env.FACEBOOK,
             colors: {
                 primary: '#333',
             },
