@@ -6,6 +6,7 @@
         :class="{
             touch,
             loaded,
+            dark,
         }"
     >
         <div class="cursor__inner cursor__inner--circle" />
@@ -14,7 +15,7 @@
 </template>
 <script>
     // Timers
-    import { setTimeout } from 'timers';
+    import { setTimeout, clearTimeout } from 'timers';
 
     // Cursor
     import CursorFx from './cursor-fx';
@@ -34,6 +35,10 @@
                 ],
                 default: 300,
             },
+            dark: {
+                type: Boolean,
+                default: false,
+            },
         },
         data: () => (
             {
@@ -43,18 +48,25 @@
         ),
         created() {
 
+            this.$timeout = null;
             this.$cursor = null;
 
         },
         mounted() {
 
-            ! this.isTouchDevice() && this.$nextTick(
-                () => setTimeout(
-                    this.init,
-                    parseInt(
-                        this.delay
-                    )
-                )
+            this.touch = this.isTouchDevice();
+
+            ! this.touch && this.$nextTick(
+                () => {
+
+                    this.$timeout = setTimeout(
+                        this.init,
+                        parseInt(
+                            this.delay
+                        )
+                    );
+
+                }
             );
 
         },
@@ -76,7 +88,7 @@
             destroy() {
 
                 document.documentElement.classList.remove(
-                    'is-custom-cursor'
+                    'is-cursor-fx-active'
                 );
 
                 if( this.$cursor ) {
@@ -151,11 +163,15 @@
 
                 }
 
+                this.$timeout && clearTimeout(
+                    this.$timeout
+                );
+
             },
             init() {
 
                 document.documentElement.classList.add(
-                    'is-custom-cursor'
+                    'is-cursor-fx-active'
                 );
 
                 this.$cursor = new CursorFx(
