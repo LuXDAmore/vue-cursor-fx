@@ -3,7 +3,16 @@
 
         <h1>Vue Cursor Fx</h1>
 
-        <cursor-fx :dark="dark" />
+        <button
+            type="button"
+            title="Change me"
+            data-cursor-hover
+            @click="dark = ! dark"
+        >
+            {{ dark ? 'Light' : 'Dark' }} mode
+        </button>
+
+        <cursor-fx :dark="! dark" />
 
     </main>
 </template>
@@ -19,6 +28,13 @@
         ),
     };
 </script>
+
+<style src="modern-normalize/modern-normalize.css"></style>
+
+<style
+    lang="scss"
+    src="./global.scss"
+></style>
 
 <style
     scoped
