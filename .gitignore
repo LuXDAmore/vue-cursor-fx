@@ -4,6 +4,9 @@ desktop.ini
 node_modules/
 bower_components/
 
+# Library
+dist/demo.html
+
 # Log files
 npm-debug.log*
 yarn-debug.log*
