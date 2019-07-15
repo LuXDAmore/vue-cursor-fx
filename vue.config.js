@@ -9,10 +9,9 @@ module.exports = {
     pages: {
         index: {
             entry: './src/main.js',
-            template: './src/index.html',
             title: 'Vue Cursor Fx',
             colors: {
-                primary: 'red',
+                primary: '#333',
             },
         },
     },
