@@ -1,6 +1,10 @@
 <template>
     <div>
+
         PROVA
+
+        <cursor-fx dark />
+
     </div>
 </template>
 
