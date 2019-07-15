@@ -13,6 +13,7 @@
         <div class="cursor__inner cursor__inner--dot" />
     </div>
 </template>
+
 <script>
     // Timers
     import { setTimeout, clearTimeout } from 'timers';
@@ -57,16 +58,7 @@
             this.touch = this.isTouchDevice();
 
             ! this.touch && this.$nextTick(
-                () => {
-
-                    this.$timeout = setTimeout(
-                        this.init,
-                        parseInt(
-                            this.delay
-                        )
-                    );
-
-                }
+                this.start
             );
 
         },
@@ -86,10 +78,6 @@
 
             },
             destroy() {
-
-                document.documentElement.classList.remove(
-                    'is-cursor-fx-active'
-                );
 
                 if( this.$cursor ) {
 
@@ -113,27 +101,6 @@
                             link.removeEventListener(
                                 'click',
                                 () => this.$cursor.click(),
-                                false
-                            );
-
-                        }
-                    );
-
-                    [
-                        ... document.querySelectorAll(
-                            '[data-cursor-player]'
-                        ),
-                    ].forEach(
-                        link => {
-
-                            link.removeEventListener(
-                                'mouseenter',
-                                () => this.$cursor.enterPlayer(),
-                                false
-                            );
-                            link.removeEventListener(
-                                'mouseleave',
-                                () => this.$cursor.leavePlayer(),
                                 false
                             );
 
@@ -167,18 +134,15 @@
                     this.$timeout
                 );
 
-            },
-            init() {
-
-                document.documentElement.classList.add(
+                document.documentElement.classList.remove(
                     'is-cursor-fx-active'
                 );
 
+            },
+            init() {
+
                 this.$cursor = new CursorFx(
-                    this.$refs.cursor,
-                    {
-                        player: 1,
-                    }
+                    this.$refs.cursor
                 );
 
                 // Custom cursor chnages state when hovering on elements with 'data-hover'.
@@ -202,27 +166,6 @@
                         link.addEventListener(
                             'click',
                             () => this.$cursor.click(),
-                            false
-                        );
-
-                    }
-                );
-
-                [
-                    ... document.querySelectorAll(
-                        '[data-cursor-player]'
-                    ),
-                ].forEach(
-                    link => {
-
-                        link.addEventListener(
-                            'mouseenter',
-                            () => this.$cursor.enterPlayer(),
-                            false
-                        );
-                        link.addEventListener(
-                            'mouseleave',
-                            () => this.$cursor.leavePlayer(),
                             false
                         );
 
@@ -255,7 +198,21 @@
                     this.$cursor
                 );
 
+                document.documentElement.classList.add(
+                    'is-cursor-fx-active'
+                );
+
                 this.loaded = true;
+
+            },
+            start() {
+
+                this.$timeout = setTimeout(
+                    this.init,
+                    parseInt(
+                        this.delay
+                    )
+                );
 
             },
         },

@@ -1,11 +1,11 @@
 <template>
-    <div>
+    <main class="app">
 
-        PROVA
+        <h1>Vue Cursor Fx</h1>
 
         <cursor-fx dark />
 
-    </div>
+    </main>
 </template>
 
 <script>
@@ -14,3 +14,9 @@
         name: 'v-app',
     };
 </script>
+
+<style
+    scoped
+    lang="scss"
+    src="./style.scss"
+></style>
