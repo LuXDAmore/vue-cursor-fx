@@ -9,8 +9,11 @@
             dark,
         }"
     >
-        <div class="cursor__inner cursor__inner--circle" />
-        <div class="cursor__inner cursor__inner--dot" />
+        <div v-if="! hideCircle" class="cursor__inner cursor__inner--circle" />
+        <div v-if="$slots.default || $scopedSlots.default" class="cursor__inner cursor__inner--custom">
+            <slot />
+        </div>
+        <div v-if="! hideDot" class="cursor__inner cursor__inner--dot" />
     </div>
 </template>
 
@@ -34,7 +37,15 @@
                     Number,
                     String,
                 ],
-                default: 300,
+                default: 100,
+            },
+            hideCircle: {
+                type: Boolean,
+                default: false,
+            },
+            hideDot: {
+                type: Boolean,
+                default: false,
             },
             dark: {
                 type: Boolean,
