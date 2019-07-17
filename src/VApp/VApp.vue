@@ -1,31 +1,38 @@
 <template>
-    <main class="app" :class="{ dark }">
+    <main class="app">
 
-        <h1>Vue Cursor Fx</h1>
+        <cursor-fx />
 
-        <button
-            type="button"
-            title="Change me"
-            data-cursor-hover
-            @click="dark = ! dark"
-        >
-            {{ dark ? 'Light' : 'Dark' }} mode
-        </button>
+        <div class="grid-container">
 
-        <cursor-fx :dark="! dark" />
+            <div class="grid-cell left">
+                <section>
+                    <h1 v-text="$library.VUE_APP_TITLE" />
+                    <p v-text="$library.VUE_APP_DESCRIPTION" />
+                </section>
+            </div>
+
+            <div class="grid-cell right">
+                <section>
+                    <readme />
+                </section>
+            </div>
+
+        </div>
 
     </main>
 </template>
 
 <script>
+    // Markdown
+    import readme from '../../README.md';
+
     // App
     export default {
         name: 'v-app',
-        data: () => (
-            {
-                dark: false,
-            }
-        ),
+        components: {
+            readme,
+        },
     };
 </script>
 
