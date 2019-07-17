@@ -1,16 +1,5 @@
 .cursor {
 
-    $lightColor: #FFF;
-    $darkColor: #333;
-
-    --main-color: #{$lightColor};
-
-    &.dark {
-
-        --main-color: #{$darkColor};
-
-    }
-
     .cursor__inner {
 
         position: absolute;
@@ -33,7 +22,7 @@
             width: 64px;
             height: 64px;
             border: 1px solid;
-            border-color: var(--main-color);
+            border-color: var(--color);
 
         }
 
@@ -41,7 +30,7 @@
 
             width: 6px;
             height: 6px;
-            background-color: var(--main-color);
+            background-color: var(--color);
 
         }
 

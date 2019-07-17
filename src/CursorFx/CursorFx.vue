@@ -6,8 +6,8 @@
         :class="{
             touch,
             loaded,
-            dark,
         }"
+        :style="cssVars"
     >
         <div v-if="! hideCircle" class="cursor__inner cursor__inner--circle" />
         <div v-if="$slots.default || $scopedSlots.default" class="cursor__inner cursor__inner--custom">
@@ -32,6 +32,10 @@
         name: COMPONENT,
         inheritAttrs: false,
         props: {
+            color: {
+                type: String,
+                default: '#333',
+            },
             delay: {
                 type: [
                     Number,
@@ -47,10 +51,6 @@
                 type: Boolean,
                 default: false,
             },
-            dark: {
-                type: Boolean,
-                default: false,
-            },
         },
         data: () => (
             {
@@ -58,6 +58,15 @@
                 loaded: false,
             }
         ),
+        computed: {
+            cssVars() {
+
+                return {
+                    '--color': this.color,
+                };
+
+            },
+        },
         created() {
 
             this.$timeout = null;
