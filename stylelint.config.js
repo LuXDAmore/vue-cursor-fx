@@ -21,6 +21,7 @@ module.exports = {
         'stylelint-scss',
     ],
     // add your custom rules here
+    defaultSeverity: 'warning',
     rules: {
         // Plugins
         'plugin/no-unsupported-browser-features': [
