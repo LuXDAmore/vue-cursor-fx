@@ -4,10 +4,6 @@
     "less.validate": false,
     "scss.validate": false,
     "html.validate.styles": false,
-    // Markdown
-    "markdownlint.ignore": [
-        "CHANGELOG.md"
-    ],
     // Prettier
     "prettier.eslintIntegration": true,
     "prettier.stylelintIntegration": true,
