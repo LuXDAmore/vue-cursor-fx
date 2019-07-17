@@ -1,14 +1,3 @@
-const tailwindIgnored = [
-    '/^@/',
-    'custom',
-    'tailwind',
-    'extends',
-    'apply',
-    'variants',
-    'screen',
-    'transform-timing-function',
-];
-
 module.exports = {
     root: true,
     extends: [
@@ -164,12 +153,6 @@ module.exports = {
         'at-rule-name-space-after': 'always',
         // SASS - SCSS
         // If - Else
-        'scss/at-rule-no-unknown': [
-            true,
-            {
-                'ignoreAtRules': tailwindIgnored,
-            },
-        ],
         'scss/at-else-closing-brace-newline-after': 'always-last-in-chain',
         'scss/at-else-closing-brace-space-after': 'always-intermediate',
         'scss/at-else-empty-line-before': 'never',
