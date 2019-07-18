@@ -1,4 +1,4 @@
-# Cursor-FX
+# Vue Cursor Fx
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
