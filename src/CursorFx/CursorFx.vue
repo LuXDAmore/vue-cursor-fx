@@ -2,18 +2,25 @@
     <div
         id="cursor-fx"
         ref="cursor"
-        class="cursor"
-        :class="{
-            touch,
-            loaded,
-        }"
+        :class="classes"
         :style="cssVars"
     >
-        <div v-if="! hideCircle" class="cursor__inner cursor__inner--circle" />
-        <div v-if="$slots.default || $scopedSlots.default" class="cursor__inner cursor__inner--custom">
+        <div
+            v-show="! hideOutside"
+            class="cursor-fx__inner cursor-fx__inner__outside"
+            :style="outsideSizes"
+        />
+        <div
+            v-if="$slots.default || $scopedSlots.default"
+            class="cursor-fx__inner cursor-fx__inner__custom"
+        >
             <slot />
         </div>
-        <div v-if="! hideDot" class="cursor__inner cursor__inner--dot" />
+        <div
+            v-show="! hideInside"
+            class="cursor-fx__inner cursor-fx__inner__inside"
+            :style="insideSizes"
+        />
     </div>
 </template>
 
@@ -34,7 +41,19 @@
         props: {
             color: {
                 type: String,
-                default: '#333',
+                default: '#333333',
+            },
+            outsideSize: {
+                type: String,
+                default: null,
+            },
+            insideSize: {
+                type: String,
+                default: null,
+            },
+            shape: {
+                type: String,
+                default: null,
             },
             delay: {
                 type: [
@@ -43,11 +62,11 @@
                 ],
                 default: 100,
             },
-            hideCircle: {
+            hideOutside: {
                 type: Boolean,
                 default: false,
             },
-            hideDot: {
+            hideInside: {
                 type: Boolean,
                 default: false,
             },
@@ -59,11 +78,69 @@
             }
         ),
         computed: {
+            classes() {
+
+                const CLASSES = [ COMPONENT ];
+
+                this.touch && CLASSES.push(
+                    `${ COMPONENT }--touch`
+                );
+                this.loaded && CLASSES.push(
+                    `${ COMPONENT }--loaded`
+                );
+                this.shape && CLASSES.push(
+                    `${ COMPONENT }--shape-${ this.shape }`
+                );
+
+                return CLASSES;
+
+            },
             cssVars() {
 
                 return {
                     '--color': this.color,
                 };
+
+            },
+            // Sizes
+            outsideSizes() {
+
+                return {
+                    width: this.outsideSize,
+                    height: this.outsideSize,
+                };
+
+            },
+            insideSizes() {
+
+                return {
+                    width: this.insideSize,
+                    height: this.insideSize,
+                };
+
+            },
+        },
+        watch: {
+            outsideSize(
+                newVal
+            ) {
+
+                newVal && this.$nextTick(
+                    () => this.init(
+                        false
+                    )
+                );
+
+            },
+            insideSize(
+                newVal
+            ) {
+
+                newVal && this.$nextTick(
+                    () => this.init(
+                        false
+                    )
+                );
 
             },
         },
@@ -98,6 +175,10 @@
 
             },
             destroy() {
+
+                document.documentElement.classList.remove(
+                    'is-cursor-fx-active'
+                );
 
                 if( this.$cursor ) {
 
@@ -154,16 +235,8 @@
                     this.$timeout
                 );
 
-                document.documentElement.classList.remove(
-                    'is-cursor-fx-active'
-                );
-
             },
-            init() {
-
-                this.$cursor = new CursorFx(
-                    this.$refs.cursor
-                );
+            initEvents() {
 
                 // Custom cursor chnages state when hovering on elements with 'data-hover'.
                 [
@@ -212,6 +285,20 @@
 
                     }
                 );
+
+            },
+            init(
+                events = true
+            ) {
+
+                this.$cursor = new CursorFx(
+                    {
+                        el: this.$refs.cursor,
+                        base_class: `.${ COMPONENT }`,
+                    }
+                );
+
+                event && this.initEvents();
 
                 this.$emit(
                     'ready',

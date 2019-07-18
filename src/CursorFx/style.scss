@@ -1,6 +1,8 @@
-.cursor {
+.cursor-fx {
 
-    .cursor__inner {
+    $prefix: &;
+
+    &__inner {
 
         position: absolute;
         pointer-events: none;
@@ -10,14 +12,13 @@
 
         border-radius: 100%;
 
-        will-change: color, background-color, border-color, transition;
+        will-change: auto;
 
-        transition-property: color, background-color, border-color;
-        transition-duration: .2s;
+        transition-property: color, width, height, background-color, border-radius, border-color;
+        transition-duration: .23s;
         transition-timing-function: ease-in;
-        transition-delay: 0s;
 
-        &--circle {
+        &__outside {
 
             width: 64px;
             height: 64px;
@@ -26,11 +27,25 @@
 
         }
 
-        &--dot {
+        &__inside {
 
             width: 6px;
             height: 6px;
             background-color: var(--color);
+
+        }
+
+    }
+
+    &--shape {
+
+        &-square {
+
+            > #{$prefix}__inner {
+
+                border-radius: 0;
+
+            }
 
         }
 

@@ -35,7 +35,10 @@ const SCALE_MIN = 0.5
 
 class CursorFx {
     constructor(
-        el,
+        {
+            el,
+            base_class,
+        },
         lerps = {}
     ) {
 
@@ -46,24 +49,29 @@ class CursorFx {
             ... {
                 dot: 1,
                 circle: 0.15,
+                custom: 0.15,
                 scale: 0.15,
                 opacity: 0.1,
             },
             ... lerps,
         };
         this.DOM.dot = this.DOM.el.querySelector(
-            '.cursor__inner--dot'
+            `${ base_class }__inner__outside`
         );
         this.DOM.circle = this.DOM.el.querySelector(
-            '.cursor__inner--circle'
+            `${ base_class }__inner__inside`
+        );
+        this.DOM.custom = this.DOM.el.querySelector(
+            `${ base_class }__inner__custom`
         );
 
         this.bounds = {
-            dot: this.DOM.dot.getBoundingClientRect(),
-            circle: this.DOM.circle.getBoundingClientRect(),
+            dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : null,
+            circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : null,
+            custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : null,
         };
 
-        if( ! this.bounds.dot.width ) {
+        if( this.bounds.dot && ! this.bounds.dot.width ) {
 
             const COMPUTED_STYLES = window.getComputedStyle(
                 this.DOM.dot
@@ -94,7 +102,7 @@ class CursorFx {
 
         }
 
-        if( ! this.bounds.circle.width ) {
+        if( this.bounds.circle && ! this.bounds.circle.width ) {
 
             const COMPUTED_STYLES = window.getComputedStyle(
                 this.DOM.circle
@@ -125,6 +133,37 @@ class CursorFx {
 
         }
 
+        if( this.bounds.custom && ! this.bounds.custom.width ) {
+
+            const COMPUTED_STYLES = window.getComputedStyle(
+                this.DOM.custom
+            );
+
+            this.bounds.custom.width = parseInt(
+                COMPUTED_STYLES
+                    .getPropertyValue(
+                        'width'
+                    )
+                    .replace(
+                        'px',
+                        ''
+                    )
+                )
+            ;
+            this.bounds.custom.height = parseInt(
+                COMPUTED_STYLES
+                    .getPropertyValue(
+                        'height'
+                    )
+                    .replace(
+                        'px',
+                        ''
+                    )
+                )
+            ;
+
+        }
+
         this.scale = SCALE_MIN;
         this.lastScale = SCALE_MIN;
         this.opacity = 1;
@@ -140,6 +179,10 @@ class CursorFx {
                 y: 0,
             },
             circle: {
+                x: 0,
+                y: 0,
+            },
+            custom: {
                 x: 0,
                 y: 0,
             },
@@ -174,31 +217,61 @@ class CursorFx {
         const {
             dot,
             circle,
+            custom,
             scale,
             opacity,
         } = this.lerps;
 
-        this.lastMousePos.dot.x = lerp(
-            this.lastMousePos.dot.x,
-            this.mousePos.x - this.bounds.dot.width / 2,
-            dot
-        );
-        this.lastMousePos.dot.y = lerp(
-            this.lastMousePos.dot.y,
-            this.mousePos.y - this.bounds.dot.height / 2,
-            dot
-        );
+        if( this.bounds.dot ) {
 
-        this.lastMousePos.circle.x = lerp(
-            this.lastMousePos.circle.x,
-            this.mousePos.x - this.bounds.circle.width / 2,
-            circle
-        );
-        this.lastMousePos.circle.y = lerp(
-            this.lastMousePos.circle.y,
-            this.mousePos.y - this.bounds.circle.height / 2,
-            circle
-        );
+            this.lastMousePos.dot.x = lerp(
+                this.lastMousePos.dot.x,
+                this.mousePos.x - this.bounds.dot.width / 2,
+                dot
+            );
+            this.lastMousePos.dot.y = lerp(
+                this.lastMousePos.dot.y,
+                this.mousePos.y - this.bounds.dot.height / 2,
+                dot
+            );
+
+            this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
+
+        }
+
+        if( this.bounds.circle ) {
+
+            this.lastMousePos.circle.x = lerp(
+                this.lastMousePos.circle.x,
+                this.mousePos.x - this.bounds.circle.width / 2,
+                circle
+            );
+            this.lastMousePos.circle.y = lerp(
+                this.lastMousePos.circle.y,
+                this.mousePos.y - this.bounds.circle.height / 2,
+                circle
+            );
+
+            this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
+
+        }
+
+        if( this.bounds.custom ) {
+
+            this.lastMousePos.custom.x = lerp(
+                this.lastMousePos.custom.x,
+                this.mousePos.x - this.bounds.custom.width / 2,
+                custom
+            );
+            this.lastMousePos.custom.y = lerp(
+                this.lastMousePos.custom.y,
+                this.mousePos.y - this.bounds.custom.height / 2,
+                custom
+            );
+
+            this.DOM.custom.style.transform = `translateX(${ ( this.lastMousePos.custom.x ) }px) translateY(${ this.lastMousePos.custom.y }px) scale(${ this.lastScale })`;
+
+        }
 
         this.lastScale = lerp(
             this.lastScale,
@@ -210,10 +283,6 @@ class CursorFx {
             this.opacity,
             opacity
         );
-
-        this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
-
-        this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
 
     }
     enter() {
