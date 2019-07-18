@@ -87,7 +87,7 @@ module.exports =
 /************************************************************************/
 /******/ ({
 
-/***/ "06e5":
+/***/ "0420":
 /***/ (function(module, exports, __webpack_require__) {
 
 // extracted by mini-css-extract-plugin
@@ -207,9 +207,11 @@ var SCALE_MIN = 0.5,
 var CursorFx =
 /*#__PURE__*/
 function () {
-  function CursorFx(el) {
+  function CursorFx(_ref) {
     var _this = this;
 
+    var el = _ref.el,
+        base_class = _ref.base_class;
     var lerps = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
     _classCallCheck(this, CursorFx);
@@ -220,27 +222,37 @@ function () {
     this.lerps = _objectSpread({}, {
       dot: 1,
       circle: 0.15,
+      custom: 0.15,
       scale: 0.15,
       opacity: 0.1
     }, {}, lerps);
-    this.DOM.dot = this.DOM.el.querySelector('.cursor__inner--dot');
-    this.DOM.circle = this.DOM.el.querySelector('.cursor__inner--circle');
+    this.DOM.dot = this.DOM.el.querySelector("".concat(base_class, "__inner__outside"));
+    this.DOM.circle = this.DOM.el.querySelector("".concat(base_class, "__inner__inside"));
+    this.DOM.custom = this.DOM.el.querySelector("".concat(base_class, "__inner__custom"));
     this.bounds = {
-      dot: this.DOM.dot.getBoundingClientRect(),
-      circle: this.DOM.circle.getBoundingClientRect()
+      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : null,
+      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : null,
+      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : null
     };
 
-    if (!this.bounds.dot.width) {
+    if (this.bounds.dot && !this.bounds.dot.width) {
       var COMPUTED_STYLES = window.getComputedStyle(this.DOM.dot);
       this.bounds.dot.width = parseInt(COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
       this.bounds.dot.height = parseInt(COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
     }
 
-    if (!this.bounds.circle.width) {
+    if (this.bounds.circle && !this.bounds.circle.width) {
       var _COMPUTED_STYLES = window.getComputedStyle(this.DOM.circle);
 
       this.bounds.circle.width = parseInt(_COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
       this.bounds.circle.height = parseInt(_COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
+    }
+
+    if (this.bounds.custom && !this.bounds.custom.width) {
+      var _COMPUTED_STYLES2 = window.getComputedStyle(this.DOM.custom);
+
+      this.bounds.custom.width = parseInt(_COMPUTED_STYLES2.getPropertyValue('width').replace('px', ''));
+      this.bounds.custom.height = parseInt(_COMPUTED_STYLES2.getPropertyValue('height').replace('px', ''));
     }
 
     this.scale = SCALE_MIN;
@@ -257,6 +269,10 @@ function () {
         y: 0
       },
       circle: {
+        x: 0,
+        y: 0
+      },
+      custom: {
         x: 0,
         y: 0
       }
@@ -287,16 +303,30 @@ function () {
       var _this$lerps = this.lerps,
           dot = _this$lerps.dot,
           circle = _this$lerps.circle,
+          custom = _this$lerps.custom,
           scale = _this$lerps.scale,
           opacity = _this$lerps.opacity;
-      this.lastMousePos.dot.x = lerp(this.lastMousePos.dot.x, this.mousePos.x - this.bounds.dot.width / 2, dot);
-      this.lastMousePos.dot.y = lerp(this.lastMousePos.dot.y, this.mousePos.y - this.bounds.dot.height / 2, dot);
-      this.lastMousePos.circle.x = lerp(this.lastMousePos.circle.x, this.mousePos.x - this.bounds.circle.width / 2, circle);
-      this.lastMousePos.circle.y = lerp(this.lastMousePos.circle.y, this.mousePos.y - this.bounds.circle.height / 2, circle);
+
+      if (this.bounds.dot) {
+        this.lastMousePos.dot.x = lerp(this.lastMousePos.dot.x, this.mousePos.x - this.bounds.dot.width / 2, dot);
+        this.lastMousePos.dot.y = lerp(this.lastMousePos.dot.y, this.mousePos.y - this.bounds.dot.height / 2, dot);
+        this.DOM.dot.style.transform = "translateX(".concat(this.lastMousePos.dot.x, "px) translateY(").concat(this.lastMousePos.dot.y, "px)");
+      }
+
+      if (this.bounds.circle) {
+        this.lastMousePos.circle.x = lerp(this.lastMousePos.circle.x, this.mousePos.x - this.bounds.circle.width / 2, circle);
+        this.lastMousePos.circle.y = lerp(this.lastMousePos.circle.y, this.mousePos.y - this.bounds.circle.height / 2, circle);
+        this.DOM.circle.style.transform = "translateX(".concat(this.lastMousePos.circle.x, "px) translateY(").concat(this.lastMousePos.circle.y, "px) scale(").concat(this.lastScale, ")");
+      }
+
+      if (this.bounds.custom) {
+        this.lastMousePos.custom.x = lerp(this.lastMousePos.custom.x, this.mousePos.x - this.bounds.custom.width / 2, custom);
+        this.lastMousePos.custom.y = lerp(this.lastMousePos.custom.y, this.mousePos.y - this.bounds.custom.height / 2, custom);
+        this.DOM.custom.style.transform = "translateX(".concat(this.lastMousePos.custom.x, "px) translateY(").concat(this.lastMousePos.custom.y, "px) scale(").concat(this.lastScale, ")");
+      }
+
       this.lastScale = lerp(this.lastScale, this.scale, scale);
       this.lastOpacity = lerp(this.lastOpacity, this.opacity, opacity);
-      this.DOM.dot.style.transform = "translateX(".concat(this.lastMousePos.dot.x, "px) translateY(").concat(this.lastMousePos.dot.y, "px)");
-      this.DOM.circle.style.transform = "translateX(".concat(this.lastMousePos.circle.x, "px) translateY(").concat(this.lastMousePos.circle.y, "px) scale(").concat(this.lastScale, ")");
     }
   }, {
     key: "enter",
@@ -527,6 +557,17 @@ module.exports = CursorFx;
 
 /***/ }),
 
+/***/ "73e4":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_7e67ed5a_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0420");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_7e67ed5a_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_7e67ed5a_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_7e67ed5a_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "86bf":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -569,17 +610,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-
-/***/ "e4c9":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_483fcd1c_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("06e5");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_483fcd1c_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_483fcd1c_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_483fcd1c_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -840,15 +870,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"7e633486-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=483fcd1c&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"cursor",staticClass:"cursor",class:{
-        touch: _vm.touch,
-        loaded: _vm.loaded,
-    },style:(_vm.cssVars),attrs:{"id":"cursor-fx"}},[(! _vm.hideCircle)?_c('div',{staticClass:"cursor__inner cursor__inner--circle"}):_vm._e(),(_vm.$slots.default || _vm.$scopedSlots.default)?_c('div',{staticClass:"cursor__inner cursor__inner--custom"},[_vm._t("default")],2):_vm._e(),(! _vm.hideDot)?_c('div',{staticClass:"cursor__inner cursor__inner--dot"}):_vm._e()])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"23e245c6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=7e67ed5a&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{ref:"cursor",class:_vm.classes,style:(_vm.cssVars),attrs:{"id":"cursor-fx"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideOutside),expression:"! hideOutside"}],staticClass:"cursor-fx__inner cursor-fx__inner__outside",style:(_vm.outsideSizes)}),(_vm.$slots.default || _vm.$scopedSlots.default)?_c('div',{staticClass:"cursor-fx__inner cursor-fx__inner__custom"},[_vm._t("default")],2):_vm._e(),_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideInside),expression:"! hideInside"}],staticClass:"cursor-fx__inner cursor-fx__inner__inside",style:(_vm.insideSizes)})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/CursorFx/CursorFx.vue?vue&type=template&id=483fcd1c&scoped=true&
+// CONCATENATED MODULE: ./src/CursorFx/CursorFx.vue?vue&type=template&id=7e67ed5a&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/timers-browserify/main.js
 var main = __webpack_require__("5118");
@@ -885,6 +912,13 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 // Timers
  // Cursor
 
@@ -898,17 +932,29 @@ var COMPONENT = 'cursor-fx'; // Component
   props: {
     color: {
       type: String,
-      default: '#333'
+      default: '#333333'
+    },
+    outsideSize: {
+      type: String,
+      default: null
+    },
+    insideSize: {
+      type: String,
+      default: null
+    },
+    shape: {
+      type: String,
+      default: null
     },
     delay: {
       type: [Number, String],
       default: 100
     },
-    hideCircle: {
+    hideOutside: {
       type: Boolean,
       default: false
     },
-    hideDot: {
+    hideInside: {
       type: Boolean,
       default: false
     }
@@ -920,10 +966,46 @@ var COMPONENT = 'cursor-fx'; // Component
     };
   },
   computed: {
+    classes: function classes() {
+      var CLASSES = [COMPONENT];
+      this.touch && CLASSES.push("".concat(COMPONENT, "--touch"));
+      this.loaded && CLASSES.push("".concat(COMPONENT, "--loaded"));
+      this.shape && CLASSES.push("".concat(COMPONENT, "--shape-").concat(this.shape));
+      return CLASSES;
+    },
     cssVars: function cssVars() {
       return {
         '--color': this.color
       };
+    },
+    // Sizes
+    outsideSizes: function outsideSizes() {
+      return {
+        width: this.outsideSize,
+        height: this.outsideSize
+      };
+    },
+    insideSizes: function insideSizes() {
+      return {
+        width: this.insideSize,
+        height: this.insideSize
+      };
+    }
+  },
+  watch: {
+    outsideSize: function outsideSize(newVal) {
+      var _this = this;
+
+      newVal && this.$nextTick(function () {
+        return _this.init(false);
+      });
+    },
+    insideSize: function insideSize(newVal) {
+      var _this2 = this;
+
+      newVal && this.$nextTick(function () {
+        return _this2.init(false);
+      });
     }
   },
   created: function created() {
@@ -942,60 +1024,67 @@ var COMPONENT = 'cursor-fx'; // Component
       return 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
     },
     destroy: function destroy() {
-      var _this = this;
+      var _this3 = this;
+
+      document.documentElement.classList.remove('is-cursor-fx-active');
 
       if (this.$cursor) {
         _toConsumableArray(document.querySelectorAll('[data-cursor-hover]')).forEach(function (link) {
           link.removeEventListener('mouseenter', function () {
-            return _this.$cursor.enter();
+            return _this3.$cursor.enter();
           }, false);
           link.removeEventListener('mouseleave', function () {
-            return _this.$cursor.leave();
+            return _this3.$cursor.leave();
           }, false);
           link.removeEventListener('click', function () {
-            return _this.$cursor.click();
+            return _this3.$cursor.click();
           }, false);
         });
 
         _toConsumableArray(document.querySelectorAll('[data-cursor-hidden]')).forEach(function (link) {
           link.removeEventListener('mouseenter', function () {
-            return _this.$cursor.enterHidden();
+            return _this3.$cursor.enterHidden();
           }, false);
           link.removeEventListener('mouseleave', function () {
-            return _this.$cursor.leaveHidden();
+            return _this3.$cursor.leaveHidden();
           }, false);
         });
       }
 
       this.$timeout && Object(main["clearTimeout"])(this.$timeout);
-      document.documentElement.classList.remove('is-cursor-fx-active');
     },
-    init: function init() {
-      var _this2 = this;
+    initEvents: function initEvents() {
+      var _this4 = this;
 
-      this.$cursor = new cursor_fx_default.a(this.$refs.cursor); // Custom cursor chnages state when hovering on elements with 'data-hover'.
-
+      // Custom cursor chnages state when hovering on elements with 'data-hover'.
       _toConsumableArray(document.querySelectorAll('[data-cursor-hover]')).forEach(function (link) {
         link.addEventListener('mouseenter', function () {
-          return _this2.$cursor.enter();
+          return _this4.$cursor.enter();
         }, false);
         link.addEventListener('mouseleave', function () {
-          return _this2.$cursor.leave();
+          return _this4.$cursor.leave();
         }, false);
         link.addEventListener('click', function () {
-          return _this2.$cursor.click();
+          return _this4.$cursor.click();
         }, false);
       });
 
       _toConsumableArray(document.querySelectorAll('[data-cursor-hidden]')).forEach(function (link) {
         link.addEventListener('mouseenter', function () {
-          return _this2.$cursor.enterHidden();
+          return _this4.$cursor.enterHidden();
         }, false);
         link.addEventListener('mouseleave', function () {
-          return _this2.$cursor.leaveHidden();
+          return _this4.$cursor.leaveHidden();
         }, false);
       });
-
+    },
+    init: function init() {
+      var events = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      this.$cursor = new cursor_fx_default.a({
+        el: this.$refs.cursor,
+        base_class: ".".concat(COMPONENT)
+      });
+      event && this.initEvents();
       this.$emit('ready', this.$cursor);
       document.documentElement.classList.add('is-cursor-fx-active');
       this.loaded = true;
@@ -1010,8 +1099,8 @@ var COMPONENT = 'cursor-fx'; // Component
 // EXTERNAL MODULE: ./src/CursorFx/global.scss?vue&type=style&index=0&lang=scss&
 var globalvue_type_style_index_0_lang_scss_ = __webpack_require__("ab2f");
 
-// EXTERNAL MODULE: ./src/CursorFx/style.scss?vue&type=style&index=1&id=483fcd1c&scoped=true&lang=scss&
-var stylevue_type_style_index_1_id_483fcd1c_scoped_true_lang_scss_ = __webpack_require__("e4c9");
+// EXTERNAL MODULE: ./src/CursorFx/style.scss?vue&type=style&index=1&id=7e67ed5a&scoped=true&lang=scss&
+var stylevue_type_style_index_1_id_7e67ed5a_scoped_true_lang_scss_ = __webpack_require__("73e4");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -1124,7 +1213,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "483fcd1c",
+  "7e67ed5a",
   null
   
 )
