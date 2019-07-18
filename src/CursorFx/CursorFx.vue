@@ -1,5 +1,6 @@
 <template>
     <div
+        v-show="loaded"
         id="cursor-fx"
         ref="cursor"
         :class="classes"
