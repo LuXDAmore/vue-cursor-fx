@@ -1,7 +1,7 @@
 const IS_DEV = process.env.NODE_ENV !== 'production'
     , BASE_URL = (
         ! IS_DEV
-            ? process.env.VUE_APP_BASE_URL
+            ? process.env.BASE_URL
             : '/'
     )
 ;
