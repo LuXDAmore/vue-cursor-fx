@@ -8,7 +8,11 @@
             :inside-size="insideSizePx"
             :hide-outside="outsideHide"
             :hide-inside="insideHide"
-        />
+        >
+            <span v-show="forceCustomSlot">
+                You are beautiful
+            </span>
+        </cursor-fx>
 
         <div class="grid-container">
 
@@ -107,6 +111,21 @@
                         >
 
                     </section>
+                    <section>
+
+                        <strong>
+                            <label for="slot">
+                                Custom slot
+                            </label>
+                        </strong>
+
+                        <input
+                            id="slot"
+                            v-model="forceCustomSlot"
+                            type="checkbox"
+                        >
+
+                    </section>
                 </aside>
             </div>
 
@@ -139,6 +158,7 @@
                 insideSize: 6,
                 outsideHide: false,
                 insideHide: false,
+                forceCustomSlot: true,
             }
         ),
         computed: {

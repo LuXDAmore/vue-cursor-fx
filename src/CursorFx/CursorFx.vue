@@ -12,7 +12,7 @@
             :style="outsideSizes"
         />
         <div
-            v-if="$slots.default || $scopedSlots.default"
+            v-show="( $slots.default || $scopedSlots.default )"
             class="cursor-fx__inner cursor-fx__inner__custom"
         >
             <slot />
@@ -62,6 +62,10 @@
                     String,
                 ],
                 default: 100,
+            },
+            forceCustomSlot: {
+                type: Boolean,
+                default: false,
             },
             hideOutside: {
                 type: Boolean,
