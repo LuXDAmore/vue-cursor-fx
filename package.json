@@ -20,6 +20,7 @@
         "codrops"
     ],
     "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build --dest ./dist --target lib --name CursorFx ./src/CursorFx/CursorFx.vue",
         "build:docs": "vue-cli-service build --modern --dest ./docs --modern",
