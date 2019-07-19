@@ -8,9 +8,10 @@
             :inside-size="insideSizePx"
             :hide-outside="outsideHide"
             :hide-inside="insideHide"
+            :force-custom-slot="forceCustomSlot"
         >
-            <span v-show="forceCustomSlot">
-                You are beautiful
+            <span v-if="forceCustomSlot">
+                You are awesome
             </span>
         </cursor-fx>
 
@@ -158,7 +159,7 @@
                 insideSize: 6,
                 outsideHide: false,
                 insideHide: false,
-                forceCustomSlot: true,
+                forceCustomSlot: false,
             }
         ),
         computed: {

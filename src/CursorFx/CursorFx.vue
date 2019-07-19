@@ -12,8 +12,9 @@
             :style="outsideSizes"
         />
         <div
-            v-show="( $slots.default || $scopedSlots.default )"
+            v-if="( $slots.default || $scopedSlots.default ) || forceCustomSlot"
             class="cursor-fx__inner cursor-fx__inner__custom"
+            :style="outsideSizes"
         >
             <slot />
         </div>
@@ -126,28 +127,9 @@
             },
         },
         watch: {
-            outsideSize(
-                newVal
-            ) {
-
-                newVal && this.$nextTick(
-                    () => this.init(
-                        false
-                    )
-                );
-
-            },
-            insideSize(
-                newVal
-            ) {
-
-                newVal && this.$nextTick(
-                    () => this.init(
-                        false
-                    )
-                );
-
-            },
+            forceCustomSlot: 'refresh',
+            outsideSize: 'refresh',
+            insideSize: 'refresh',
         },
         created() {
 
@@ -323,6 +305,17 @@
                     this.init,
                     parseInt(
                         this.delay
+                    )
+                );
+
+            },
+            refresh(
+                newVal = true
+            ) {
+
+                newVal && this.$nextTick(
+                    () => this.init(
+                        false
                     )
                 );
 

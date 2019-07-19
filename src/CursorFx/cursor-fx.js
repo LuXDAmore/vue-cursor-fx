@@ -48,9 +48,9 @@ class CursorFx {
         this.lerps = {
             ... {
                 dot: 1,
-                circle: 0.15,
-                custom: 0.15,
-                scale: 0.15,
+                circle: 0.18,
+                custom: 0.23,
+                scale: 0.18,
                 opacity: 0.1,
             },
             ... lerps,
