@@ -2,23 +2,11 @@
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
-## Development Setup
+## Installation
 
 ``` bash
 # install deps
-npm install
-
-# build dist files
-npm run build
-
-# serve examples at localhost:8080
-npm run dev
-
-# lint & run all tests
-npm test
-
-# serve docs at localhost:8080
-npm run docs
+npm install --save @luxdamore/vue-cursor-fx
 ```
 
 ## Issues
@@ -37,7 +25,7 @@ Details changes for each release are documented in the [release notes](https://g
 
 [MIT](http://opensource.org/licenses/MIT)
 
-Copyright (c) 2013-present Luca Iaconelli
+Copyright (c) 2019-present Luca Iaconelli
 
 ### Inspired by
 
