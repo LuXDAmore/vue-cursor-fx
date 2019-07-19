@@ -2,6 +2,8 @@
 
     $prefix: &;
 
+    color: var(--color);
+
     &__inner {
 
         position: absolute;
@@ -23,7 +25,14 @@
             width: 64px;
             height: 64px;
             border: 1px solid;
-            border-color: var(--color);
+            border-color: currentColor;
+
+        }
+
+        &__custom {
+
+            width: 200px;
+            height: 200px;
 
         }
 
@@ -31,7 +40,7 @@
 
             width: 6px;
             height: 6px;
-            background-color: var(--color);
+            background-color: currentColor;
 
         }
 
