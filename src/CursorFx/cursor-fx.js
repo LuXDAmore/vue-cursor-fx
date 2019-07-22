@@ -39,21 +39,24 @@ class CursorFx {
             el,
             base_class,
         },
-        lerps = {}
+        options = {}
     ) {
 
         this.DOM = {
             el,
         };
-        this.lerps = {
-            ... {
+        this.options = {
+            lerps: {
                 dot: 1,
                 circle: 0.18,
                 custom: 0.23,
-                scale: 0.18,
-                opacity: 0.1,
             },
-            ... lerps,
+            scale: {
+                ratio: 0.18,
+                min: SCALE_MIN,
+                max: SCALE_MAX,
+            },
+            ... options,
         };
         this.DOM.dot = this.DOM.el.querySelector(
             `${ base_class }__inner__outside`
@@ -164,9 +167,12 @@ class CursorFx {
 
         }
 
-        this.scale = SCALE_MIN;
-        this.lastScale = SCALE_MIN;
-        this.opacity = 1;
+        this.MIN_SCALE = options.scale && options.scale.min ? options.scale.min : SCALE_MIN;
+        this.MAX_SCALE = options.scale && options.scale.max ? options.scale.max : SCALE_MAX;
+
+        this.scale = this.options.scale.min;
+        this.lastScale = this.options.scale.min;
+        this.opacity = options.opacity || 0.1;
         this.lastOpacity = 1;
 
         this.mousePos = {
@@ -215,12 +221,14 @@ class CursorFx {
         );
 
         const {
-            dot,
-            circle,
-            custom,
-            scale,
+            lerps: {
+                dot,
+                circle,
+                custom,
+            },
+            scale: { ratio },
             opacity,
-        } = this.lerps;
+        } = this.options;
 
         if( this.bounds.dot ) {
 
@@ -276,7 +284,7 @@ class CursorFx {
         this.lastScale = lerp(
             this.lastScale,
             this.scale,
-            scale
+            ratio
         );
         this.lastOpacity = lerp(
             this.lastOpacity,
@@ -287,17 +295,17 @@ class CursorFx {
     }
     enter() {
 
-        this.scale = SCALE_MAX;
+        this.scale = this.options.scale.max;
 
     }
     leave() {
 
-        this.scale = SCALE_MIN;
+        this.scale = this.options.scale.min;
 
     }
     click() {
 
-        this.lastScale = SCALE_MIN;
+        this.lastScale = this.options.scale.min;
         this.lastOpacity = 0;
 
     }

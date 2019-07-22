@@ -41,6 +41,10 @@
         name: COMPONENT,
         inheritAttrs: false,
         props: {
+            config: {
+                type: Object,
+                default: () => {},
+            },
             color: {
                 type: String,
                 default: '#333333',
@@ -130,6 +134,10 @@
             forceCustomSlot: 'refresh',
             outsideSize: 'refresh',
             insideSize: 'refresh',
+            config: {
+                handler: 'refresh',
+                deep: true,
+            },
         },
         created() {
 
@@ -282,7 +290,8 @@
                     {
                         el: this.$refs.cursor,
                         base_class: `.${ COMPONENT }`,
-                    }
+                    },
+                    this.config
                 );
 
                 event && this.initEvents();

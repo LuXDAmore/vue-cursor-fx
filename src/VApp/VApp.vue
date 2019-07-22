@@ -9,6 +9,7 @@
             :hide-outside="outsideHide"
             :hide-inside="insideHide"
             :force-custom-slot="forceCustomSlot"
+            :config="config"
         >
             <span v-if="forceCustomSlot">
                 You are awesome
@@ -91,7 +92,7 @@
 
                         <input
                             id="outside-size"
-                            v-model.number="outsideSize"
+                            v-model.number.lazy="outsideSize"
                             type="range"
                             :min="insideSize"
                             max="64"
@@ -105,7 +106,7 @@
 
                         <input
                             id="inside-size"
-                            v-model.number="insideSize"
+                            v-model.number.lazy="insideSize"
                             type="range"
                             min="2"
                             :max="outsideSize"
@@ -126,6 +127,135 @@
                             type="checkbox"
                         >
 
+                    </section>
+                    <section>
+
+                        <strong>
+                            <h2>Config</h2>
+                        </strong>
+
+                        <div class="configs">
+
+                            <h3>Lerps</h3>
+
+                            <div class="configs__item">
+                                <label for="dot">
+                                    Dot
+                                </label>
+                                <input
+                                    id="dot"
+                                    v-model.number.lazy="config.lerps.dot"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.lerps.dot" />
+                            </div>
+
+                            <div class="configs__item">
+                                <label for="circle">
+                                    Circle
+                                </label>
+                                <input
+                                    id="circle"
+                                    v-model.number.lazy="config.lerps.circle"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.lerps.circle" />
+                            </div>
+
+                            <div class="configs__item">
+                                <label for="custom">
+                                    Custom Slot
+                                </label>
+                                <input
+                                    id="custom"
+                                    v-model.number.lazy="config.lerps.custom"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.lerps.custom" />
+                            </div>
+
+                            <div class="configs__item">
+                                <label for="opacity">
+                                    Opacity
+                                </label>
+                                <input
+                                    id="opacity"
+                                    v-model.number.lazy="config.lerps.opacity"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.lerps.opacity" />
+                            </div>
+
+                        </div>
+
+                        <div class="configs">
+
+                            <h3>Scale</h3>
+
+                            <div class="configs__item">
+                                <label for="scale">
+                                    Scale
+                                </label>
+                                <input
+                                    id="scale"
+                                    v-model.number.lazy="config.scale.ratio"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.scale.ratio" />
+                            </div>
+
+
+                            <div class="configs__item">
+                                <label for="min">
+                                    Min
+                                </label>
+                                <input
+                                    id="min"
+                                    v-model.number.lazy="config.scale.min"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.scale.min" />
+                            </div>
+
+                            <div class="configs__item">
+                                <label for="max">
+                                    Max
+                                </label>
+                                <input
+                                    id="max"
+                                    v-model.number.lazy="config.scale.max"
+                                    type="range"
+                                    min="0.1"
+                                    max="1"
+                                    step="0.01"
+                                >
+                                <span v-text="config.scale.max" />
+                            </div>
+                        </div>
+
+                    </section>
+                    <section>
+                        <button type="button" data-cursor-hover>
+                            Try it!
+                        </button>
                     </section>
                 </aside>
             </div>
@@ -160,6 +290,20 @@
                 outsideHide: false,
                 insideHide: false,
                 forceCustomSlot: false,
+                config: {
+                    lerps: {
+                        dot: 1,
+                        circle: 0.18,
+                        custom: 0.23,
+                        scale: 0.18,
+                        opacity: 0.1,
+                    },
+                    scale: {
+                        ratio: 0.18,
+                        min: 0.5,
+                        max: 1,
+                    },
+                },
             }
         ),
         computed: {
