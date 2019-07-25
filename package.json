@@ -1,6 +1,6 @@
 {
     "name": "@luxdamore/vue-cursor-fx",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "An animated custom cursor effects for interactive elements like navigations - w/ VueJS - SSR Compatible",
     "author": "Luca Iaconelli <lucabelli@msn.com> (https://lucaiaconelli.it)",
     "homepage": "https://luxdamore.github.io/vue-cursor-fx/",
