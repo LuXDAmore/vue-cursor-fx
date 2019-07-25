@@ -96,14 +96,10 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "194c":
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "0694":
+/***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_f13137f0_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("e534");
-/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_f13137f0_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_f13137f0_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
-/* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_f13137f0_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -232,7 +228,7 @@ function () {
     this.DOM = {
       el: el
     };
-    this.options = _objectSpread({
+    this.$options = Object.freeze(_objectSpread({
       lerps: {
         dot: 1,
         circle: 0.18,
@@ -242,10 +238,11 @@ function () {
         ratio: 0.18,
         min: SCALE_MIN,
         max: SCALE_MAX
-      }
-    }, options);
-    this.DOM.dot = this.DOM.el.querySelector("".concat(base_class, "__inner__outside"));
-    this.DOM.circle = this.DOM.el.querySelector("".concat(base_class, "__inner__inside"));
+      },
+      opacity: 0.1
+    }, options));
+    this.DOM.dot = this.DOM.el.querySelector("".concat(base_class, "__inner__inside"));
+    this.DOM.circle = this.DOM.el.querySelector("".concat(base_class, "__inner__outside"));
     this.DOM.custom = this.DOM.el.querySelector("".concat(base_class, "__inner__custom"));
     this.bounds = {
       dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : null,
@@ -273,28 +270,26 @@ function () {
       this.bounds.custom.height = parseInt(_COMPUTED_STYLES2.getPropertyValue('height').replace('px', ''));
     }
 
-    this.MIN_SCALE = options.scale && options.scale.min ? options.scale.min : SCALE_MIN;
-    this.MAX_SCALE = options.scale && options.scale.max ? options.scale.max : SCALE_MAX;
-    this.scale = this.options.scale.min;
-    this.lastScale = this.options.scale.min;
-    this.opacity = options.opacity || 0.1;
+    this.scale = this.$options.scale.min;
+    this.lastScale = this.$options.scale.max;
+    this.opacity = this.$options.opacity;
     this.lastOpacity = 1;
     this.mousePos = {
       x: 0,
       y: 0
     };
     this.lastMousePos = {
-      dot: {
-        x: 0,
-        y: 0
+      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : {
+        top: 0,
+        left: 0
       },
-      circle: {
-        x: 0,
-        y: 0
+      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : {
+        top: 0,
+        left: 0
       },
-      custom: {
-        x: 0,
-        y: 0
+      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : {
+        top: 0,
+        left: 0
       }
     };
     this.initEvents();
@@ -304,13 +299,21 @@ function () {
   }
 
   _createClass(CursorFx, [{
+    key: "setMouseMove",
+    value: function setMouseMove(ev) {
+      this.mousePos = getMousePos(ev);
+    }
+  }, {
     key: "initEvents",
     value: function initEvents() {
       var _this2 = this;
 
-      window.addEventListener('mousemove', function (ev) {
-        return _this2.mousePos = getMousePos(ev);
-      }, false);
+      var mouseMove = function mouseMove(ev) {
+        return _this2.setMouseMove(ev);
+      };
+
+      window.removeEventListener('mousemove', mouseMove);
+      window.addEventListener('mousemove', mouseMove, false);
     }
   }, {
     key: "render",
@@ -320,13 +323,15 @@ function () {
       requestAnimationFrame(function () {
         return _this3.render();
       });
-      var _this$options = this.options,
-          _this$options$lerps = _this$options.lerps,
-          dot = _this$options$lerps.dot,
-          circle = _this$options$lerps.circle,
-          custom = _this$options$lerps.custom,
-          ratio = _this$options.scale.ratio,
-          opacity = _this$options.opacity;
+      var _this$$options = this.$options,
+          _this$$options$lerps = _this$$options.lerps,
+          dot = _this$$options$lerps.dot,
+          circle = _this$$options$lerps.circle,
+          custom = _this$$options$lerps.custom,
+          ratio = _this$$options.scale.ratio,
+          opacity = _this$$options.opacity;
+      this.lastScale = lerp(this.lastScale, this.scale, ratio);
+      this.lastOpacity = lerp(this.lastOpacity, this.opacity, opacity);
 
       if (this.bounds.dot) {
         this.lastMousePos.dot.x = lerp(this.lastMousePos.dot.x, this.mousePos.x - this.bounds.dot.width / 2, dot);
@@ -345,24 +350,22 @@ function () {
         this.lastMousePos.custom.y = lerp(this.lastMousePos.custom.y, this.mousePos.y - this.bounds.custom.height / 2, custom);
         this.DOM.custom.style.transform = "translateX(".concat(this.lastMousePos.custom.x, "px) translateY(").concat(this.lastMousePos.custom.y, "px) scale(").concat(this.lastScale, ")");
       }
-
-      this.lastScale = lerp(this.lastScale, this.scale, ratio);
-      this.lastOpacity = lerp(this.lastOpacity, this.opacity, opacity);
     }
   }, {
     key: "enter",
     value: function enter() {
-      this.scale = this.options.scale.max;
+      this.scale = this.$options.scale.max;
+      console.log(this);
     }
   }, {
     key: "leave",
     value: function leave() {
-      this.scale = this.options.scale.min;
+      this.scale = this.$options.scale.min;
     }
   }, {
     key: "click",
     value: function click() {
-      this.lastScale = this.options.scale.min;
+      this.lastScale = this.$options.scale.min;
       this.lastOpacity = 0;
     }
   }, {
@@ -585,6 +588,17 @@ module.exports = CursorFx;
 
 /***/ }),
 
+/***/ "a66a":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_54a391b4_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("0694");
+/* harmony import */ var _node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_54a391b4_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_54a391b4_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_mini_css_extract_plugin_dist_loader_js_ref_8_oneOf_1_0_node_modules_css_loader_index_js_ref_8_oneOf_1_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_oneOf_1_2_node_modules_sass_loader_lib_loader_js_ref_8_oneOf_1_3_style_scss_vue_type_style_index_1_id_54a391b4_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
 /***/ "ab2f":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -620,13 +634,6 @@ try {
 
 module.exports = g;
 
-
-/***/ }),
-
-/***/ "e534":
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
 
 /***/ }),
 
@@ -887,12 +894,12 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"5e0a13d1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=f13137f0&scoped=true&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.loaded),expression:"loaded"}],ref:"cursor",class:_vm.classes,style:(_vm.cssVars),attrs:{"id":"cursor-fx"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideOutside),expression:"! hideOutside"}],staticClass:"cursor-fx__inner cursor-fx__inner__outside",style:(_vm.outsideSizes)}),(( _vm.$slots.default || _vm.$scopedSlots.default ) || _vm.forceCustomSlot)?_c('div',{staticClass:"cursor-fx__inner cursor-fx__inner__custom",style:(_vm.outsideSizes)},[_vm._t("default")],2):_vm._e(),_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideInside),expression:"! hideInside"}],staticClass:"cursor-fx__inner cursor-fx__inner__inside",style:(_vm.insideSizes)})])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3e9373ae-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=54a391b4&scoped=true&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.loaded),expression:"loaded"}],ref:"cursor",class:_vm.classes,style:(_vm.cssVars),attrs:{"id":"cursor-fx"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideOutside),expression:"! hideOutside"}],staticClass:"cursor-fx__inner cursor-fx__inner__outside",style:(_vm.outsideSizes)}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(( _vm.$slots.default || _vm.$scopedSlots.default ) || _vm.forceCustomSlot),expression:"( $slots.default || $scopedSlots.default ) || forceCustomSlot"}],staticClass:"cursor-fx__inner cursor-fx__inner__custom",style:(_vm.outsideSizes)},[_vm._t("default")],2),_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideInside),expression:"! hideInside"}],staticClass:"cursor-fx__inner cursor-fx__inner__inside",style:(_vm.insideSizes)})])}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/CursorFx/CursorFx.vue?vue&type=template&id=f13137f0&scoped=true&
+// CONCATENATED MODULE: ./src/CursorFx/CursorFx.vue?vue&type=template&id=54a391b4&scoped=true&
 
 // EXTERNAL MODULE: ./node_modules/timers-browserify/main.js
 var main = __webpack_require__("5118");
@@ -1104,20 +1111,24 @@ var COMPONENT = 'cursor-fx'; // Component
         el: this.$refs.cursor,
         base_class: ".".concat(COMPONENT)
       }, this.config);
-      event && this.initEvents();
+      events && this.initEvents();
       this.$emit('ready', this.$cursor);
       document.documentElement.classList.add('is-cursor-fx-active');
       this.loaded = true;
     },
     start: function start() {
-      this.$timeout = Object(main["setTimeout"])(this.init, parseInt(this.delay));
+      var _this3 = this;
+
+      this.$timeout = Object(main["setTimeout"])(function () {
+        return _this3.init();
+      }, parseInt(this.delay));
     },
     refresh: function refresh() {
-      var _this3 = this;
+      var _this4 = this;
 
       var newVal = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
       newVal && this.$nextTick(function () {
-        return _this3.init(false);
+        return _this4.init(false);
       });
     }
   }
@@ -1127,8 +1138,8 @@ var COMPONENT = 'cursor-fx'; // Component
 // EXTERNAL MODULE: ./src/CursorFx/global.scss?vue&type=style&index=0&lang=scss&
 var globalvue_type_style_index_0_lang_scss_ = __webpack_require__("ab2f");
 
-// EXTERNAL MODULE: ./src/CursorFx/style.scss?vue&type=style&index=1&id=f13137f0&scoped=true&lang=scss&
-var stylevue_type_style_index_1_id_f13137f0_scoped_true_lang_scss_ = __webpack_require__("194c");
+// EXTERNAL MODULE: ./src/CursorFx/style.scss?vue&type=style&index=1&id=54a391b4&scoped=true&lang=scss&
+var stylevue_type_style_index_1_id_54a391b4_scoped_true_lang_scss_ = __webpack_require__("a66a");
 
 // CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -1241,7 +1252,7 @@ var component = normalizeComponent(
   staticRenderFns,
   false,
   null,
-  "f13137f0",
+  "54a391b4",
   null
   
 )
