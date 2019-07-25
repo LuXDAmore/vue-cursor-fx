@@ -12,7 +12,7 @@
             :style="outsideSizes"
         />
         <div
-            v-if="( $slots.default || $scopedSlots.default ) || forceCustomSlot"
+            v-show="( $slots.default || $scopedSlots.default ) || forceCustomSlot"
             class="cursor-fx__inner cursor-fx__inner__custom"
             :style="outsideSizes"
         >
@@ -291,10 +291,10 @@
                         el: this.$refs.cursor,
                         base_class: `.${ COMPONENT }`,
                     },
-                    this.config
+                    this.config,
                 );
 
-                event && this.initEvents();
+                events && this.initEvents();
 
                 this.$emit(
                     'ready',
@@ -311,7 +311,7 @@
             start() {
 
                 this.$timeout = setTimeout(
-                    this.init,
+                    () => this.init(),
                     parseInt(
                         this.delay
                     )

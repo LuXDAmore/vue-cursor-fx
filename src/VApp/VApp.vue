@@ -146,9 +146,9 @@
                                     id="dot"
                                     v-model.number.lazy="config.lerps.dot"
                                     type="range"
-                                    min="0.1"
+                                    min="0.001"
                                     max="1"
-                                    step="0.01"
+                                    step=".001"
                                 >
                                 <span v-text="config.lerps.dot" />
                             </div>
@@ -161,9 +161,9 @@
                                     id="circle"
                                     v-model.number.lazy="config.lerps.circle"
                                     type="range"
-                                    min="0.1"
+                                    min="0.001"
                                     max="1"
-                                    step="0.01"
+                                    step=".001"
                                 >
                                 <span v-text="config.lerps.circle" />
                             </div>
@@ -176,9 +176,9 @@
                                     id="custom"
                                     v-model.number.lazy="config.lerps.custom"
                                     type="range"
-                                    min="0.1"
+                                    min="0.001"
                                     max="1"
-                                    step="0.01"
+                                    step=".001"
                                 >
                                 <span v-text="config.lerps.custom" />
                             </div>
@@ -189,13 +189,13 @@
                                 </label>
                                 <input
                                     id="opacity"
-                                    v-model.number.lazy="config.lerps.opacity"
+                                    v-model.number.lazy="config.opacity"
                                     type="range"
-                                    min="0.1"
+                                    min="0.01"
                                     max="1"
-                                    step="0.01"
+                                    step=".01"
                                 >
-                                <span v-text="config.lerps.opacity" />
+                                <span v-text="config.opacity" />
                             </div>
 
                         </div>
@@ -212,9 +212,9 @@
                                     id="scale"
                                     v-model.number.lazy="config.scale.ratio"
                                     type="range"
-                                    min="0.1"
+                                    min="0.01"
                                     max="1"
-                                    step="0.01"
+                                    step=".01"
                                 >
                                 <span v-text="config.scale.ratio" />
                             </div>
@@ -228,9 +228,9 @@
                                     id="min"
                                     v-model.number.lazy="config.scale.min"
                                     type="range"
-                                    min="0.1"
+                                    min="0.01"
                                     max="1"
-                                    step="0.01"
+                                    step=".01"
                                 >
                                 <span v-text="config.scale.min" />
                             </div>
@@ -243,9 +243,9 @@
                                     id="max"
                                     v-model.number.lazy="config.scale.max"
                                     type="range"
-                                    min="0.1"
+                                    min="0.01"
                                     max="1"
-                                    step="0.01"
+                                    step=".01"
                                 >
                                 <span v-text="config.scale.max" />
                             </div>
@@ -295,14 +295,13 @@
                         dot: 1,
                         circle: 0.18,
                         custom: 0.23,
-                        scale: 0.18,
-                        opacity: 0.1,
                     },
                     scale: {
                         ratio: 0.18,
                         min: 0.5,
                         max: 1,
                     },
+                    opacity: 0.1,
                 },
             }
         ),

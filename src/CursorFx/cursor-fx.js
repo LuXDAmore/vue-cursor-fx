@@ -45,24 +45,28 @@ class CursorFx {
         this.DOM = {
             el,
         };
-        this.options = {
-            lerps: {
-                dot: 1,
-                circle: 0.18,
-                custom: 0.23,
-            },
-            scale: {
-                ratio: 0.18,
-                min: SCALE_MIN,
-                max: SCALE_MAX,
-            },
-            ... options,
-        };
+        this.$options = Object.freeze(
+            {
+                lerps: {
+                    dot: 1,
+                    circle: 0.18,
+                    custom: 0.23,
+                },
+                scale: {
+                    ratio: 0.18,
+                    min: SCALE_MIN,
+                    max: SCALE_MAX,
+                },
+                opacity: 0.1,
+                ... options,
+            }
+        );
+
         this.DOM.dot = this.DOM.el.querySelector(
-            `${ base_class }__inner__outside`
+            `${ base_class }__inner__inside`
         );
         this.DOM.circle = this.DOM.el.querySelector(
-            `${ base_class }__inner__inside`
+            `${ base_class }__inner__outside`
         );
         this.DOM.custom = this.DOM.el.querySelector(
             `${ base_class }__inner__custom`
@@ -167,12 +171,9 @@ class CursorFx {
 
         }
 
-        this.MIN_SCALE = options.scale && options.scale.min ? options.scale.min : SCALE_MIN;
-        this.MAX_SCALE = options.scale && options.scale.max ? options.scale.max : SCALE_MAX;
-
-        this.scale = this.options.scale.min;
-        this.lastScale = this.options.scale.min;
-        this.opacity = options.opacity || 0.1;
+        this.scale = this.$options.scale.min;
+        this.lastScale = this.$options.scale.max;
+        this.opacity = this.$options.opacity;
         this.lastOpacity = 1;
 
         this.mousePos = {
@@ -180,18 +181,30 @@ class CursorFx {
             y: 0,
         };
         this.lastMousePos = {
-            dot: {
-                x: 0,
-                y: 0,
-            },
-            circle: {
-                x: 0,
-                y: 0,
-            },
-            custom: {
-                x: 0,
-                y: 0,
-            },
+            dot: (
+                this.DOM.dot
+                ? this.DOM.dot.getBoundingClientRect()
+                : {
+                    top: 0,
+                    left: 0,
+                }
+            ),
+            custom: (
+                this.DOM.custom
+                ? this.DOM.custom.getBoundingClientRect()
+                : {
+                    top: 0,
+                    left: 0,
+                }
+            ),
+            circle: (
+                this.DOM.circle
+                ? this.DOM.circle.getBoundingClientRect()
+                : {
+                    top: 0,
+                    left: 0,
+                }
+            ),
         };
 
         this.initEvents();
@@ -201,15 +214,29 @@ class CursorFx {
         );
 
     }
+    setMouseMove(
+        ev
+    ) {
+
+        this.mousePos = getMousePos(
+            ev
+        );
+
+    }
     initEvents() {
+
+        const mouseMove = ev => this.setMouseMove(
+            ev
+        );
+
+        window.removeEventListener(
+            'mousemove',
+            mouseMove
+        );
 
         window.addEventListener(
             'mousemove',
-            ev => (
-                this.mousePos = getMousePos(
-                    ev
-                )
-            ),
+            mouseMove,
             false
         );
 
@@ -228,58 +255,7 @@ class CursorFx {
             },
             scale: { ratio },
             opacity,
-        } = this.options;
-
-        if( this.bounds.dot ) {
-
-            this.lastMousePos.dot.x = lerp(
-                this.lastMousePos.dot.x,
-                this.mousePos.x - this.bounds.dot.width / 2,
-                dot
-            );
-            this.lastMousePos.dot.y = lerp(
-                this.lastMousePos.dot.y,
-                this.mousePos.y - this.bounds.dot.height / 2,
-                dot
-            );
-
-            this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
-
-        }
-
-        if( this.bounds.circle ) {
-
-            this.lastMousePos.circle.x = lerp(
-                this.lastMousePos.circle.x,
-                this.mousePos.x - this.bounds.circle.width / 2,
-                circle
-            );
-            this.lastMousePos.circle.y = lerp(
-                this.lastMousePos.circle.y,
-                this.mousePos.y - this.bounds.circle.height / 2,
-                circle
-            );
-
-            this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
-
-        }
-
-        if( this.bounds.custom ) {
-
-            this.lastMousePos.custom.x = lerp(
-                this.lastMousePos.custom.x,
-                this.mousePos.x - this.bounds.custom.width / 2,
-                custom
-            );
-            this.lastMousePos.custom.y = lerp(
-                this.lastMousePos.custom.y,
-                this.mousePos.y - this.bounds.custom.height / 2,
-                custom
-            );
-
-            this.DOM.custom.style.transform = `translateX(${ ( this.lastMousePos.custom.x ) }px) translateY(${ this.lastMousePos.custom.y }px) scale(${ this.lastScale })`;
-
-        }
+        } = this.$options;
 
         this.lastScale = lerp(
             this.lastScale,
@@ -292,20 +268,75 @@ class CursorFx {
             opacity
         );
 
+        if( this.bounds.dot ) {
+
+            this.lastMousePos.dot.x = lerp(
+                this.lastMousePos.dot.x,
+                this.mousePos.x - ( this.bounds.dot.width / 2 ),
+                dot
+            );
+            this.lastMousePos.dot.y = lerp(
+                this.lastMousePos.dot.y,
+                this.mousePos.y - ( this.bounds.dot.height / 2 ),
+                dot
+            );
+
+            this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
+
+        }
+
+        if( this.bounds.circle ) {
+
+            this.lastMousePos.circle.x = lerp(
+                this.lastMousePos.circle.x,
+                this.mousePos.x - ( this.bounds.circle.width / 2 ),
+                circle
+            );
+            this.lastMousePos.circle.y = lerp(
+                this.lastMousePos.circle.y,
+                this.mousePos.y - ( this.bounds.circle.height / 2 ),
+                circle
+            );
+
+            this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
+
+        }
+
+        if( this.bounds.custom ) {
+
+            this.lastMousePos.custom.x = lerp(
+                this.lastMousePos.custom.x,
+                this.mousePos.x - ( this.bounds.custom.width / 2 ),
+                custom
+            );
+            this.lastMousePos.custom.y = lerp(
+                this.lastMousePos.custom.y,
+                this.mousePos.y - ( this.bounds.custom.height / 2 ),
+                custom
+            );
+
+            this.DOM.custom.style.transform = `translateX(${ ( this.lastMousePos.custom.x ) }px) translateY(${ this.lastMousePos.custom.y }px) scale(${ this.lastScale })`;
+
+        }
+
     }
     enter() {
 
-        this.scale = this.options.scale.max;
+        this.scale = this.$options.scale.max;
+
+        console.log(
+            this
+        );
 
     }
     leave() {
 
-        this.scale = this.options.scale.min;
+        this.scale = this.$options.scale.min;
 
     }
     click() {
 
-        this.lastScale = this.options.scale.min;
+        this.lastScale = this.$options.scale.min;
         this.lastOpacity = 0;
 
     }
