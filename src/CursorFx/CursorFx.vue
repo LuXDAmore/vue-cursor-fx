@@ -49,6 +49,10 @@
                 type: String,
                 default: '#333333',
             },
+            colorHover: {
+                type: String,
+                default: '#333333',
+            },
             outsideSize: {
                 type: String,
                 default: null,
@@ -84,6 +88,7 @@
         data: () => (
             {
                 touch: false,
+                hover: false,
                 loaded: false,
             }
         ),
@@ -92,6 +97,9 @@
 
                 const CLASSES = [ COMPONENT ];
 
+                this.hover && CLASSES.push(
+                    `${ COMPONENT }--hover`
+                );
                 this.touch && CLASSES.push(
                     `${ COMPONENT }--touch`
                 );
@@ -109,6 +117,7 @@
 
                 return {
                     '--color': this.color,
+                    '--color-hover': this.colorHover,
                 };
 
             },
@@ -243,12 +252,22 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            () => this.$cursor.enter(),
+                            () => {
+
+                                this.$cursor.enter();
+                                this.hover = true;
+
+                            },
                             false
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => this.$cursor.leave(),
+                            () => {
+
+                                this.$cursor.leave();
+                                this.hover = false;
+
+                            },
                             false
                         );
                         link.addEventListener(

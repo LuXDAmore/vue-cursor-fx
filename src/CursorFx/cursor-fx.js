@@ -320,24 +320,27 @@ class CursorFx {
         }
 
     }
-    enter() {
+    enter(
+        scale = this.$options.scale.max
+    ) {
 
-        this.scale = this.$options.scale.max;
-
-        console.log(
-            this
-        );
+        this.scale = scale;
 
     }
-    leave() {
+    leave(
+        scale = this.$options.scale.min
+    ) {
 
-        this.scale = this.$options.scale.min;
+        this.scale = scale;
 
     }
-    click() {
+    click(
+        scale = this.$options.scale.min,
+        opacity = 0
+    ) {
 
-        this.lastScale = this.$options.scale.min;
-        this.lastOpacity = 0;
+        this.lastScale = scale;
+        this.lastOpacity = opacity;
 
     }
     enterHidden() {

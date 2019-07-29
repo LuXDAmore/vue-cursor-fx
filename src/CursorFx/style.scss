@@ -2,7 +2,15 @@
 
     $prefix: &;
 
-    color: var(--color);
+    color: #333;
+    color: var(--color,#333);
+
+    &--hover {
+
+        color: #333;
+        color: var(--color-hover,#333);
+
+    }
 
     &__inner {
 
@@ -18,7 +26,7 @@
 
         transition-property: color, width, height, background-color, border-radius, border-color;
         transition-duration: .23s;
-        transition-timing-function: ease-in;
+        transition-timing-function: ease;
 
         &__outside {
 
