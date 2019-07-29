@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.4](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.3...v1.0.4) (2019-07-29)
+
+## Feat
+
+- Change color on hover with color-hover prop.
+- Exportable as auto-installer, or as a component.
+
+## Chore
+
+- Removed extra console.log.
+
 ## [1.0.3](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.2...v1.0.3) (2019-07-25)
 
 ## Fix
