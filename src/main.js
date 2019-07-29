@@ -6,12 +6,12 @@ import VApp from './VApp';
 
 // Component
 import Library from './library';
-import CursorFX from './CursorFx';
+import CursorFx from './CursorFx';
 
 // Install
 Vue.component(
-    CursorFX.name,
-    CursorFX
+    CursorFx.name,
+    CursorFx
 );
 
 // Library data
