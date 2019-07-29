@@ -6,7 +6,7 @@ import VApp from './VApp';
 
 // Component
 import Library from './library';
-import CursorFx from './CursorFx';
+import { CursorFx } from './CursorFx';
 
 // Install
 Vue.component(
