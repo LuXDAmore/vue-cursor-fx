@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.0.4](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.3...v1.0.4) (2019-07-29)
+## [1.1.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.3...v1.1.0) (2019-07-29)
 
 ## Feat
 
