@@ -1,10 +1,7 @@
 /* TEAM */
-	Full stack developer: Luca Iaconelli
+	Creative developer: Luca Iaconelli
 	Twitter: @luxdamore
     Instagram: @luxdamore
-	From: Faenza, Italia
-
-	Front end developer: Luca Ucciero
 	From: Faenza, Italia
 
 /* SITE */
