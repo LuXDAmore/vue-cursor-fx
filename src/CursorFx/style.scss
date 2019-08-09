@@ -1,14 +1,15 @@
 .cursor-fx {
 
     $prefix: &;
+    $color: #333;
 
-    color: #333;
-    color: var(--color,#333);
+    color: #{$color};
+    color: var(--color,#{$color});
 
     &--hover {
 
-        color: #333;
-        color: var(--color-hover,#333);
+        color: #{$color};
+        color: var(--color-hover,#{$color});
 
     }
 

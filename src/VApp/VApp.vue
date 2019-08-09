@@ -253,9 +253,19 @@
 
                     </section>
                     <section>
-                        <button type="button" data-cursor-hover>
-                            Try it!
-                        </button>
+
+                        <h3>Try it!</h3>
+
+                        <div class="buttons">
+                            <button
+                                type="button"
+                                title="Hover me"
+                                data-cursor-hover
+                            >
+                                hover me
+                            </button>
+                        </div>
+
                     </section>
                 </aside>
             </div>
@@ -319,13 +329,6 @@
         },
     };
 </script>
-
-<style src="modern-normalize/modern-normalize.css"></style>
-
-<style
-    lang="scss"
-    src="./global.scss"
-></style>
 
 <style
     scoped

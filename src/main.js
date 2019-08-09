@@ -2,6 +2,8 @@
 import Vue from 'vue';
 
 // Skeleton
+import 'modern-normalize/modern-normalize.css';
+import './main.scss';
 import VApp from './VApp';
 
 // Component
@@ -21,10 +23,10 @@ Vue.use(
 );
 
 // Config
-const DEBUG = process.env.NODE_ENV === 'development';
+const IS_DEV = process.env.NODE_ENV === 'development';
 
-Vue.config.silent = ! DEBUG;
-Vue.config.productionTip = DEBUG;
+Vue.config.silent = ! IS_DEV;
+Vue.config.productionTip = IS_DEV;
 
 new Vue(
     {

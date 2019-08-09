@@ -1,0 +1,74 @@
+$colorStart: #CB2D3E;
+$colorEnd: #EF473A;
+
+:root {
+
+    --color-start: #{$colorStart};
+    --color-end: #{$colorEnd};
+
+    font-size: 16px;
+
+}
+
+// Skeleton
+body {
+
+    overflow-x: hidden;
+    line-height: 1.5;
+
+    padding-top: env( safe-area-inset-top, 0 );
+    padding-right: env( safe-area-inset-right, 0 );
+    padding-bottom: env( safe-area-inset-bottom, 0 );
+    padding-left: env( safe-area-inset-left, 0 );
+
+}
+
+pre {
+
+    background-color: #EAEAEB;
+    padding: 8px 16px;
+
+}
+
+a,
+button {
+
+    display: inline-block;
+    margin: 0 auto;
+
+    will-change: auto;
+    transition: all .3s cubic-bezier( .455, .03, .515, .955 );
+
+    border-radius: 3px;
+    border-width: 0;
+
+}
+
+button {
+
+    color: #FFF;
+
+    padding: 8px 16px;
+
+    appearance: none !important;
+
+    background-image: linear-gradient( to right, #{$colorStart} 0%, #{$colorEnd} 51%, #{$colorStart} 100% );
+    background-image: linear-gradient( to right, var(--color-start, #{$colorStart}) 0%, var(--color-end, #{$colorEnd}) 51%, var(--color-start, #{$colorStart}) 100% );
+    background-position: left center;
+
+    &:hover {
+
+        background-position: right center;
+
+    }
+
+}
+
+a {
+
+    padding: 0 2px;
+
+    color: #{$colorStart};
+    color: var(--color-start, #{$colorStart});
+
+}
