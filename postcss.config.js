@@ -16,19 +16,11 @@ module.exports = {
             'postcss-preset-env'
         )(
             {
-                stage: 0,
+                stage: 2,
                 autoprefixer: {
                     cascade: false,
                     grid: true,
                 },
-            }
-        ),
-        require(
-            'autoprefixer'
-        )(
-            {
-                cascade: false,
-                grid: true,
             }
         ),
         require(
@@ -42,11 +34,7 @@ module.exports = {
             'cssnano'
         )(
             {
-                preset: 'advanced',
-                discardComments: {
-                    removeAll: true,
-                },
-                zindex: false,
+                preset: 'default',
             }
         ),
     ],
