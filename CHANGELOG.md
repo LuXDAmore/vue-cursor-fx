@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.1.0...v1.2.0) (2019-08-09)
+
+## FIX
+
+- Autoprefixer now goes.
+
+## STYLE
+
+- Better colors managment in scss.
+
 ## [1.1.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.3...v1.1.0) (2019-07-29)
 
 ## Feat
