@@ -18,7 +18,7 @@
 ```js
 
     // Component
-    import { CursorFx } from './CursorFx';
+    import { CursorFx } from '@luxdamore/vue-cursor-fx';
 
     // Install
     Vue.component(
@@ -33,7 +33,7 @@
 ```js
 
     // Plugin
-    import CursorFx from './CursorFx';
+    import CursorFx from '@luxdamore/vue-cursor-fx';
 
     // Install
     Vue.use(
@@ -81,12 +81,35 @@
 
 #### Markup
 
+_Use it just one time in the main file of your project or in every views where you want it._
+
 ```html
 
-    <!-- Inside you VueJs #app or .vue files -->
     <cursor-fx />
 
 ```
+
+##### Integrations
+
+###### VueRouter
+
+```html
+
+    <!-- App.vue -->
+    <div id="app">
+
+        <router-view></router-view>
+
+        <cursor-fx />
+
+    </div>
+
+```
+
+###### NuxtJs
+
+- For the entire website: place the component in the desired layouts (ex. layouts/default.vue);
+- For some pages only: place the component in the desired pages (ex. pages/index.vue).
 
 ## Issues
 
