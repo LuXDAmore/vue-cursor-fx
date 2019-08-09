@@ -66,11 +66,9 @@
         </head>
         <body>
 
-            <!-- CursorFx markup -->
-                <cursor-fx />
-            <!-- end CursorFx markup -->
-
-            <!-- Other scripts like Vuejs -->
+            <!--
+                Others script (ex. VueJs) and html.
+            -->
 
             <!-- CursorFx script -->
                 <script src="./dist/CursorFx.umd.min.js"></script>
@@ -78,6 +76,15 @@
 
         </body>
     </html>
+
+```
+
+#### Markup
+
+```html
+
+    <!-- Inside you VueJs #app or .vue files -->
+    <cursor-fx />
 
 ```
 
