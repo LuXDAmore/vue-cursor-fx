@@ -1,14 +1,21 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="<%= VUE_APP_LOCALE %>">
     <head>
 
         <base href="<%= BASE_URL %>">
         <link rel="canonical" href="<%= BASE_URL %>" />
-        <link rel="icon" href="favicon.ico" />
         <link type="text/plain" rel="author" href="humans.txt" />
 
+        <link rel="manifest" href="site.webmanifest" />
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=5, user-scalable=yes, minimal-ui, viewport-fit=cover" />
+
+        <!-- Icons -->
+        <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" sizes="76x76" href="apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="<%= VUE_APP_COLOR %>" />
 
         <!-- WebApp Capable -->
 		<meta name="format-detection" content="telephone=no" />
@@ -30,9 +37,9 @@
         <title><%= VUE_APP_TITLE %></title>
         <meta property="description" content="<%= VUE_APP_DESCRIPTION %>" />
         <meta name="generator" content="<%= VUE_APP_AUTHOR %>" />
-        <meta name="twitter:card" content="summary">
-        <meta name="twitter:site" content="<%= VUE_APP_TWITTER %>">
-        <meta name="twitter:creator" content="<%= VUE_APP_TWITTER %>">
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="<%= VUE_APP_TWITTER %>" />
+        <meta name="twitter:creator" content="<%= VUE_APP_TWITTER %>" />
 		<meta name="twitter:domain" content="<%= BASE_URL %>" />
 		<meta name="twitter:image:alt" content="<%= VUE_APP_DESCRIPTION %>" />
 		<meta property="article:author" content="https://www.facebook.com/<%= VUE_APP_FACEBOOK %>" />
@@ -42,9 +49,9 @@
         <meta property="og:description" content="<%= VUE_APP_DESCRIPTION %>" />
         <meta property="og:url" content="<%= BASE_URL %>" />
         <meta property="og:locale" content="<%= VUE_APP_LOCALE %>" />
-        <meta property="og:image" content="og-image.jpg">
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="628">
+        <meta property="og:image" content="og-image.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="628" />
         <script type="application/ld+json">{"@context": "http://schema.org","@type": "WebSite","url": "<%= BASE_URL %>","headline": "<%= VUE_APP_TITLE %>","name": "<%= VUE_APP_LIBRARY %>","description": "<%= VUE_APP_DESCRIPTION %>"}</script>
 
     </head>
@@ -52,7 +59,7 @@
 
         <noscript>
             <strong>
-                We're sorry but tailwind doesn't work properly without JavaScript enabled.<br>
+                We're sorry but this demo doesn't work properly without JavaScript enabled.<br>
                 Please enable it to continue.
             </strong>
         </noscript>
