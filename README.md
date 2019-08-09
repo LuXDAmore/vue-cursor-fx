@@ -4,9 +4,81 @@
 
 ## Installation
 
-``` bash
-# install deps
-npm install --save @luxdamore/vue-cursor-fx
+```bash
+
+    # Deps
+    npm install --save @luxdamore/vue-cursor-fx
+
+```
+
+### Usage
+
+#### As component
+
+```js
+
+    // Component
+    import { CursorFx } from './CursorFx';
+
+    // Install
+    Vue.component(
+        CursorFx.name,
+        CursorFx
+    );
+
+```
+
+#### As plugin
+
+```js
+
+    // Plugin
+    import CursorFx from './CursorFx';
+
+    // Install
+    Vue.use(
+        CursorFx
+    );
+
+```
+
+#### Browser's way
+
+```html
+
+    <!doctype html>
+    <html>
+        <head>
+
+            <!-- CursorFx style -->
+
+                <!-- Old way -->
+                <link rel="stylesheet" href="../dist/CursorFx.css" />
+                <!-- end old way -->
+
+                <!-- New way -->
+                <link rel="preload" href="./dist/CursorFx.css" as="style" onload="this.rel='stylesheet'" />
+                <link rel="preload" href="./dist/CursorFx.umd.min.js" as="script" />
+                <!-- end new way -->
+
+            <!-- end CursorFx style -->
+
+        </head>
+        <body>
+
+            <!-- CursorFx markup -->
+                <cursor-fx />
+            <!-- end CursorFx markup -->
+
+            <!-- Other scripts like Vuejs -->
+
+            <!-- CursorFx script -->
+                <script src="./dist/CursorFx.umd.min.js"></script>
+            <!-- end CursorFx script -->
+
+        </body>
+    </html>
+
 ```
 
 ## Issues
