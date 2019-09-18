@@ -86,16 +86,17 @@
         "access": "public"
     },
     "lint-staged": {
-        "*.js": [
-            "vue-cli-service lint",
-            "git add"
-        ],
-        "*.vue": [
+        "*.{js,vue}": [
             "vue-cli-service lint",
             "git add"
         ]
     },
     "gitHooks": {
         "pre-commit": "lint-staged"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
     }
 }
