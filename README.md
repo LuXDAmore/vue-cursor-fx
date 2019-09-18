@@ -123,12 +123,16 @@ Please make sure to read the [Contributing Guide](https://github.com/LuXDAmore/v
 
 Details changes for each release are documented in the [release notes](https://github.com/LuXDAmore/vue-cursor-fx/blob/master/CHANGELOG.md).
 
-## License
+### Donate me a beer, we can be friends
+
+_If you feel generous and want to give me a [beer](https://github.com/LuXDAmore/vue-cursor-fx/blob/master/.github/FUNDING.yml)._
+
+### License
 
 [MIT](http://opensource.org/licenses/MIT)
 
 Copyright (c) 2019-present Luca Iaconelli
 
-### Inspired by
+#### Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
