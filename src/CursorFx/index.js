@@ -19,10 +19,6 @@ export { component as CursorFx };
 export default plugin;
 
 // Auto install
-if( typeof window !== 'undefined' && window.Vue ) {
-
-    window.Vue.use(
-        plugin
-    );
-
-}
+typeof window !== 'undefined' && window.Vue && window.Vue.use(
+    plugin
+);
