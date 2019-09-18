@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.2.0...v1.2.1) (2019-09-18)
+
+## CHORE
+
+- Updated DevDep.
+
 ## [1.2.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.1.0...v1.2.0) (2019-08-09)
 
 ## FIX
