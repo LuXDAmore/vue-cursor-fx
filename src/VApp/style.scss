@@ -28,8 +28,10 @@ $backgroundColor: #FFF;
             display: grid;
             grid-template-columns: 33% 1fr;
             grid-template-rows: 1fr;
-            grid-auto-flow: row dense;
             grid-template-areas: "left right";
+
+            /* stylelint-disable-next-line */
+            grid-auto-flow: row dense;
 
         }
 
