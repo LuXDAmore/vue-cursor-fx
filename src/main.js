@@ -3,6 +3,7 @@ import Vue from 'vue';
 
 // Skeleton
 import 'modern-normalize/modern-normalize.css';
+import 'github-markdown-css';
 import './main.scss';
 import VApp from './VApp';
 
