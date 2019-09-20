@@ -59,7 +59,7 @@
 
                         <strong>
                             <label for="outside-hide">
-                                Hide outside
+                                Hide outside circle
                             </label>
                         </strong>
 
@@ -67,11 +67,15 @@
                             id="outside-hide"
                             v-model="outsideHide"
                             type="checkbox"
+                            @change="changedInsideOutsideHide(
+                                $event.target.checked,
+                                'inside'
+                            )"
                         >
 
                         <strong>
                             <label for="inside-hide">
-                                Hide inside
+                                Hide inside dot
                             </label>
                         </strong>
 
@@ -79,6 +83,10 @@
                             id="inside-hide"
                             v-model="insideHide"
                             type="checkbox"
+                            @change="changedInsideOutsideHide(
+                                $event.target.checked,
+                                'outside'
+                            )"
                         >
 
                     </section>
@@ -86,7 +94,7 @@
 
                         <strong>
                             <label for="outside-size">
-                                Outer size
+                                Outer circle size
                             </label>
                         </strong>
 
@@ -100,7 +108,7 @@
 
                         <strong>
                             <label for="inside-size">
-                                Inside size
+                                Inner dot size
                             </label>
                         </strong>
 
@@ -348,7 +356,26 @@
                         '_blank'
                     );
 
+                    links[ i ].setAttribute(
+                        'data-cursor-hover',
+                        true
+                    );
+
                 }
+
+            },
+            changedInsideOutsideHide(
+                value = false,
+                model
+            ) {
+
+                if( ! value )
+                    return;
+
+                if( model === 'inside' )
+                    this.insideHide = false;
+                else
+                    this.outsideHide = false;
 
             },
         },
