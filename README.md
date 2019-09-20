@@ -23,12 +23,20 @@ This package is available on npm.
 
     // Component
     import { CursorFx } from '@luxdamore/vue-cursor-fx';
+    import '@luxdamore/vue-cursor-fx/dist/CursorFx.css';
 
     // Install
     Vue.component(
         CursorFx.name,
         CursorFx
     );
+
+    // Or in a .vue file
+    export default {
+        components: {
+            'cursor-fx': CursorFx,
+        },
+    };
 
 ```
 
@@ -144,13 +152,15 @@ _Use it just one time in the main file of your project or in every views where y
 ```html
 
     <!-- App.vue -->
-    <div id="app">
+    <template>
+        <div>
 
-        <router-view></router-view>
+            <router-view></router-view>
 
-        <cursor-fx />
+            <cursor-fx />
 
-    </div>
+        </div>
+    </template>
 
 ```
 
@@ -158,6 +168,21 @@ _Use it just one time in the main file of your project or in every views where y
 
 - For the entire website: place the component in the desired layouts (ex. layouts/default.vue);
 - For some pages only: place the component in the desired pages (ex. pages/index.vue).
+
+```html
+
+    <!-- layout/default.vue -->
+    <template>
+        <div>
+
+            <nuxt />
+
+            <cursor-fx />
+
+        </div>
+    </template>
+
+```
 
 ## Issues
 
