@@ -125,11 +125,14 @@ Details changes for each release are documented in the [release notes](https://g
 
 ### License
 
-[MIT](http://opensource.org/licenses/MIT) // Copyright (c) 2019-present [Luca Iaconelli](https://lucaiaconelli.it)
+[MIT](http://opensource.org/licenses/MIT) // Copyright (©) 2019-present [Luca Iaconelli](https://lucaiaconelli.it)
 
-#### Are you feeling generous?  :)
+#### Are you feeling generous today?  :)
 
-_Donate me a beer, we can be good friends: **[Paypal](https://www.paypal.me/luxdamore)** ~ **[Patreon](https://www.patreon.com/luxdamore)**_
+You can donate me a beer, we can be good friends
+**[Paypal](https://www.paypal.me/luxdamore)_** // **_[Patreon](https://www.patreon.com/luxdamore)**
+
+_It's always a good day to be magnanimous - cit._
 
 #### Inspired by
 
