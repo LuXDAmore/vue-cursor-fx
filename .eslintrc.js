@@ -4,6 +4,7 @@ module.exports = {
         process: true,
         module: true,
         require: true,
+        global: true,
     },
     env: {
         es6: true,
