@@ -2,7 +2,11 @@
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
+An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible
+
 ## Installation
+
+This package is available on npm.
 
 ```bash
 
@@ -89,9 +93,53 @@ _Use it just one time in the main file of your project or in every views where y
 
 ```
 
-##### Integrations
+### Options
 
-###### VueRouter
+#### Slots
+
+```bash
+
+    # Availables
+    slot="default"  # Add some content in the middle of the cursor
+
+```
+
+#### Props
+
+| Attribute | Type | Default | Required | About |
+|:--------------------:|--------------------|:-------:|:--------:|-------------------------------------|
+| config | Object | {} | false | The default options applyed to cursor, see below the `BASE_CONFIG` |
+| color | String | #333333 | false | Color for the cursor |
+| color-hover | String | #333333 | false | Color, on hover, for the cursor |
+| outside-size | String | null | false | The size of outer circle |
+| inside-size | String | null | false | The size of inner dot |
+| shape | String | null | false | Only availables shapes are 'circle' and 'square' |
+| delay | String, Number | 60 | false | Activate cursor after x seconds |
+| force-custom-slot | Boolean | false | false | Show or hide the internal default slot |
+| hide-outside | Boolean | false | false | Hide outer circle |
+| hide-inside | Boolean | false | false | Hide inner dot |
+
+```js
+
+    const BASE_CONFIG = {
+        lerps: {
+            dot: 1,
+            circle: 0.18,
+            custom: 0.23,
+        },
+        scale: {
+            ratio: 0.18,
+            min: 0.5,
+            max: 1,
+        },
+        opacity: 0.1,
+    };
+
+```
+
+#### Integrations
+
+##### VueRouter
 
 ```html
 
@@ -106,7 +154,7 @@ _Use it just one time in the main file of your project or in every views where y
 
 ```
 
-###### NuxtJs
+##### NuxtJs
 
 - For the entire website: place the component in the desired layouts (ex. layouts/default.vue);
 - For some pages only: place the component in the desired pages (ex. pages/index.vue).
@@ -130,10 +178,11 @@ Details changes for each release are documented in the [release notes](https://g
 #### Are you feeling generous today?  :)
 
 You can donate me a beer, we can be good friends
-**[Paypal](https://www.paypal.me/luxdamore)** // **[Patreon](https://www.patreon.com/luxdamore)**
+__[Paypal](https://www.paypal.me/luxdamore) // [Patreon](https://www.patreon.com/luxdamore)__
 
-_It's always a good day to be magnanimous - cit._
+_It's always a good day to be magnanimous - cit_
 
 #### Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
+_Only activated in non-touch screens_
