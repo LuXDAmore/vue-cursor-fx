@@ -10,7 +10,7 @@ $backgroundColor: #FFF;
 
 .app {
 
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
 
     color: #{$color};
@@ -21,18 +21,19 @@ $backgroundColor: #FFF;
 
     .grid-container {
 
-        display: grid;
-        grid-template-columns: 33% 1fr;
-        grid-template-rows: 1fr;
-        grid-template-areas: "left right";
-
         padding: 8px;
 
-        .grid-cell {
+        @media (min-width: 768px) {
 
-            padding: 16px;
+            display: grid;
+            grid-template-columns: 33% 1fr;
+            grid-template-rows: 1fr;
+            grid-auto-flow: row dense;
+            grid-template-areas: "left right";
 
         }
+
+        .grid-cell { padding: 16px;  }
 
         .left { grid-area: left; }
 
