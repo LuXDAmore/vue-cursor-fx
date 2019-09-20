@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.2.4...v1.3.0) (2019-09-20)
+
+- CHORE: Updated documentations.
+- FIX: Better exports due to the vue-cli limitation.
+
 ## [1.2.4](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.2.3...v1.2.4) (2019-09-20)
 
 - CHORE: Updated documentations.
