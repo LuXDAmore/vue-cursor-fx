@@ -70,7 +70,7 @@
                     Number,
                     String,
                 ],
-                default: 100,
+                default: 60,
             },
             forceCustomSlot: {
                 type: Boolean,
