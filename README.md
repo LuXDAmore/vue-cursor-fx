@@ -46,6 +46,7 @@ This package is available on npm.
 
     // Plugin
     import CursorFx from '@luxdamore/vue-cursor-fx';
+    import '@luxdamore/vue-cursor-fx/dist/CursorFx.css';
 
     // Install
     Vue.use(
