@@ -130,7 +130,7 @@ Details changes for each release are documented in the [release notes](https://g
 #### Are you feeling generous today?  :)
 
 You can donate me a beer, we can be good friends
-**[Paypal](https://www.paypal.me/luxdamore)_** // **_[Patreon](https://www.patreon.com/luxdamore)**
+**[Paypal](https://www.paypal.me/luxdamore)** // **[Patreon](https://www.patreon.com/luxdamore)**
 
 _It's always a good day to be magnanimous - cit._
 
