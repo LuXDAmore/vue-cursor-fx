@@ -272,7 +272,7 @@
 
             <div class="grid-cell right">
                 <section class="readme">
-                    <readme />
+                    <readme class="markdown-body" />
                 </section>
             </div>
 
