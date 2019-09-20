@@ -22,16 +22,10 @@ body {
 
 }
 
-pre {
-
-    background-color: #EAEAEB;
-    padding: 8px 16px;
-    overflow-x: auto;
-
-}
-
-a,
-button {
+.markdown-body button,
+.markdown-body a,
+button,
+a {
 
     display: inline-block;
     margin: 0 auto;
@@ -44,6 +38,9 @@ button {
 
 }
 
+.markdown-body button,
+.markdown-body .btn,
+.btn,
 button {
 
     color: #FFF;
@@ -64,9 +61,8 @@ button {
 
 }
 
+.markdown-body a,
 a {
-
-    padding: 0 2px;
 
     color: #{$colorStart};
     color: var(--color-start, #{$colorStart});
