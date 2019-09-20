@@ -2,6 +2,7 @@
 import component from './CursorFx.vue';
 
 const plugin = {
+    CursorFx: component,
     install(
         Vue
     ) {
@@ -15,7 +16,6 @@ const plugin = {
 };
 
 // To allow use as module (npm/webpack/etc.) export component
-export { component as CursorFx };
 export default plugin;
 
 // Auto install
