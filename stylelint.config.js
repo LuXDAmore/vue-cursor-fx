@@ -20,7 +20,6 @@ module.exports = {
                 ignore: [
                     'calc',
                     'border-radius',
-                    'grid-auto-flow',
                     'user-select-none',
                     'pointer-events',
                     'background-img-opts',

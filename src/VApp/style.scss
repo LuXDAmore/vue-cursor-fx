@@ -30,9 +30,6 @@ $backgroundColor: #FFF;
             grid-template-rows: 1fr;
             grid-template-areas: "left right";
 
-            /* stylelint-disable-next-line */
-            grid-auto-flow: row dense;
-
         }
 
         .grid-cell { padding: 16px;  }
