@@ -24,6 +24,10 @@ module.exports = {
         config
     ) {
 
+        config.resolve.symlinks(
+            false
+        );
+
         config.module
             .rule(
                 'md'
