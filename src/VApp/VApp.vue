@@ -25,6 +25,28 @@
                             Usage
                         </h2>
                         <p v-text="$library.VUE_APP_DESCRIPTION" />
+                        <p>
+                            <a
+                                title="Github"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://github.com/LuXDAmore?tab=repositories"
+                                data-cursor-hover
+                            >
+                                GITHUB
+                            </a>
+                            <a
+                                title="Vue Fake 3D Image effect"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://luxdamore.github.io/vue-fake3d-image-effect"
+                                data-cursor-hover
+                            >
+                                | Vue Fake 3D Image effect |
+                            </a>
+                        </p>
                     </section>
                     <section>
 

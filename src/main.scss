@@ -22,13 +22,15 @@ body {
 
 }
 
+.markdown-body .button,
 .markdown-body button,
 .markdown-body a,
+.button,
 button,
 a {
 
     display: inline-block;
-    margin: 0 auto;
+    margin: 0 4px 4px;
 
     will-change: auto;
     transition: all .3s cubic-bezier( .455, .03, .515, .955 );
@@ -38,16 +40,17 @@ a {
 
 }
 
+.markdown-body .button,
 .markdown-body button,
-.markdown-body .btn,
-.btn,
+.button,
 button {
 
     color: #FFF;
 
     padding: 8px 16px;
 
-    appearance: none !important;
+    appearance: none;
+    text-decoration: none;
 
     background-image: linear-gradient( to right, #{$colorStart} 0%, #{$colorEnd} 51%, #{$colorStart} 100% );
     background-image: linear-gradient( to right, var(--color-start, #{$colorStart}) 0%, var(--color-end, #{$colorEnd}) 51%, var(--color-start, #{$colorStart}) 100% );
