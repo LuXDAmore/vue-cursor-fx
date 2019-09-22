@@ -2,7 +2,7 @@
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
-An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible
+An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible _(but not with touchscreen devices)_
 
 ## Installation
 
@@ -211,4 +211,3 @@ _It's always a good day to be magnanimous - cit_
 #### Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
-_Only activated in non-touch screens_
