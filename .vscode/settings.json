@@ -4,9 +4,6 @@
     "less.validate": false,
     "scss.validate": false,
     "html.validate.styles": false,
-    // Prettier
-    "prettier.eslintIntegration": true,
-    "prettier.stylelintIntegration": true,
     // ESLint
     "eslint.enable": true,
     "eslint.alwaysShowStatus": true,
@@ -28,6 +25,16 @@
     "stylelint.enable": true,
     // Vue
     "vetur.format.styleInitialIndent": true,
+    "vetur.format.defaultFormatter.css": "prettier-stylelint",
+    "vetur.format.defaultFormatter.scss": "prettier-stylelint",
+    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "vetur.format.defaultFormatter.ts": "prettier-tslint",
+    "prettier.singleQuote": true,
+    "prettier.tabWidth": 4,
+    "prettier.trailingComma": "all",
+    "prettier.printWidth": 120,
+    "prettier.jsxSingleQuote": true,
+    // Colors
     "workbench.colorCustomizations": {
         "activityBar.background": "#65c89b",
         "activityBar.foreground": "#15202b",
