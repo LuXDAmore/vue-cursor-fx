@@ -33,7 +33,7 @@ const SCALE_MIN = 0.5
     }
 ;
 
-class CursorFx {
+export default class CursorFx {
     constructor(
         {
             el,
@@ -354,5 +354,3 @@ class CursorFx {
 
     }
 }
-
-module.exports = CursorFx;
