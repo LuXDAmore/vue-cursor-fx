@@ -158,222 +158,6 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ "597b":
-/***/ (function(module, exports) {
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-var SCALE_MIN = 0.5,
-    SCALE_MAX = 1,
-    lerp = function lerp(a, b, n) {
-  return (1 - n) * a + n * b;
-},
-    getMousePos = function getMousePos(e) {
-  var posx = 0,
-      posy = 0;
-  if (!e) e = window.event;
-
-  if (e.pageX || e.pageY) {
-    posx = e.pageX;
-    posy = e.pageY;
-  } else if (e.clientX || e.clientY) {
-    posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-    posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-  }
-
-  return {
-    x: posx,
-    y: posy
-  };
-};
-
-var CursorFx =
-/*#__PURE__*/
-function () {
-  function CursorFx(_ref) {
-    var _this = this;
-
-    var el = _ref.el,
-        base_class = _ref.base_class;
-    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-    _classCallCheck(this, CursorFx);
-
-    this.DOM = {
-      el: el
-    };
-    this.$options = Object.freeze(_objectSpread({
-      lerps: {
-        dot: 1,
-        circle: 0.18,
-        custom: 0.23
-      },
-      scale: {
-        ratio: 0.18,
-        min: SCALE_MIN,
-        max: SCALE_MAX
-      },
-      opacity: 0.1
-    }, options));
-    this.DOM.dot = this.DOM.el.querySelector("".concat(base_class, "__inner__inside"));
-    this.DOM.circle = this.DOM.el.querySelector("".concat(base_class, "__inner__outside"));
-    this.DOM.custom = this.DOM.el.querySelector("".concat(base_class, "__inner__custom"));
-    this.bounds = {
-      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : null,
-      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : null,
-      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : null
-    };
-
-    if (this.bounds.dot && !this.bounds.dot.width) {
-      var COMPUTED_STYLES = window.getComputedStyle(this.DOM.dot);
-      this.bounds.dot.width = parseInt(COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
-      this.bounds.dot.height = parseInt(COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
-    }
-
-    if (this.bounds.circle && !this.bounds.circle.width) {
-      var _COMPUTED_STYLES = window.getComputedStyle(this.DOM.circle);
-
-      this.bounds.circle.width = parseInt(_COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
-      this.bounds.circle.height = parseInt(_COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
-    }
-
-    if (this.bounds.custom && !this.bounds.custom.width) {
-      var _COMPUTED_STYLES2 = window.getComputedStyle(this.DOM.custom);
-
-      this.bounds.custom.width = parseInt(_COMPUTED_STYLES2.getPropertyValue('width').replace('px', ''));
-      this.bounds.custom.height = parseInt(_COMPUTED_STYLES2.getPropertyValue('height').replace('px', ''));
-    }
-
-    this.scale = this.$options.scale.min;
-    this.lastScale = this.$options.scale.max;
-    this.opacity = this.$options.opacity;
-    this.lastOpacity = 1;
-    this.mousePos = {
-      x: 0,
-      y: 0
-    };
-    this.lastMousePos = {
-      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : {
-        top: 0,
-        left: 0
-      },
-      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : {
-        top: 0,
-        left: 0
-      },
-      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : {
-        top: 0,
-        left: 0
-      }
-    };
-    this.initEvents();
-    requestAnimationFrame(function () {
-      return _this.render();
-    });
-  }
-
-  _createClass(CursorFx, [{
-    key: "setMouseMove",
-    value: function setMouseMove(ev) {
-      this.mousePos = getMousePos(ev);
-    }
-  }, {
-    key: "initEvents",
-    value: function initEvents() {
-      var _this2 = this;
-
-      var mouseMove = function mouseMove(ev) {
-        return _this2.setMouseMove(ev);
-      };
-
-      window.removeEventListener('mousemove', mouseMove);
-      window.addEventListener('mousemove', mouseMove, false);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this3 = this;
-
-      requestAnimationFrame(function () {
-        return _this3.render();
-      });
-      var _this$$options = this.$options,
-          _this$$options$lerps = _this$$options.lerps,
-          dot = _this$$options$lerps.dot,
-          circle = _this$$options$lerps.circle,
-          custom = _this$$options$lerps.custom,
-          ratio = _this$$options.scale.ratio,
-          opacity = _this$$options.opacity;
-      this.lastScale = lerp(this.lastScale, this.scale, ratio);
-      this.lastOpacity = lerp(this.lastOpacity, this.opacity, opacity);
-
-      if (this.bounds.dot) {
-        this.lastMousePos.dot.x = lerp(this.lastMousePos.dot.x, this.mousePos.x - this.bounds.dot.width / 2, dot);
-        this.lastMousePos.dot.y = lerp(this.lastMousePos.dot.y, this.mousePos.y - this.bounds.dot.height / 2, dot);
-        this.DOM.dot.style.transform = "translateX(".concat(this.lastMousePos.dot.x, "px) translateY(").concat(this.lastMousePos.dot.y, "px)");
-      }
-
-      if (this.bounds.circle) {
-        this.lastMousePos.circle.x = lerp(this.lastMousePos.circle.x, this.mousePos.x - this.bounds.circle.width / 2, circle);
-        this.lastMousePos.circle.y = lerp(this.lastMousePos.circle.y, this.mousePos.y - this.bounds.circle.height / 2, circle);
-        this.DOM.circle.style.transform = "translateX(".concat(this.lastMousePos.circle.x, "px) translateY(").concat(this.lastMousePos.circle.y, "px) scale(").concat(this.lastScale, ")");
-      }
-
-      if (this.bounds.custom) {
-        this.lastMousePos.custom.x = lerp(this.lastMousePos.custom.x, this.mousePos.x - this.bounds.custom.width / 2, custom);
-        this.lastMousePos.custom.y = lerp(this.lastMousePos.custom.y, this.mousePos.y - this.bounds.custom.height / 2, custom);
-        this.DOM.custom.style.transform = "translateX(".concat(this.lastMousePos.custom.x, "px) translateY(").concat(this.lastMousePos.custom.y, "px) scale(").concat(this.lastScale, ")");
-      }
-    }
-  }, {
-    key: "enter",
-    value: function enter() {
-      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.max;
-      this.scale = scale;
-    }
-  }, {
-    key: "leave",
-    value: function leave() {
-      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.min;
-      this.scale = scale;
-    }
-  }, {
-    key: "click",
-    value: function click() {
-      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.min;
-      var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-      this.lastScale = scale;
-      this.lastOpacity = opacity;
-    }
-  }, {
-    key: "enterHidden",
-    value: function enterHidden() {
-      this.DOM.el.style.visibility = 'hidden';
-    }
-  }, {
-    key: "leaveHidden",
-    value: function leaveHidden() {
-      this.DOM.el.style.visibility = 'visible';
-    }
-  }]);
-
-  return CursorFx;
-}();
-
-module.exports = CursorFx;
-
-/***/ }),
-
 /***/ "6017":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -628,7 +412,7 @@ GlobalVue && GlobalVue.use(plugin); // To allow use as module (npm/webpack/etc.)
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"3d80b0b1-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=5a359fb7&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"645e79d4-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=5a359fb7&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.loaded),expression:"loaded"}],ref:"cursor",class:_vm.classes,style:(_vm.cssVars),attrs:{"id":"cursor-fx"}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideOutside),expression:"! hideOutside"}],staticClass:"cursor-fx__inner cursor-fx__inner__outside",style:(_vm.outsideSizes)}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(( _vm.$slots.default || _vm.$scopedSlots.default ) || _vm.forceCustomSlot),expression:"( $slots.default || $scopedSlots.default ) || forceCustomSlot"}],staticClass:"cursor-fx__inner cursor-fx__inner__custom",style:(_vm.outsideSizes)},[_vm._t("default")],2),_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideInside),expression:"! hideInside"}],staticClass:"cursor-fx__inner cursor-fx__inner__inside",style:(_vm.insideSizes)})])}
 var staticRenderFns = []
 
@@ -638,9 +422,216 @@ var staticRenderFns = []
 // EXTERNAL MODULE: ./node_modules/timers-browserify/main.js
 var main = __webpack_require__("5118");
 
-// EXTERNAL MODULE: ./src/CursorFx/cursor-fx.js
-var cursor_fx = __webpack_require__("597b");
-var cursor_fx_default = /*#__PURE__*/__webpack_require__.n(cursor_fx);
+// CONCATENATED MODULE: ./src/CursorFx/cursor-fx.js
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var SCALE_MIN = 0.5,
+    SCALE_MAX = 1,
+    lerp = function lerp(a, b, n) {
+  return (1 - n) * a + n * b;
+},
+    getMousePos = function getMousePos(e) {
+  var posx = 0,
+      posy = 0;
+  if (!e) e = window.event;
+
+  if (e.pageX || e.pageY) {
+    posx = e.pageX;
+    posy = e.pageY;
+  } else if (e.clientX || e.clientY) {
+    posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+    posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+  }
+
+  return {
+    x: posx,
+    y: posy
+  };
+};
+
+var CursorFx =
+/*#__PURE__*/
+function () {
+  function CursorFx(_ref) {
+    var _this = this;
+
+    var el = _ref.el,
+        base_class = _ref.base_class;
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    _classCallCheck(this, CursorFx);
+
+    this.DOM = {
+      el: el
+    };
+    this.$options = Object.freeze(_objectSpread({
+      lerps: {
+        dot: 1,
+        circle: 0.18,
+        custom: 0.23
+      },
+      scale: {
+        ratio: 0.18,
+        min: SCALE_MIN,
+        max: SCALE_MAX
+      },
+      opacity: 0.1
+    }, options));
+    this.DOM.dot = this.DOM.el.querySelector("".concat(base_class, "__inner__inside"));
+    this.DOM.circle = this.DOM.el.querySelector("".concat(base_class, "__inner__outside"));
+    this.DOM.custom = this.DOM.el.querySelector("".concat(base_class, "__inner__custom"));
+    this.bounds = {
+      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : null,
+      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : null,
+      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : null
+    };
+
+    if (this.bounds.dot && !this.bounds.dot.width) {
+      var COMPUTED_STYLES = window.getComputedStyle(this.DOM.dot);
+      this.bounds.dot.width = parseInt(COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
+      this.bounds.dot.height = parseInt(COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
+    }
+
+    if (this.bounds.circle && !this.bounds.circle.width) {
+      var _COMPUTED_STYLES = window.getComputedStyle(this.DOM.circle);
+
+      this.bounds.circle.width = parseInt(_COMPUTED_STYLES.getPropertyValue('width').replace('px', ''));
+      this.bounds.circle.height = parseInt(_COMPUTED_STYLES.getPropertyValue('height').replace('px', ''));
+    }
+
+    if (this.bounds.custom && !this.bounds.custom.width) {
+      var _COMPUTED_STYLES2 = window.getComputedStyle(this.DOM.custom);
+
+      this.bounds.custom.width = parseInt(_COMPUTED_STYLES2.getPropertyValue('width').replace('px', ''));
+      this.bounds.custom.height = parseInt(_COMPUTED_STYLES2.getPropertyValue('height').replace('px', ''));
+    }
+
+    this.scale = this.$options.scale.min;
+    this.lastScale = this.$options.scale.max;
+    this.opacity = this.$options.opacity;
+    this.lastOpacity = 1;
+    this.mousePos = {
+      x: 0,
+      y: 0
+    };
+    this.lastMousePos = {
+      dot: this.DOM.dot ? this.DOM.dot.getBoundingClientRect() : {
+        top: 0,
+        left: 0
+      },
+      custom: this.DOM.custom ? this.DOM.custom.getBoundingClientRect() : {
+        top: 0,
+        left: 0
+      },
+      circle: this.DOM.circle ? this.DOM.circle.getBoundingClientRect() : {
+        top: 0,
+        left: 0
+      }
+    };
+    this.initEvents();
+    requestAnimationFrame(function () {
+      return _this.render();
+    });
+  }
+
+  _createClass(CursorFx, [{
+    key: "setMouseMove",
+    value: function setMouseMove(ev) {
+      this.mousePos = getMousePos(ev);
+    }
+  }, {
+    key: "initEvents",
+    value: function initEvents() {
+      var _this2 = this;
+
+      var mouseMove = function mouseMove(ev) {
+        return _this2.setMouseMove(ev);
+      };
+
+      window.removeEventListener('mousemove', mouseMove);
+      window.addEventListener('mousemove', mouseMove, false);
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      requestAnimationFrame(function () {
+        return _this3.render();
+      });
+      var _this$$options = this.$options,
+          _this$$options$lerps = _this$$options.lerps,
+          dot = _this$$options$lerps.dot,
+          circle = _this$$options$lerps.circle,
+          custom = _this$$options$lerps.custom,
+          ratio = _this$$options.scale.ratio,
+          opacity = _this$$options.opacity;
+      this.lastScale = lerp(this.lastScale, this.scale, ratio);
+      this.lastOpacity = lerp(this.lastOpacity, this.opacity, opacity);
+
+      if (this.bounds.dot) {
+        this.lastMousePos.dot.x = lerp(this.lastMousePos.dot.x, this.mousePos.x - this.bounds.dot.width / 2, dot);
+        this.lastMousePos.dot.y = lerp(this.lastMousePos.dot.y, this.mousePos.y - this.bounds.dot.height / 2, dot);
+        this.DOM.dot.style.transform = "translateX(".concat(this.lastMousePos.dot.x, "px) translateY(").concat(this.lastMousePos.dot.y, "px)");
+      }
+
+      if (this.bounds.circle) {
+        this.lastMousePos.circle.x = lerp(this.lastMousePos.circle.x, this.mousePos.x - this.bounds.circle.width / 2, circle);
+        this.lastMousePos.circle.y = lerp(this.lastMousePos.circle.y, this.mousePos.y - this.bounds.circle.height / 2, circle);
+        this.DOM.circle.style.transform = "translateX(".concat(this.lastMousePos.circle.x, "px) translateY(").concat(this.lastMousePos.circle.y, "px) scale(").concat(this.lastScale, ")");
+      }
+
+      if (this.bounds.custom) {
+        this.lastMousePos.custom.x = lerp(this.lastMousePos.custom.x, this.mousePos.x - this.bounds.custom.width / 2, custom);
+        this.lastMousePos.custom.y = lerp(this.lastMousePos.custom.y, this.mousePos.y - this.bounds.custom.height / 2, custom);
+        this.DOM.custom.style.transform = "translateX(".concat(this.lastMousePos.custom.x, "px) translateY(").concat(this.lastMousePos.custom.y, "px) scale(").concat(this.lastScale, ")");
+      }
+    }
+  }, {
+    key: "enter",
+    value: function enter() {
+      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.max;
+      this.scale = scale;
+    }
+  }, {
+    key: "leave",
+    value: function leave() {
+      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.min;
+      this.scale = scale;
+    }
+  }, {
+    key: "click",
+    value: function click() {
+      var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.$options.scale.min;
+      var opacity = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+      this.lastScale = scale;
+      this.lastOpacity = opacity;
+    }
+  }, {
+    key: "enterHidden",
+    value: function enterHidden() {
+      this.DOM.el.style.visibility = 'hidden';
+    }
+  }, {
+    key: "leaveHidden",
+    value: function leaveHidden() {
+      this.DOM.el.style.visibility = 'visible';
+    }
+  }]);
+
+  return CursorFx;
+}();
+
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=script&lang=js&
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -852,7 +843,7 @@ var COMPONENT = 'cursor-fx'; // Component
     },
     init: function init() {
       var events = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-      this.$cursor = new cursor_fx_default.a({
+      this.$cursor = new CursorFx({
         el: this.$refs.cursor,
         base_class: ".".concat(COMPONENT)
       }, this.config);
@@ -1002,7 +993,7 @@ var component = normalizeComponent(
   
 )
 
-/* harmony default export */ var CursorFx = __webpack_exports__["a"] = (component.exports);
+/* harmony default export */ var CursorFx_CursorFx = __webpack_exports__["a"] = (component.exports);
 
 /***/ }),
 
