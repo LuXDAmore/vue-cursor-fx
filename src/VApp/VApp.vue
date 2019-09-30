@@ -319,8 +319,25 @@
 </template>
 
 <script>
+    // Highlight
+    import hljs from 'highlight.js/lib/highlight';
+    import bash from 'highlight.js/lib/languages/bash';
+    import javascript from 'highlight.js/lib/languages/javascript';
+    import 'highlight.js/styles/github.css';
+
     // Markdown
     import readme from '../../README.md';
+
+    // Highlight config
+    hljs.registerLanguage(
+        'bash',
+        bash
+    );
+
+    hljs.registerLanguage(
+        'javascript',
+        javascript
+    );
 
     // App
     export default {
@@ -367,11 +384,29 @@
         mounted() {
 
             this.$nextTick(
-                this.initReadmeLinks
+                () => {
+
+                    this.initHighlight();
+                    this.initReadmeLinks();
+
+                }
             );
 
         },
         methods: {
+            initHighlight() {
+
+                const PRE = document.querySelectorAll(
+                    'pre'
+                );
+
+                PRE.forEach(
+                    block => hljs.highlightBlock(
+                        block
+                    )
+                );
+
+            },
             initReadmeLinks() {
 
                 const links = document.querySelectorAll(
