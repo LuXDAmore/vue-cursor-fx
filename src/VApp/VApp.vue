@@ -289,10 +289,17 @@
                         <div class="buttons">
                             <button
                                 type="button"
-                                title="Hover me"
+                                title="Bigger on hover"
                                 data-cursor-hover
                             >
-                                hover me
+                                hover me (bigger)
+                            </button>
+                            <button
+                                type="button"
+                                title="Hidden on hover"
+                                data-cursor-hidden
+                            >
+                                hover me (hidden)
                             </button>
                         </div>
 

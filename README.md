@@ -66,12 +66,12 @@ This package is available on npm.
             <!-- CursorFx style -->
 
                 <!-- Old way -->
-                <link rel="stylesheet" href="../dist/CursorFx.css" />
+                <link rel="stylesheet" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" />
                 <!-- end old way -->
 
                 <!-- New way -->
-                <link rel="preload" href="./dist/CursorFx.css" as="style" onload="this.rel='stylesheet'" />
-                <link rel="preload" href="./dist/CursorFx.umd.min.js" as="script" />
+                <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" as="style" onload="this.rel='stylesheet'" />
+                <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js" as="script" />
                 <!-- end new way -->
 
             <!-- end CursorFx style -->
@@ -84,7 +84,7 @@ This package is available on npm.
             -->
 
             <!-- CursorFx script -->
-                <script src="./dist/CursorFx.umd.min.js"></script>
+                <script src="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js"></script>
             <!-- end CursorFx script -->
 
         </body>
@@ -97,6 +97,22 @@ This package is available on npm.
 _Use it just one time in the main file of your project or in every views where you want it._
 
 ```html
+
+    <button
+        type="button"
+        class="button"
+        data-cursor-hover
+    >
+        Add `data-cursor-hover` to an every html elements that you want to see the cursor bigger on hover
+    </button>
+
+    <button
+        type="button"
+        class="button"
+        data-cursor-hidden
+    >
+        Add `data-cursor-hidden` to an every html elements that you want to hide the cursor on hover
+    </button>
 
     <cursor-fx />
 
