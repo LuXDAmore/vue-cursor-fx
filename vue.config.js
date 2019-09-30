@@ -50,9 +50,11 @@ module.exports = {
             )
             .options(
                 {
+                    wrapper: 'article',
                     raw: true,
                     breaks: true,
-                    wrapper: 'article',
+                    typographer: true,
+                    preventExtract: true,
                 }
             )
         ;
