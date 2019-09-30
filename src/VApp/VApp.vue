@@ -4,6 +4,7 @@
         <cursor-fx
             :shape="shape"
             :color="color"
+            :color-hover="colorHover"
             :outside-size="outsideSizePx"
             :inside-size="insideSizePx"
             :hide-outside="outsideHide"
@@ -73,6 +74,18 @@
                         <input
                             id="color"
                             v-model="color"
+                            type="color"
+                        >
+
+                        <strong>
+                            <label for="color-hover">
+                                Hover color
+                            </label>
+                        </strong>
+
+                        <input
+                            id="color-hover"
+                            v-model="colorHover"
                             type="color"
                         >
 
@@ -349,6 +362,7 @@
             {
                 shape: 'default',
                 color: '#333333',
+                colorHover: '#333333',
                 outsideSize: 64,
                 insideSize: 6,
                 outsideHide: false,
