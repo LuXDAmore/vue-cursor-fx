@@ -1,42 +1,53 @@
 $color: #333;
-$backgroundColor: #FFF;
+$background-color: #fff;
 
 :root {
 
     --color: #{$color};
-    --background-color: #{$backgroundColor};
+    --background-color: #{$background-color};
 
 }
 
 .app {
 
-    min-height: 100vh;
     width: 100%;
 
+    min-height: 100vh;
     color: #{$color};
-    color: var(--color,#{$color});
-
-    background-color: #{$backgroundColor};
-    background-color: var(--background-color,#{$backgroundColor});
+    color: var( --color, #{$color} );
+    background-color: #{$background-color};
+    background-color: var( --background-color, #{$background-color} );
 
     .grid-container {
 
         padding: 8px;
 
-        @media (min-width: 768px) {
+        @media ( min-width: 768px ) {
 
             display: grid;
-            grid-template-columns: 33% 1fr;
-            grid-template-rows: 1fr;
             grid-template-areas: "left right";
+            grid-template-rows: 1fr;
+            grid-template-columns: 33% 1fr;
 
         }
 
-        .grid-cell { padding: 16px;  }
+        .grid-cell {
 
-        .left { grid-area: left; }
+            padding: 16px;
 
-        .right { grid-area: right; }
+        }
+
+        .left {
+
+            grid-area: left;
+
+        }
+
+        .right {
+
+            grid-area: right;
+
+        }
 
     }
 
@@ -51,4 +62,5 @@ $backgroundColor: #FFF;
         margin: 0 0 16px;
 
     }
+
 }

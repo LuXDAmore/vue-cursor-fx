@@ -1,10 +1,10 @@
-$colorStart: #CB2D3E;
-$colorEnd: #EF473A;
+$color-start: #cb2d3e;
+$color-end: #ef473a;
 
 :root {
 
-    --color-start: #{$colorStart};
-    --color-end: #{$colorEnd};
+    --color-start: #{$color-start};
+    --color-end: #{$color-end};
 
     font-size: 16px;
 
@@ -13,12 +13,11 @@ $colorEnd: #EF473A;
 // Skeleton
 body {
 
-    line-height: 1.5;
-
     padding-top: env( safe-area-inset-top, 0 );
     padding-right: env( safe-area-inset-right, 0 );
     padding-bottom: env( safe-area-inset-bottom, 0 );
     padding-left: env( safe-area-inset-left, 0 );
+    line-height: 1.5;
 
 }
 
@@ -31,12 +30,11 @@ a {
 
     display: inline-block;
     margin: 0 4px 4px;
-
-    will-change: auto;
-    transition: all .3s cubic-bezier( .455, .03, .515, .955 );
+    border: 0;
 
     border-radius: 3px;
-    border-width: 0;
+    transition: all .3s cubic-bezier( .455, .03, .515, .955 );
+    will-change: auto;
 
 }
 
@@ -45,16 +43,13 @@ a {
 .button,
 button {
 
-    color: #FFF;
-
     padding: 8px 16px;
-
-    appearance: none;
+    color: #fff;
     text-decoration: none;
-
-    background-image: linear-gradient( to right, #{$colorStart} 0%, #{$colorEnd} 51%, #{$colorStart} 100% );
-    background-image: linear-gradient( to right, var(--color-start, #{$colorStart}) 0%, var(--color-end, #{$colorEnd}) 51%, var(--color-start, #{$colorStart}) 100% );
+    background-image: linear-gradient( to right, #{$color-start} 0%, #{$color-end} 51%, #{$color-start} 100% );
+    background-image: linear-gradient( to right, var( --color-start, #{$color-start} ) 0%, var( --color-end, #{$color-end} ) 51%, var( --color-start, #{$color-start} ) 100% );
     background-position: left center;
+    appearance: none;
 
     &:hover {
 
@@ -67,7 +62,7 @@ button {
 .markdown-body a,
 a {
 
-    color: #{$colorStart};
-    color: var(--color-start, #{$colorStart});
+    color: #{$color-start};
+    color: var( --color-start, #{$color-start} );
 
 }
