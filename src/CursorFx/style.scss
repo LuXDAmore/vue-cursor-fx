@@ -4,30 +4,29 @@
     $color: #333;
 
     color: #{$color};
-    color: var(--color,#{$color});
+    color: var( --color, #{$color} );
 
     &--hover {
 
         color: #{$color};
-        color: var(--color-hover,#{$color});
+        color: var( --color-hover, #{$color} );
 
     }
 
     &__inner {
 
         position: absolute;
-        pointer-events: none;
 
         top: 0;
         left: 0;
-
         border-radius: 100%;
-
-        will-change: auto;
+        transition-timing-function: ease;
+        transition-duration: .23s;
 
         transition-property: color, width, height, background-color, border-radius, border-color;
-        transition-duration: .23s;
-        transition-timing-function: ease;
+        pointer-events: none;
+
+        will-change: auto;
 
         &__outside {
 
@@ -40,6 +39,7 @@
         &__custom {
 
             width: 64px;
+
             height: 64px;
 
         }
