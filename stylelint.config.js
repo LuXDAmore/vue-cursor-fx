@@ -3,11 +3,12 @@ module.exports = {
     extends: [
         'stylelint-config-standard',
         'stylelint-config-sass-guidelines',
-        'stylelint-config-rational-order',
     ],
     plugins: [
         'stylelint-no-unsupported-browser-features',
         'stylelint-scss',
+        'stylelint-order',
+        'stylelint-config-rational-order/plugin',
     ],
     // add your custom rules here
     defaultSeverity: 'warning',
@@ -49,7 +50,20 @@ module.exports = {
                 ],
             },
         ],
-        'order/properties-alphabetical-order': null,
+        // Property Order
+        'order/properties-order': [
+            [],
+            {
+                severity: 'warning',
+            },
+        ],
+        'order/properties-alphabetical-order': false,
+        'plugin/rational-order': [
+            true,
+            {
+                severity: 'warning',
+            },
+        ],
         // Generic
         'indentation': 4,
         'no-descending-specificity': null,
