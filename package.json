@@ -102,6 +102,9 @@
             "git add"
         ]
     },
+    "gitHooks": {
+        "pre-commit": "lint-staged"
+    },
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
