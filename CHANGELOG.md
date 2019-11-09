@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.2](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.1...v1.3.2) (2019-11-09)
+
+- CHORE: Updated DevDep;
+- CHORE: Better linting.
+
 ## [1.3.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.0...v1.3.1) (2019-10-17)
 
 - CHORE: Updated version of vue-cli.
