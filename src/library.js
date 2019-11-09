@@ -7,7 +7,7 @@
 export default {
     install(
         Vue,
-        options
+        options,
     ) {
 
         const OPTIONS = options;

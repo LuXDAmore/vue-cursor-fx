@@ -14,13 +14,13 @@ import CursorFx from './CursorFx/CursorFx.vue';
 // Install
 Vue.component(
     CursorFx.name,
-    CursorFx
+    CursorFx,
 );
 
 // Library data
 Vue.use(
     Library,
-    process.env
+    process.env,
 );
 
 // Config
@@ -33,7 +33,7 @@ new Vue(
     {
         el: '#app',
         render: h => h(
-            VApp
+            VApp,
         ),
-    }
+    },
 );

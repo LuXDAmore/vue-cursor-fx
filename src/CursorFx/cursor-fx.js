@@ -3,7 +3,7 @@ const SCALE_MIN = 0.5
     , lerp = (
         a,
         b,
-        n
+        n,
     ) => ( ( 1 - n ) * a + n * b )
     , getMousePos = e => {
 
@@ -39,7 +39,7 @@ export default class CursorFx {
             el,
             base_class,
         },
-        options = {}
+        options = {},
     ) {
 
         this.DOM = {
@@ -59,17 +59,17 @@ export default class CursorFx {
                 },
                 opacity: 0.1,
                 ... options,
-            }
+            },
         );
 
         this.DOM.dot = this.DOM.el.querySelector(
-            `${ base_class }__inner__inside`
+            `${ base_class }__inner__inside`,
         );
         this.DOM.circle = this.DOM.el.querySelector(
-            `${ base_class }__inner__outside`
+            `${ base_class }__inner__outside`,
         );
         this.DOM.custom = this.DOM.el.querySelector(
-            `${ base_class }__inner__custom`
+            `${ base_class }__inner__custom`,
         );
 
         this.bounds = {
@@ -81,29 +81,29 @@ export default class CursorFx {
         if( this.bounds.dot && ! this.bounds.dot.width ) {
 
             const COMPUTED_STYLES = window.getComputedStyle(
-                this.DOM.dot
+                this.DOM.dot,
             );
 
             this.bounds.dot.width = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'width'
+                        'width',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
             this.bounds.dot.height = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'height'
+                        'height',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
 
@@ -112,29 +112,29 @@ export default class CursorFx {
         if( this.bounds.circle && ! this.bounds.circle.width ) {
 
             const COMPUTED_STYLES = window.getComputedStyle(
-                this.DOM.circle
+                this.DOM.circle,
             );
 
             this.bounds.circle.width = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'width'
+                        'width',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
             this.bounds.circle.height = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'height'
+                        'height',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
 
@@ -143,29 +143,29 @@ export default class CursorFx {
         if( this.bounds.custom && ! this.bounds.custom.width ) {
 
             const COMPUTED_STYLES = window.getComputedStyle(
-                this.DOM.custom
+                this.DOM.custom,
             );
 
             this.bounds.custom.width = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'width'
+                        'width',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
             this.bounds.custom.height = parseInt(
                 COMPUTED_STYLES
                     .getPropertyValue(
-                        'height'
+                        'height',
                     )
                     .replace(
                         'px',
-                        ''
-                    )
+                        '',
+                    ),
                 )
             ;
 
@@ -210,41 +210,41 @@ export default class CursorFx {
         this.initEvents();
 
         requestAnimationFrame(
-            () => this.render()
+            () => this.render(),
         );
 
     }
     setMouseMove(
-        ev
+        ev,
     ) {
 
         this.mousePos = getMousePos(
-            ev
+            ev,
         );
 
     }
     initEvents() {
 
         const mouseMove = ev => this.setMouseMove(
-            ev
+            ev,
         );
 
         window.removeEventListener(
             'mousemove',
-            mouseMove
+            mouseMove,
         );
 
         window.addEventListener(
             'mousemove',
             mouseMove,
-            false
+            false,
         );
 
     }
     render() {
 
         requestAnimationFrame(
-            () => this.render()
+            () => this.render(),
         );
 
         const {
@@ -260,12 +260,12 @@ export default class CursorFx {
         this.lastScale = lerp(
             this.lastScale,
             this.scale,
-            ratio
+            ratio,
         );
         this.lastOpacity = lerp(
             this.lastOpacity,
             this.opacity,
-            opacity
+            opacity,
         );
 
         if( this.bounds.dot ) {
@@ -273,12 +273,12 @@ export default class CursorFx {
             this.lastMousePos.dot.x = lerp(
                 this.lastMousePos.dot.x,
                 this.mousePos.x - ( this.bounds.dot.width / 2 ),
-                dot
+                dot,
             );
             this.lastMousePos.dot.y = lerp(
                 this.lastMousePos.dot.y,
                 this.mousePos.y - ( this.bounds.dot.height / 2 ),
-                dot
+                dot,
             );
 
             this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
@@ -290,12 +290,12 @@ export default class CursorFx {
             this.lastMousePos.circle.x = lerp(
                 this.lastMousePos.circle.x,
                 this.mousePos.x - ( this.bounds.circle.width / 2 ),
-                circle
+                circle,
             );
             this.lastMousePos.circle.y = lerp(
                 this.lastMousePos.circle.y,
                 this.mousePos.y - ( this.bounds.circle.height / 2 ),
-                circle
+                circle,
             );
 
             this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
@@ -307,12 +307,12 @@ export default class CursorFx {
             this.lastMousePos.custom.x = lerp(
                 this.lastMousePos.custom.x,
                 this.mousePos.x - ( this.bounds.custom.width / 2 ),
-                custom
+                custom,
             );
             this.lastMousePos.custom.y = lerp(
                 this.lastMousePos.custom.y,
                 this.mousePos.y - ( this.bounds.custom.height / 2 ),
-                custom
+                custom,
             );
 
             this.DOM.custom.style.transform = `translateX(${ ( this.lastMousePos.custom.x ) }px) translateY(${ this.lastMousePos.custom.y }px) scale(${ this.lastScale })`;
@@ -321,14 +321,14 @@ export default class CursorFx {
 
     }
     enter(
-        scale = this.$options.scale.max
+        scale = this.$options.scale.max,
     ) {
 
         this.scale = scale;
 
     }
     leave(
-        scale = this.$options.scale.min
+        scale = this.$options.scale.min,
     ) {
 
         this.scale = scale;
@@ -336,7 +336,7 @@ export default class CursorFx {
     }
     click(
         scale = this.$options.scale.min,
-        opacity = 0
+        opacity = 0,
     ) {
 
         this.lastScale = scale;

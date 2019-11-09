@@ -4,16 +4,16 @@ module.exports = {
     syntax: 'postcss-scss',
     plugins: [
         require(
-            'postcss-import'
+            'postcss-import',
         )(),
         require(
-            'postcss-url'
+            'postcss-url',
         )(),
         require(
-            'postcss-scoped'
+            'postcss-scoped',
         )(),
         require(
-            'postcss-preset-env'
+            'postcss-preset-env',
         )(
             {
                 stage: 2,
@@ -21,21 +21,21 @@ module.exports = {
                     cascade: false,
                     grid: true,
                 },
-            }
+            },
         ),
         require(
-            'postcss-combine-duplicated-selectors'
+            'postcss-combine-duplicated-selectors',
         )(
             {
                 removeDuplicatedProperties: true,
-            }
+            },
         ),
         require(
-            'cssnano'
+            'cssnano',
         )(
             {
                 preset: 'default',
-            }
+            },
         ),
     ],
 };

@@ -98,16 +98,16 @@
                 const CLASSES = [ COMPONENT ];
 
                 this.hover && CLASSES.push(
-                    `${ COMPONENT }--hover`
+                    `${ COMPONENT }--hover`,
                 );
                 this.touch && CLASSES.push(
-                    `${ COMPONENT }--touch`
+                    `${ COMPONENT }--touch`,
                 );
                 this.loaded && CLASSES.push(
-                    `${ COMPONENT }--loaded`
+                    `${ COMPONENT }--loaded`,
                 );
                 this.shape && CLASSES.push(
-                    `${ COMPONENT }--shape-${ this.shape }`
+                    `${ COMPONENT }--shape-${ this.shape }`,
                 );
 
                 return CLASSES;
@@ -159,7 +159,7 @@
             this.touch = this.isTouchDevice();
 
             ! this.touch && this.$nextTick(
-                this.start
+                this.start,
             );
 
         },
@@ -181,14 +181,14 @@
             destroy() {
 
                 document.documentElement.classList.remove(
-                    'is-cursor-fx-active'
+                    'is-cursor-fx-active',
                 );
 
                 if( this.$cursor ) {
 
                     [
                         ... document.querySelectorAll(
-                            '[data-cursor-hover]'
+                            '[data-cursor-hover]',
                         ),
                     ].forEach(
                         link => {
@@ -196,25 +196,25 @@
                             link.removeEventListener(
                                 'mouseenter',
                                 () => this.$cursor.enter(),
-                                false
+                                false,
                             );
                             link.removeEventListener(
                                 'mouseleave',
                                 () => this.$cursor.leave(),
-                                false
+                                false,
                             );
                             link.removeEventListener(
                                 'click',
                                 () => this.$cursor.click(),
-                                false
+                                false,
                             );
 
-                        }
+                        },
                     );
 
                     [
                         ... document.querySelectorAll(
-                            '[data-cursor-hidden]'
+                            '[data-cursor-hidden]',
                         ),
                     ].forEach(
                         link => {
@@ -222,21 +222,21 @@
                             link.removeEventListener(
                                 'mouseenter',
                                 () => this.$cursor.enterHidden(),
-                                false
+                                false,
                             );
                             link.removeEventListener(
                                 'mouseleave',
                                 () => this.$cursor.leaveHidden(),
-                                false
+                                false,
                             );
 
-                        }
+                        },
                     );
 
                 }
 
                 this.$timeout && clearTimeout(
-                    this.$timeout
+                    this.$timeout,
                 );
 
             },
@@ -245,7 +245,7 @@
                 // Custom cursor chnages state when hovering on elements with 'data-hover'.
                 [
                     ... document.querySelectorAll(
-                        '[data-cursor-hover]'
+                        '[data-cursor-hover]',
                     ),
                 ].forEach(
                     link => {
@@ -258,7 +258,7 @@
                                 this.hover = true;
 
                             },
-                            false
+                            false,
                         );
                         link.addEventListener(
                             'mouseleave',
@@ -268,20 +268,20 @@
                                 this.hover = false;
 
                             },
-                            false
+                            false,
                         );
                         link.addEventListener(
                             'click',
                             () => this.$cursor.click(),
-                            false
+                            false,
                         );
 
-                    }
+                    },
                 );
 
                 [
                     ... document.querySelectorAll(
-                        '[data-cursor-hidden]'
+                        '[data-cursor-hidden]',
                     ),
                 ].forEach(
                     link => {
@@ -289,20 +289,20 @@
                         link.addEventListener(
                             'mouseenter',
                             () => this.$cursor.enterHidden(),
-                            false
+                            false,
                         );
                         link.addEventListener(
                             'mouseleave',
                             () => this.$cursor.leaveHidden(),
-                            false
+                            false,
                         );
 
-                    }
+                    },
                 );
 
             },
             init(
-                events = true
+                events = true,
             ) {
 
                 this.$cursor = new CursorFx(
@@ -317,11 +317,11 @@
 
                 this.$emit(
                     'ready',
-                    this.$cursor
+                    this.$cursor,
                 );
 
                 document.documentElement.classList.add(
-                    'is-cursor-fx-active'
+                    'is-cursor-fx-active',
                 );
 
                 this.loaded = true;
@@ -332,19 +332,19 @@
                 this.$timeout = setTimeout(
                     () => this.init(),
                     parseInt(
-                        this.delay
-                    )
+                        this.delay,
+                    ),
                 );
 
             },
             refresh(
-                newVal = true
+                newVal = true,
             ) {
 
                 newVal && this.$nextTick(
                     () => this.init(
-                        false
-                    )
+                        false,
+                    ),
                 );
 
             },

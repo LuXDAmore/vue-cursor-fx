@@ -21,32 +21,32 @@ module.exports = {
         },
     },
     chainWebpack(
-        config
+        config,
     ) {
 
         config.resolve.symlinks(
-            false
+            false,
         );
 
         config.module
             .rule(
-                'md'
+                'md',
             )
             .test(
-                /\.md/
+                /\.md/,
             )
             .use(
-                'vue-loader'
+                'vue-loader',
             )
             .loader(
-                'vue-loader'
+                'vue-loader',
             )
             .end()
             .use(
-                'vue-markdown-loader'
+                'vue-markdown-loader',
             )
             .loader(
-                'vue-markdown-loader/lib/markdown-compiler'
+                'vue-markdown-loader/lib/markdown-compiler',
             )
             .options(
                 {
@@ -55,7 +55,7 @@ module.exports = {
                     breaks: true,
                     typographer: true,
                     preventExtract: true,
-                }
+                },
             )
         ;
 

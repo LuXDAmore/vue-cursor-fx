@@ -5,7 +5,7 @@ const plugin = {
     CursorFx: component,
     installed: false,
     install(
-        Vue
+        Vue,
     ) {
 
         if( plugin.installed )
@@ -15,7 +15,7 @@ const plugin = {
 
         Vue.component(
             component.name,
-            component
+            component,
         );
 
     },
@@ -30,7 +30,7 @@ else if( typeof global !== 'undefined' )
     GlobalVue = global.Vue;
 
 GlobalVue && GlobalVue.use(
-    plugin
+    plugin,
 );
 
 // To allow use as module (npm/webpack/etc.) export component
