@@ -27,25 +27,25 @@
         "build": "npm run build:library && npm run build:docs",
         "prepare": "npm run build",
         "check-linting": "vue-cli-service lint",
-        "eslint": "eslint --ext .js,.vue --ignore-path .gitignore .",
-        "eslint-fix": "eslint --fix --ext .js,.vue --ignore-path .gitignore .",
+        "eslint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
+        "eslint-fix": "eslint --fix --ext .js,.vue --ignore-path .eslintignore .",
         "stylelint": "stylelint ./src/**/*.scss",
         "stylelint-fix": "stylelint ./src/**/*.scss --fix",
         "lint": "npm run eslint",
-        "lint-fix": "npm run eslint-fix && npm run stylelint-fix",
+        "lint-fix": "npm run eslint-fix",
         "precommit": "npm run lint"
     },
     "dependencies": {
         "vue": "^2.6.10"
     },
     "devDependencies": {
-        "@vue/cli-plugin-babel": "^4.0.4",
-        "@vue/cli-plugin-eslint": "^4.0.4",
-        "@vue/cli-service": "^4.0.4",
+        "@vue/cli-plugin-babel": "^4.0.5",
+        "@vue/cli-plugin-eslint": "^4.0.5",
+        "@vue/cli-service": "^4.0.5",
         "@vue/eslint-config-prettier": "^5.0.0",
         "babel-eslint": "^10.0.3",
         "cssnano": "^4.1.10",
-        "eslint": "^6.5.1",
+        "eslint": "^6.6.0",
         "eslint-config-standard": "^14.1.0",
         "eslint-loader": "^3.0.2",
         "eslint-plugin-compat": "^3.3.0",
@@ -55,20 +55,20 @@
         "eslint-plugin-promise": "^4.2.1",
         "eslint-plugin-standard": "^4.0.1",
         "eslint-plugin-unicorn": "^12.1.0",
-        "eslint-plugin-vue": "^5.2.3",
+        "eslint-plugin-vue": "^6.0.0",
         "github-markdown-css": "^3.0.1",
-        "highlight.js": "^9.15.10",
+        "highlight.js": "^9.16.2",
         "lint-staged": "^9.4.1",
         "modern-normalize": "^0.5.0",
-        "node-sass": "^4.12.0",
-        "postcss-combine-duplicated-selectors": "^8.0.2",
+        "node-sass": "^4.13.0",
+        "postcss-combine-duplicated-selectors": "^8.0.3",
         "postcss-import": "^12.0.1",
         "postcss-loader": "^3.0.0",
         "postcss-preset-env": "^6.7.0",
         "postcss-scoped": "^0.0.0",
         "postcss-scss": "^2.0.0",
         "postcss-url": "^8.0.0",
-        "prettier": "^1.18.2",
+        "prettier": "^1.19.1",
         "prettier-eslint": "^9.0.0",
         "prettier-stylelint": "^0.4.2",
         "sass-loader": "^8.0.0",
@@ -76,7 +76,7 @@
         "stylelint-config-rational-order": "^0.1.2",
         "stylelint-config-sass-guidelines": "^6.1.0",
         "stylelint-config-standard": "^19.0.0",
-        "stylelint-no-unsupported-browser-features": "^3.0.2",
+        "stylelint-no-unsupported-browser-features": "^4.0.0",
         "stylelint-order": "^3.1.1",
         "vue-markdown-loader": "^2.4.1",
         "vue-template-compiler": "^2.6.10"
@@ -101,9 +101,6 @@
             "vue-cli-service lint",
             "git add"
         ]
-    },
-    "gitHooks": {
-        "pre-commit": "lint-staged"
     },
     "husky": {
         "hooks": {
