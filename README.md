@@ -227,3 +227,7 @@ _It's always a good day to be magnanimous - cit_
 #### Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
+
+#### Hire me
+
+[![Otechie](https://api.otechie.com/consultancy/luca-iaconelli/badge.svg)](https://otechie.com/luca-iaconelli)
