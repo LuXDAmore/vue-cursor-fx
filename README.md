@@ -124,7 +124,7 @@ _Use it just one time in the main file of your project or in every views where y
 
 ```bash
 
-    # Availables
+    # Available
     slot="default"  # Add some content in the middle of the cursor
 
 ```
@@ -133,12 +133,12 @@ _Use it just one time in the main file of your project or in every views where y
 
 | Attribute | Type | Default | Required | About |
 |:--------------------:|--------------------|:-------:|:--------:|-------------------------------------|
-| config | Object | {} | false | The default options applyed to cursor, see below the `BASE_CONFIG` |
+| config | Object | {} | false | The default options applied to cursor, see below the `BASE_CONFIG` |
 | color | String | #333333 | false | Color for the cursor |
 | color-hover | String | #333333 | false | Color, on hover, for the cursor |
 | outside-size | String | null | false | The size of outer circle |
 | inside-size | String | null | false | The size of inner dot |
-| shape | String | null | false | Only availables shapes are 'circle' and 'square' |
+| shape | String | null | false | Only available shapes are 'circle' and 'square' |
 | delay | String, Number | 60 | false | Activate cursor after x seconds |
 | force-custom-slot | Boolean | false | false | Show or hide the internal default slot |
 | hide-outside | Boolean | false | false | Hide outer circle |
