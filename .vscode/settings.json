@@ -35,6 +35,7 @@
     // Colors
     "workbench.colorCustomizations": {
         "activityBar.background": "#65c89b",
+        "activityBar.activeBorder": "#945bc4",
         "activityBar.foreground": "#15202b",
         "activityBar.inactiveForeground": "#15202b99",
         "activityBarBadge.background": "#945bc4",
@@ -47,5 +48,15 @@
         "statusBarItem.hoverBackground": "#359268",
         "statusBar.foreground": "#15202b"
     },
-    "peacock.color": "#42b883"
+    "peacock.color": "#42b883",
+    "cSpell.words": [
+        "iaconelli",
+        "lerps",
+        "luxdamore",
+        "otechie",
+        "patreon",
+        "paypal",
+        "preload",
+        "tympanus"
+    ]
 }
