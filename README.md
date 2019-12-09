@@ -1,8 +1,12 @@
-# Vue Cursor Fx
+# 🎉 Vue Cursor Fx
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
-An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible _(but not with touchscreen devices)_
+> An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible _(but not with touchscreen devices)_
+
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
 
 ## Installation
 
@@ -201,35 +205,45 @@ _Use it just one time in the main file of your project or in every views where y
 
 ```
 
-## Issues
+___
 
-Please make sure to read the [Issue Reporting Checklist](https://github.com/LuXDAmore/vue-cursor-fx/blob/master/.github/ISSUE_TEMPLATE/bug_report.md) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
+[npm-version-src]: https://img.shields.io/npm/v/@luxdamore/vue-cursor-fx/latest.svg?style=flat-square
+[npm-version-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
 
-## Contribution
+[npm-downloads-src]: https://img.shields.io/npm/dt/@luxdamore/vue-cursor-fx.svg?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
 
-Please make sure to read the [Contributing Guide](https://github.com/LuXDAmore/vue-cursor-fx/blob/master/.github/ISSUE_TEMPLATE/feature_request.md) before making a pull request.
+[license-src]: https://img.shields.io/npm/l/@luxdamore/vue-cursor-fx.svg?style=flat-square
+[license-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
 
-## Changelog
+## 🐞 Issues
 
-Details changes for each release are documented in the [release notes](https://github.com/LuXDAmore/vue-cursor-fx/blob/master/CHANGELOG.md).
+Please make sure to read the [Issue Reporting Checklist](/.github/ISSUE_TEMPLATE/bug_report.md) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
 
-### License
+## 👥 Contribution
 
-[MIT](http://opensource.org/licenses/MIT) // Copyright (©) 2019-present [Luca Iaconelli](https://lucaiaconelli.it)
+Please make sure to read the [Contributing Guide](/.github/ISSUE_TEMPLATE/feature_request.md) before making a pull request.
 
-#### Are you feeling generous today?  :)
+## 📖 Changelog
 
-You can donate me a beer, we can be good friends
-__[Paypal](https://www.paypal.me/luxdamore) // [Patreon](https://www.patreon.com/luxdamore)__
+Details changes for each release are documented in the [**release notes**](./CHANGELOG.md).
 
-_It's always a good day to be magnanimous - cit_
+### 📃 License
 
-#### Inspired by
+[MIT License](./LICENSE) // Copyright (©) 2019-present [Luca Iaconelli](https://lucaiaconelli.it)
 
-[CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
+#### 💸 Are you feeling generous today?  :)
 
-#### Hire me
+Do you want to share a beer? We can be good friends.. __[Paypal](https://www.paypal.me/luxdamore) // [Patreon](https://www.patreon.com/luxdamore)__
 
-[![Otechie](https://api.otechie.com/consultancy/luca-iaconelli/badge.svg)](https://otechie.com/luca-iaconelli)
+> _It's always a good day to be magnanimous - cit_
+
+#### 💼 Hire me
+
+[![Otechie](https://api.otechie.com/consultancy/luxdamore/badge.svg)](https://otechie.com/luxdamore)
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/luxdamore)
+
+#### 💘 Inspired by
+
+[CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
