@@ -81,7 +81,7 @@
         "vue-markdown-loader": "^2.4.1",
         "vue-template-compiler": "^2.6.10"
     },
-    "license": "https://github.com/LuXDAmore/vue-cursor-fx/LICENSE",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/LuXDAmore/vue-cursor-fx.git"
