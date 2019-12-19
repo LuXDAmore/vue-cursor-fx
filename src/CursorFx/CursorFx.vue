@@ -3,6 +3,7 @@
         v-show="loaded"
         id="cursor-fx"
         ref="cursor"
+        class="cursor-fx"
         :class="classes"
         :style="cssVars"
     >
@@ -12,7 +13,7 @@
             :style="outsideSizes"
         />
         <div
-            v-show="( $slots.default || $scopedSlots.default ) || forceCustomSlot"
+            v-show="( !! $slots.default || !! $scopedSlots.default ) || forceCustomSlot"
             class="cursor-fx__inner cursor-fx__inner__custom"
             :style="outsideSizes"
         >
@@ -27,18 +28,16 @@
 </template>
 
 <script>
+
     // Timers
     import { setTimeout, clearTimeout } from 'timers';
 
     // Cursor
     import CursorFx from './cursor-fx';
 
-    // Init
-    const COMPONENT = 'cursor-fx';
-
     // Component
     export default {
-        name: COMPONENT,
+        name: 'cursor-fx',
         inheritAttrs: false,
         props: {
             config: {
@@ -95,22 +94,12 @@
         computed: {
             classes() {
 
-                const CLASSES = [ COMPONENT ];
-
-                this.hover && CLASSES.push(
-                    `${ COMPONENT }--hover`,
-                );
-                this.touch && CLASSES.push(
-                    `${ COMPONENT }--touch`,
-                );
-                this.loaded && CLASSES.push(
-                    `${ COMPONENT }--loaded`,
-                );
-                this.shape && CLASSES.push(
-                    `${ COMPONENT }--shape-${ this.shape }`,
-                );
-
-                return CLASSES;
+                return {
+                    'cursor-fx--hover': this.hover,
+                    'cursor-fx--touch': this.touch,
+                    'cursor-fx--loaded': this.loaded,
+                    [ `cursor-fx--shape-${ this.shape }` ]: this.shape,
+                };
 
             },
             cssVars() {
@@ -242,7 +231,7 @@
             },
             initEvents() {
 
-                // Custom cursor chnages state when hovering on elements with 'data-hover'.
+                // Custom cursor changes state when hovering on elements with 'data-hover'.
                 [
                     ... document.querySelectorAll(
                         '[data-cursor-hover]',
@@ -308,7 +297,7 @@
                 this.$cursor = new CursorFx(
                     {
                         el: this.$refs.cursor,
-                        base_class: `.${ COMPONENT }`,
+                        base_class: '.cursor-fx',
                     },
                     this.config,
                 );
