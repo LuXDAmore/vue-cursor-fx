@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.3.4](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.3...v1.3.4) (2019-12-19)
+
+- chore: updated dev dep
+- refactor: classes and slots data evaluation
+
 ## [1.3.3](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.2...v1.3.3) (2019-12-09)
 
 - CHORE: Updated DevDep.
