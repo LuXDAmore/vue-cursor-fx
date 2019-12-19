@@ -7,21 +7,12 @@
     // ESLint
     "eslint.enable": true,
     "eslint.alwaysShowStatus": true,
-    "eslint.autoFixOnSave": true,
     "eslint.options": {
         "extensions": [
             ".js",
             ".vue"
         ]
     },
-    "eslint.validate": [
-        "javascript",
-        "javascriptreact",
-        {
-            "language": "vue",
-            "autoFix": true
-        }
-    ],
     "stylelint.enable": true,
     // Vue
     "vetur.format.styleInitialIndent": true,
@@ -58,5 +49,8 @@
         "paypal",
         "preload",
         "tympanus"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
 }
