@@ -436,7 +436,7 @@
                     '.readme > article a, .readme > article pre',
                 );
 
-                for( var i = 0; i < links.length; i ++ ) {
+                for( let i = 0; i < links.length; i ++ ) {
 
                     links[ i ].setAttribute(
                         'target',
