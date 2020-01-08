@@ -439,11 +439,6 @@
                 for( let i = 0; i < links.length; i ++ ) {
 
                     links[ i ].setAttribute(
-                        'target',
-                        '_blank',
-                    );
-
-                    links[ i ].setAttribute(
                         'data-cursor-hover',
                         true,
                     );
@@ -453,15 +448,24 @@
                         'difference',
                     );
 
-                    links[ i ].setAttribute(
-                        'rel',
-                        'noopener',
-                    );
+                    if( links[ i ].tagName === 'a' ) {
 
-                    links[ i ].setAttribute(
-                        'alt',
-                        links[ i ].textContent,
-                    );
+                        links[ i ].setAttribute(
+                            'target',
+                            '_blank',
+                        );
+
+                        links[ i ].setAttribute(
+                            'rel',
+                            'noopener',
+                        );
+
+                        links[ i ].setAttribute(
+                            'title',
+                            links[ i ].textContent,
+                        );
+
+                    }
 
                 }
 
