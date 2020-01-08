@@ -11,6 +11,7 @@
             :hide-inside="insideHide"
             :force-custom-slot="forceCustomSlot"
             :config="config"
+            allow-on-mobile
         >
             <span v-if="forceCustomSlot">
                 You are awesome
@@ -314,6 +315,13 @@
                             >
                                 hover me (hidden)
                             </button>
+                            <button
+                                type="button"
+                                data-cursor-hover
+                                data-cursor-mix-blend-mode="difference"
+                            >
+                                hover me (mix-blend-mode)
+                            </button>
                         </div>
 
                     </section>
@@ -369,6 +377,7 @@
                 insideHide: false,
                 forceCustomSlot: false,
                 config: {
+                    mixBlendMode: null,
                     lerps: {
                         dot: 1,
                         circle: 0.18,
@@ -424,7 +433,7 @@
             initReadmeLinks() {
 
                 const links = document.querySelectorAll(
-                    '.readme > article a',
+                    '.readme > article a, .readme > article pre',
                 );
 
                 for( var i = 0; i < links.length; i ++ ) {
@@ -437,6 +446,21 @@
                     links[ i ].setAttribute(
                         'data-cursor-hover',
                         true,
+                    );
+
+                    links[ i ].setAttribute(
+                        'data-cursor-mix-blend-mode',
+                        'difference',
+                    );
+
+                    links[ i ].setAttribute(
+                        'rel',
+                        'noopener',
+                    );
+
+                    links[ i ].setAttribute(
+                        'alt',
+                        links[ i ].textContent,
                     );
 
                 }

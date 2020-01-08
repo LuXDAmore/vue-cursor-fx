@@ -7,8 +7,9 @@ const SCALE_MIN = 0.5
     ) => ( ( 1 - n ) * a + n * b )
     , getMousePos = e => {
 
-        let posx = 0,
-        posy = 0;
+        let posx = 0
+            , posy = 0
+        ;
 
         if( ! e )
             e = window.event;
@@ -47,6 +48,7 @@ export default class CursorFx {
         };
         this.$options = Object.freeze(
             {
+                mixBlendMode: null,
                 lerps: {
                     dot: 1,
                     circle: 0.18,
@@ -351,6 +353,13 @@ export default class CursorFx {
     leaveHidden() {
 
         this.DOM.el.style.visibility = 'visible';
+
+    }
+    mixBlendMode(
+        value = this.$options.mixBlendMode,
+    ) {
+
+        this.DOM.el.style.mixBlendMode = value;
 
     }
 }

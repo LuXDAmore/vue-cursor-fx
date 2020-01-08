@@ -44,6 +44,10 @@
                 type: Object,
                 default: () => {},
             },
+            mixBlendMode: {
+                type: String,
+                default: null,
+            },
             color: {
                 type: String,
                 default: '#333333',
@@ -72,6 +76,10 @@
                 default: 60,
             },
             forceCustomSlot: {
+                type: Boolean,
+                default: false,
+            },
+            allowOnMobile: {
                 type: Boolean,
                 default: false,
             },
@@ -107,6 +115,7 @@
                 return {
                     '--color': this.color,
                     '--color-hover': this.colorHover,
+                    'mix-blend-mode': this.mixBlendMode,
                 };
 
             },
@@ -147,7 +156,7 @@
 
             this.touch = this.isTouchDevice();
 
-            ! this.touch && this.$nextTick(
+            ( this.allowOnMobile || ! this.touch ) && this.$nextTick(
                 this.start,
             );
 
@@ -222,6 +231,27 @@
                         },
                     );
 
+                    [
+                        ... document.querySelectorAll(
+                            '[data-cursor-mix-blend-mode]',
+                        ),
+                    ].forEach(
+                        link => {
+
+                            link.removeEventListener(
+                                'mouseenter',
+                                () => this.$cursor.mixBlendMode(),
+                                false,
+                            );
+                            link.removeEventListener(
+                                'mouseleave',
+                                () => this.$cursor.mixBlendMode(),
+                                false,
+                            );
+
+                        },
+                    );
+
                 }
 
                 this.$timeout && clearTimeout(
@@ -289,6 +319,29 @@
                     },
                 );
 
+                [
+                    ... document.querySelectorAll(
+                        '[data-cursor-mix-blend-mode]',
+                    ),
+                ].forEach(
+                    link => {
+
+                        link.addEventListener(
+                            'mouseenter',
+                            el => this.$cursor.mixBlendMode(
+                                el.target.dataset.cursorMixBlendMode, 
+                            ),
+                            false,
+                        );
+                        link.addEventListener(
+                            'mouseleave',
+                            () => this.$cursor.mixBlendMode(),
+                            false,
+                        );
+
+                    },
+                );
+
             },
             init(
                 events = true,
@@ -299,7 +352,10 @@
                         el: this.$refs.cursor,
                         base_class: '.cursor-fx',
                     },
-                    this.config,
+                    {
+                        mixBlendMode: this.mixBlendMode,
+                        ... this.config,
+                    },
                 );
 
                 events && this.initEvents();
