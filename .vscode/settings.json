@@ -52,5 +52,10 @@
     ],
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
+    "cSpell.ignoreWords": [
+        "dataset",
+        "hljs",
+        "posx"
+    ]
 }
