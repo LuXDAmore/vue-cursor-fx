@@ -20,8 +20,8 @@ module.exports = {
     ],
     rules: {
         'indent': 'off',
-        'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-console': 'off',
+        'no-debugger': 'error',
         'one-var': [
             'warn',
             {
@@ -32,8 +32,14 @@ module.exports = {
             }
         ],
         'spaced-comment': [ 'warn', 'always' ],
+        'function-call-argument-newline': [ 'warn', 'always' ],
         'prefer-const': 'warn',
-        'no-useless-rename': 'warn',
+        'no-useless-rename': [
+            'warn',
+            {
+                ignoreExport: true,
+            },
+        ],
         'rest-spread-spacing': [
             'warn',
             'always',
@@ -69,6 +75,16 @@ module.exports = {
                 allowSingleLine: true,
             }
         ],
+        'comma-style': [
+            'warn',
+            'first',
+            {
+                exceptions: {
+                    ArrayExpression: true,
+                    ObjectExpression: true,
+                }
+            }
+        ],
         'comma-spacing': [
             'warn',
             {
@@ -90,6 +106,7 @@ module.exports = {
         ],
         'no-unreachable': 'warn',
         'no-confusing-arrow': 'warn',
+        'no-constant-condition': 'warn',
         curly: [
             'warn',
             'multi-or-nest',
@@ -240,7 +257,13 @@ module.exports = {
         'require-atomic-updates': 'warn',
         'comma-dangle': [
             'warn',
-            'always-multiline',
+            {
+                arrays: 'always-multiline',
+                objects: 'always-multiline',
+                exports: 'always-multiline',
+                imports: 'always-multiline',
+                functions: 'only-multiline',
+            }
         ],
         'dot-notation': 'warn',
         'eqeqeq': [ 'warn', 'always' ],
@@ -350,8 +373,10 @@ module.exports = {
             'warn',
             {
                 vars: 'all',
-                args: 'none', // This needs to be off so we can specify mixin interfaces
-                ignoreRestSiblings: false,
+                args: 'after-used', // This needs to be off so we can specify mixin interfaces
+                ignoreRestSiblings: true,
+                caughtErrors: 'all',
+                argsIgnorePattern: '^_',
             }
         ],
         'max-len': [
