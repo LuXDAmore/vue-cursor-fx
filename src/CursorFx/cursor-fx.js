@@ -216,6 +216,7 @@ export default class CursorFx {
         );
 
     }
+
     setMouseMove(
         ev,
     ) {
@@ -225,6 +226,7 @@ export default class CursorFx {
         );
 
     }
+
     initEvents() {
 
         const mouseMove = ev => this.setMouseMove(
@@ -243,6 +245,7 @@ export default class CursorFx {
         );
 
     }
+
     render() {
 
         requestAnimationFrame(
@@ -322,6 +325,7 @@ export default class CursorFx {
         }
 
     }
+
     enter(
         scale = this.$options.scale.max,
     ) {
@@ -329,6 +333,7 @@ export default class CursorFx {
         this.scale = scale;
 
     }
+
     leave(
         scale = this.$options.scale.min,
     ) {
@@ -336,6 +341,7 @@ export default class CursorFx {
         this.scale = scale;
 
     }
+
     click(
         scale = this.$options.scale.min,
         opacity = 0,
@@ -345,16 +351,19 @@ export default class CursorFx {
         this.lastOpacity = opacity;
 
     }
+
     enterHidden() {
 
         this.DOM.el.style.visibility = 'hidden';
 
     }
+
     leaveHidden() {
 
         this.DOM.el.style.visibility = 'visible';
 
     }
+
     mixBlendMode(
         value = this.$options.mixBlendMode,
     ) {
