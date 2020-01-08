@@ -121,7 +121,7 @@ _Use it just one time in the main file of your project or in every views where y
         data-cursor-hover
         data-cursor-mix-blend-mode="difference"
     >
-        Add `data-cursor-mix-blend-mode` to an every html elements that you want to change the mix-blend-mode value, default value is 'darken'
+        Add `data-cursor-mix-blend-mode` to an every html elements that you want to change the mix-blend-mode type.
     </button>
 
     <cursor-fx />
