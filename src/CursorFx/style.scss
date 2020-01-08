@@ -5,7 +5,6 @@
 
     color: #{$color};
     color: var( --color, #{$color} );
-
     transition: all .18s ease;
 
     &--hover {
