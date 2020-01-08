@@ -448,7 +448,7 @@
                         'difference',
                     );
 
-                    if( links[ i ].tagName === 'a' ) {
+                    if( links[ i ].tagName === 'A' ) {
 
                         links[ i ].setAttribute(
                             'target',
