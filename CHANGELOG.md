@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.4...v1.4.0) (2019-01-08)
+
+- feat: added mix-lend-mode prop and buttons
+- feat: added allow-on-mobile prop
+- docs: updated documentation
+- chore: updated dev dep
+- chore: linted
+
 ## [1.3.4](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.3...v1.3.4) (2019-12-19)
 
 - chore: updated dev dep
