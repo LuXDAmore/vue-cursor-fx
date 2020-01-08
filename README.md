@@ -257,3 +257,9 @@ Do you want to share a beer? We can be good friends.. __[Paypal](https://www.pay
 #### 💘 Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
+
+___
+
+##### 💡 Lighthouse
+
+![Lighthouse audit score](./lighthouse-audit.jpg)
