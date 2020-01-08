@@ -1,10 +1,12 @@
 $color-start: #cb2d3e;
 $color-end: #ef473a;
+$color-accessible: #2c3e50;
 
 :root {
 
     --color-start: #{$color-start};
     --color-end: #{$color-end};
+    --color-accessible: #{$color-accessible};
 
     font-size: 16px;
 
@@ -64,5 +66,19 @@ a {
 
     color: #{$color-start};
     color: var( --color-start, #{$color-start} );
+
+}
+
+.markdown-body {
+
+    .hljs-meta,
+    .hljs-meta-keyword,
+    .hljs-attr,
+    .hljs-comment {
+
+        color: #{$color-accessible} !important;
+        color: var( --color-accessible, #{$color-accessible} ) !important;
+
+    }
 
 }
