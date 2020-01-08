@@ -10,11 +10,6 @@ module.exports = {
     publicPath: BASE_URL,
     lintOnSave: IS_DEV,
     productionSourceMap: false,
-    pages: {
-        index: {
-            entry: './src/main.js',
-        },
-    },
     configureWebpack: {
         output: {
             libraryExport: 'default',
@@ -27,6 +22,30 @@ module.exports = {
         config.resolve.symlinks(
             false,
         );
+
+        config
+            .module
+            .rule(
+                'vue',
+            )
+            .use(
+                'vue-loader',
+            )
+            .loader(
+                'vue-loader',
+            )
+            .tap(
+                options => {
+
+                    options.compilerOptions.removeComments = true;
+                    options.compilerOptions.preserveWhitespace = false;
+                    options.compilerOptions.whitespace = 'condense';
+
+                    return options;
+
+                },
+            )
+        ;
 
         config.module
             .rule(
