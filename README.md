@@ -2,7 +2,7 @@
 
 [DEMO](https://luxdamore.github.io/vue-cursor-fx)
 
-> An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible _(disabled on touchscreen devices)_
+> An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible
 
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
@@ -104,7 +104,6 @@ _Use it just one time in the main file of your project or in every views where y
 
     <button
         type="button"
-        class="button"
         data-cursor-hover
     >
         Add `data-cursor-hover` to an every html elements that you want to see the cursor bigger on hover
@@ -112,10 +111,17 @@ _Use it just one time in the main file of your project or in every views where y
 
     <button
         type="button"
-        class="button"
         data-cursor-hidden
     >
         Add `data-cursor-hidden` to an every html elements that you want to hide the cursor on hover
+    </button>
+
+    <button
+        type="button"
+        data-cursor-hover
+        data-cursor-mix-blend-mode="difference"
+    >
+        Add `data-cursor-mix-blend-mode` to an every html elements that you want to change the mix-blend-mode value, default value is 'darken'
     </button>
 
     <cursor-fx />
@@ -123,6 +129,8 @@ _Use it just one time in the main file of your project or in every views where y
 ```
 
 ### Options
+
+_N.B.: (disabled on touchscreen devices)_
 
 #### Slots
 
@@ -142,9 +150,11 @@ _Use it just one time in the main file of your project or in every views where y
 | color-hover | String | #333333 | false | Color, on hover, for the cursor |
 | outside-size | String | null | false | The size of outer circle |
 | inside-size | String | null | false | The size of inner dot |
-| shape | String | null | false | Only available shapes are 'circle' and 'square' |
+| shape | String | null | false | Only available shapes are `circle` and `square` |
 | delay | String, Number | 60 | false | Activate cursor after x seconds |
+| mix-blend-mode | String | null | false | Set the global `mix-blend-mode` style |
 | force-custom-slot | Boolean | false | false | Show or hide the internal default slot |
+| allow-on-mobile | Boolean | false | false | Allow the cursor on mobile devices |
 | hide-outside | Boolean | false | false | Hide outer circle |
 | hide-inside | Boolean | false | false | Hide inner dot |
 
