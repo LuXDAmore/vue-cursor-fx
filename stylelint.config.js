@@ -3,12 +3,11 @@ module.exports = {
     extends: [
         'stylelint-config-standard',
         'stylelint-config-sass-guidelines',
+        'stylelint-config-rational-order',
     ],
     plugins: [
-        'stylelint-no-unsupported-browser-features',
         'stylelint-scss',
-        'stylelint-order',
-        'stylelint-config-rational-order/plugin',
+        'stylelint-no-unsupported-browser-features',
     ],
     // add your custom rules here
     defaultSeverity: 'warning',
@@ -19,6 +18,7 @@ module.exports = {
             {
                 severity: 'warning',
                 ignore: [
+                    'multicolumn',
                     'calc',
                     'border-radius',
                     'user-select-none',
@@ -57,7 +57,7 @@ module.exports = {
                 severity: 'warning',
             },
         ],
-        'order/properties-alphabetical-order': false,
+        'order/properties-alphabetical-order': null,
         'plugin/rational-order': [
             true,
             {
@@ -67,6 +67,22 @@ module.exports = {
         // Generic
         'indentation': 4,
         'no-descending-specificity': null,
+        'selector-type-no-unknown': [
+            true,
+            {
+                ignore: [ 'custom-elements' ],
+                ignoreTypes: [ 'css-doodle' ],
+            },
+        ],
+        'selector-pseudo-element-no-unknown': [
+            true,
+            {
+                ignorePseudoElements: [
+                    'v-deep',
+                    'css-doodle',
+                ],
+            },
+        ],
         'custom-property-empty-line-before': [
             'always',
             {
@@ -100,6 +116,7 @@ module.exports = {
             'em',
             'rem',
             's',
+            'fr',
             'deg',
             '%',
         ],
