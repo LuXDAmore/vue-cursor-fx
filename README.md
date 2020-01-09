@@ -128,7 +128,7 @@ _Use it just one time in the main file of your project or in every views where y
 
 ### Options
 
-_N.B.: (disabled on touchscreen devices)_
+_N.B.: the cursor is disabled on touchscreen devices._
 
 #### Slots
 
