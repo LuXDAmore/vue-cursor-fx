@@ -37,7 +37,6 @@ module.exports = {
             .tap(
                 options => {
 
-                    options.compilerOptions.removeComments = true;
                     options.compilerOptions.preserveWhitespace = false;
                     options.compilerOptions.whitespace = 'condense';
 
