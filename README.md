@@ -248,7 +248,7 @@ Do you want to share a beer? We can be good friends.. __[Paypal](https://www.pay
 
 #### 💼 Hire me
 
-[![Otechie](https://api.otechie.com/consultancy/luxdamore/badge.svg)](https://otechie.com/luxdamore)
+[![Contacts](https://img.shields.io/badge/email-Contact%20me-success)](https://lucaiaconelli.it)
 
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/luxdamore)
 
