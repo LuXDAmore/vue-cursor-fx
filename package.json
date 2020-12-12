@@ -59,7 +59,7 @@
         "eslint-plugin-unicorn": "^15.0.1",
         "eslint-plugin-vue": "^6.1.2",
         "github-markdown-css": "^3.0.1",
-        "highlight.js": "^9.17.1",
+        "highlight.js": "^10.4.1",
         "lint-staged": "^9.5.0",
         "modern-normalize": "^0.6.0",
         "node-sass": "^4.13.0",
