@@ -386,7 +386,7 @@ export default class CursorFx {
         if( ! this.DOM )
             return;
 
-        this.DOM.el.style.mixBlendMode = value;
+        this.DOM.el.style.mixBlendMode = value || null;
 
     }
 }
