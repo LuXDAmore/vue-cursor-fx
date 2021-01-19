@@ -386,7 +386,6 @@
                             <strong>Methods</strong>
                         </h2>
 
-
                         <div class="configs">
 
                             <div class="configs__item">
