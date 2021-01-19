@@ -96,12 +96,13 @@ This package is available on npm.
 
 #### Markup
 
-_Use it just one time in the main file of your project or in every views where you want it._
+_Use one time in the main file of your project or in every views, where you want it._
 
 ```html
 
     <button
         type="button"
+        title="Special button"
         data-cursor-hover
     >
         Add `data-cursor-hover` to an every html elements that you want to see the cursor bigger on hover
@@ -109,6 +110,7 @@ _Use it just one time in the main file of your project or in every views where y
 
     <button
         type="button"
+        title="Special button"
         data-cursor-hidden
     >
         Add `data-cursor-hidden` to an every html elements that you want to hide the cursor on hover
@@ -116,6 +118,7 @@ _Use it just one time in the main file of your project or in every views where y
 
     <button
         type="button"
+        title="Special button"
         data-cursor-hover
         data-cursor-mix-blend-mode="difference"
     >
@@ -128,7 +131,7 @@ _Use it just one time in the main file of your project or in every views where y
 
 ### Options
 
-_N.B.: the cursor is disabled on touchscreen devices._
+_N.B.: the cursor is not activated on touchscreen devices._
 
 #### Slots
 
@@ -155,6 +158,7 @@ _N.B.: the cursor is disabled on touchscreen devices._
 | allow-on-mobile | Boolean | false | false | Allow the cursor on mobile devices |
 | hide-outside | Boolean | false | false | Hide outer circle |
 | hide-inside | Boolean | false | false | Hide inner dot |
+| disabled | Boolean | false | false | Disable the activation of the cursor |
 
 ```js
 
@@ -171,6 +175,36 @@ _N.B.: the cursor is disabled on touchscreen devices._
         },
         opacity: 0.1,
     };
+
+```
+
+#### Methods
+
+```html
+
+    <!-- App.vue -->
+    <template>
+        <div>
+
+            <cursor-fx ref="cursor" disabled />
+
+        </div>
+    </template>
+
+    <!-- Component -->
+    <script>
+        export default {
+            mounted() {
+
+                this.$refs.cursor.start();
+
+                // Other methods
+                // this.$refs.cursor.destroy();
+                // this.$refs.cursor.refresh();
+
+            },
+        },
+    </script>
 
 ```
 
