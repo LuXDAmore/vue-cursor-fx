@@ -204,6 +204,16 @@
                 this.$cursor && this.$cursor.click();
 
             },
+            cursorEnterHidden() {
+
+                this.$cursor && this.$cursor.enterHidden();
+
+            },
+            cursorLeaveHidden() {
+
+                this.$cursor && this.$cursor.leaveHidden();
+
+            },
             initEvents() {
 
                 // Custom cursor changes state when hovering on elements with 'data-hover'.
@@ -242,12 +252,12 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            () => this.$cursor && this.$cursor.enterHidden(),
+                            this.cursorEnterHidden,
                             false,
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => this.$cursor && this.$cursor.leaveHidden(),
+                            this.cursorLeaveHidden,
                             false,
                         );
 
@@ -355,12 +365,12 @@
 
                         link.removeEventListener(
                             'mouseenter',
-                            () => this.$cursor && this.$cursor.enterHidden(),
+                            this.cursorEnterHidden,
                             false,
                         );
                         link.removeEventListener(
                             'mouseleave',
-                            () => this.$cursor && this.$cursor.leaveHidden(),
+                            this.cursorLeaveHidden,
                             false,
                         );
 
