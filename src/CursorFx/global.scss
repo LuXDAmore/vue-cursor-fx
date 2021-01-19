@@ -1,9 +1,27 @@
+.cursor-fx {
+
+    opacity: 0;
+
+}
+
 .is-cursor-fx-active {
 
     &,
     * {
 
         cursor: none;
+
+    }
+
+    .cursor-fx {
+
+        transition-delay: .3s;
+
+        &.cursor-fx--loaded {
+
+            opacity: 1;
+
+        }
 
     }
 
