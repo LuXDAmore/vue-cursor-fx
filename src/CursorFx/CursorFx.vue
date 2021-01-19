@@ -214,6 +214,15 @@
                 this.$cursor && this.$cursor.leaveHidden();
 
             },
+            cursorMixBlendMode(
+                el
+            ) {
+
+                this.$cursor && this.$cursor.mixBlendMode(
+                    el?.target?.dataset?.cursorMixBlendMode ?? null
+                );
+
+            },
             initEvents() {
 
                 // Custom cursor changes state when hovering on elements with 'data-hover'.
@@ -273,14 +282,12 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            el => this.$cursor && this.$cursor.mixBlendMode(
-                                el.target.dataset.cursorMixBlendMode,
-                            ),
+                            this.cursorMixBlendMode,
                             false,
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => this.$cursor && this.$cursor.mixBlendMode(),
+                            this.cursorMixBlendMode,
                             false,
                         );
 
@@ -305,21 +312,29 @@
 
                 events && this.initEvents();
 
+                this.loaded = true;
+
                 this.$emit(
                     'ready',
                     this.$cursor,
                 );
 
-                this.loaded = true;
-
                 document.documentElement.classList.add(
                     'is-cursor-fx-active',
+                );
+
+                this.$emit(
+                    'after-start'
                 );
 
             },
             async destroy(
                 refresh = false
             ) {
+
+                this.$emit(
+                    'before-destroy'
+                );
 
                 this.destroyTimeout();
 
@@ -386,12 +401,12 @@
 
                         link.removeEventListener(
                             'mouseenter',
-                            () => this.$cursor && this.$cursor.mixBlendMode(),
+                            this.cursorMixBlendMode,
                             false,
                         );
                         link.removeEventListener(
                             'mouseleave',
-                            () => this.$cursor && this.$cursor.mixBlendMode(),
+                            this.cursorMixBlendMode,
                             false,
                         );
 
@@ -404,6 +419,10 @@
                 this.$cursor && this.$cursor.destroy();
                 this.$cursor = null;
                 this.destroyed = true;
+
+                this.$emit(
+                    'after-destroy'
+                );
 
                 // Refresh after destroy
                 refresh && this.start();
@@ -419,6 +438,10 @@
                 this.destroyTimeout();
 
                 await this.$nextTick();
+
+                this.$emit(
+                    'before-start'
+                );
 
                 this.$timeout = setTimeout(
                     () => this.init(),
