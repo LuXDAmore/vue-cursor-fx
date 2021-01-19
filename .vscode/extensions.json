@@ -13,7 +13,6 @@
         "mohseenrm.lit-it",
         "mubaidr.vuejs-extension-pack",
         "jeremyrajan.webpack",
-        "sysoev.language-stylus",
         "mikestead.dotenv",
         "eg2.vscode-npm-script",
         "wallabyjs.quokka-vscode",
@@ -35,10 +34,7 @@
         "dotjoshjohnson.xml",
         "cpylua.language-postcss",
         "donjayamanne.githistory",
-        "eamodio.gitlens",
-        "bradlc.vscode-tailwindcss",
-        "kumar-harsh.graphql-for-vscode",
-        "tombonnike.vscode-status-bar-format-toggle"
+        "eamodio.gitlens"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
     "unwantedRecommendations": []
