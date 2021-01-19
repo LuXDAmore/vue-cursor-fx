@@ -1,11 +1,12 @@
 <template>
     <div
         v-show="loaded"
-        id="cursor-fx"
+        v-if="! destroyed"
+        :id="id"
         ref="cursor"
-        class="cursor-fx"
         :class="classes"
         :style="cssVars"
+        class="cursor-fx"
     >
         <div
             v-show="! hideOutside"
@@ -28,7 +29,6 @@
 </template>
 
 <script>
-
     // Timers
     import { setTimeout, clearTimeout } from 'timers';
 
@@ -40,6 +40,10 @@
         name: 'cursor-fx',
         inheritAttrs: false,
         props: {
+            id: {
+                type: String,
+                default: 'cursor-fx',
+            },
             config: {
                 type: Object,
                 default: () => {},
@@ -94,6 +98,7 @@
         },
         data: () => (
             {
+                destroyed: true,
                 touch: false,
                 hover: false,
                 loaded: false,
@@ -156,9 +161,7 @@
 
             this.touch = this.isTouchDevice();
 
-            ( this.allowOnMobile || ! this.touch ) && this.$nextTick(
-                this.start,
-            );
+            ( this.allowOnMobile || ! this.touch ) && this.start();
 
         },
         beforeDestroy() {
@@ -176,87 +179,22 @@
                 );
 
             },
-            destroy() {
+            // Cursor events
+            cursorHover() {
 
-                document.documentElement.classList.remove(
-                    'is-cursor-fx-active',
-                );
+                this.hover = true;
+                this.$cursor && this.$cursor.enter();
 
-                if( this.$cursor ) {
+            },
+            cursorLeave() {
 
-                    [
-                        ... document.querySelectorAll(
-                            '[data-cursor-hover]',
-                        ),
-                    ].forEach(
-                        link => {
+                this.hover = false;
+                this.$cursor && this.$cursor.leave();
 
-                            link.removeEventListener(
-                                'mouseenter',
-                                () => this.$cursor.enter(),
-                                false,
-                            );
-                            link.removeEventListener(
-                                'mouseleave',
-                                () => this.$cursor.leave(),
-                                false,
-                            );
-                            link.removeEventListener(
-                                'click',
-                                () => this.$cursor.click(),
-                                false,
-                            );
+            },
+            cursorClick() {
 
-                        },
-                    );
-
-                    [
-                        ... document.querySelectorAll(
-                            '[data-cursor-hidden]',
-                        ),
-                    ].forEach(
-                        link => {
-
-                            link.removeEventListener(
-                                'mouseenter',
-                                () => this.$cursor.enterHidden(),
-                                false,
-                            );
-                            link.removeEventListener(
-                                'mouseleave',
-                                () => this.$cursor.leaveHidden(),
-                                false,
-                            );
-
-                        },
-                    );
-
-                    [
-                        ... document.querySelectorAll(
-                            '[data-cursor-mix-blend-mode]',
-                        ),
-                    ].forEach(
-                        link => {
-
-                            link.removeEventListener(
-                                'mouseenter',
-                                () => this.$cursor.mixBlendMode(),
-                                false,
-                            );
-                            link.removeEventListener(
-                                'mouseleave',
-                                () => this.$cursor.mixBlendMode(),
-                                false,
-                            );
-
-                        },
-                    );
-
-                }
-
-                this.$timeout && clearTimeout(
-                    this.$timeout,
-                );
+                this.$cursor && this.$cursor.click();
 
             },
             initEvents() {
@@ -271,27 +209,17 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            () => {
-
-                                this.$cursor.enter();
-                                this.hover = true;
-
-                            },
+                            this.cursorHover,
                             false,
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => {
-
-                                this.$cursor.leave();
-                                this.hover = false;
-
-                            },
+                            this.cursorLeave,
                             false,
                         );
                         link.addEventListener(
                             'click',
-                            () => this.$cursor.click(),
+                            this.cursorClick,
                             false,
                         );
 
@@ -307,12 +235,12 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            () => this.$cursor.enterHidden(),
+                            () => this.$cursor && this.$cursor.enterHidden(),
                             false,
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => this.$cursor.leaveHidden(),
+                            () => this.$cursor && this.$cursor.leaveHidden(),
                             false,
                         );
 
@@ -328,14 +256,14 @@
 
                         link.addEventListener(
                             'mouseenter',
-                            el => this.$cursor.mixBlendMode(
-                                el.target.dataset.cursorMixBlendMode, 
+                            el => this.$cursor && this.$cursor.mixBlendMode(
+                                el.target.dataset.cursorMixBlendMode,
                             ),
                             false,
                         );
                         link.addEventListener(
                             'mouseleave',
-                            () => this.$cursor.mixBlendMode(),
+                            () => this.$cursor && this.$cursor.mixBlendMode(),
                             false,
                         );
 
@@ -372,7 +300,107 @@
                 this.loaded = true;
 
             },
-            start() {
+            async destroy(
+                refresh = false
+            ) {
+
+                document.documentElement.classList.remove(
+                    'is-cursor-fx-active',
+                );
+
+                // Events destroy
+                [
+                    ... document.querySelectorAll(
+                        '[data-cursor-hover]',
+                    ),
+                ].forEach(
+                    link => {
+
+                        link.removeEventListener(
+                            'mouseenter',
+                            this.cursorLeave,
+                            false,
+                        );
+                        link.removeEventListener(
+                            'mouseleave',
+                            this.cursorLeave,
+                            false,
+                        );
+                        link.removeEventListener(
+                            'click',
+                            this.cursorClick,
+                            false,
+                        );
+
+                    },
+                );
+
+                [
+                    ... document.querySelectorAll(
+                        '[data-cursor-hidden]',
+                    ),
+                ].forEach(
+                    link => {
+
+                        link.removeEventListener(
+                            'mouseenter',
+                            () => this.$cursor && this.$cursor.enterHidden(),
+                            false,
+                        );
+                        link.removeEventListener(
+                            'mouseleave',
+                            () => this.$cursor && this.$cursor.leaveHidden(),
+                            false,
+                        );
+
+                    },
+                );
+
+                [
+                    ... document.querySelectorAll(
+                        '[data-cursor-mix-blend-mode]',
+                    ),
+                ].forEach(
+                    link => {
+
+                        link.removeEventListener(
+                            'mouseenter',
+                            () => this.$cursor && this.$cursor.mixBlendMode(),
+                            false,
+                        );
+                        link.removeEventListener(
+                            'mouseleave',
+                            () => this.$cursor && this.$cursor.mixBlendMode(),
+                            false,
+                        );
+
+                    },
+                );
+
+                // Data destroy
+                this.loaded = false;
+                this.destroyTimeout();
+
+                await this.$nextTick();
+
+                this.$cursor && this.$cursor.destroy();
+                this.$cursor = null;
+                this.destroyed = true;
+
+                // Refresh after destroy
+                refresh && this.start();
+
+            },
+            async start() {
+
+                if( ! this.destroyed )
+                    return;
+
+                this.destroyed = false;
+
+                this.destroyTimeout();
+
+                await this.$nextTick();
 
                 this.$timeout = setTimeout(
                     () => this.init(),
@@ -382,14 +410,18 @@
                 );
 
             },
-            refresh(
-                newVal = true,
-            ) {
+            refresh() {
 
-                newVal && this.$nextTick(
-                    () => this.init(
-                        false,
-                    ),
+                this.destroy(
+                    true
+                );
+
+            },
+            // Timers
+            destroyTimeout() {
+
+                this.$timeout && clearTimeout(
+                    this.$timeout
                 );
 
             },

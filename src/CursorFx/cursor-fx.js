@@ -211,34 +211,29 @@ export default class CursorFx {
 
         this.initEvents();
 
-        requestAnimationFrame(
+        this.$raf = requestAnimationFrame(
             () => this.render(),
         );
 
     }
 
-    setMouseMove(
-        ev,
+    initEvents(
+        add = true
     ) {
 
-        this.mousePos = getMousePos(
-            ev,
-        );
-
-    }
-
-    initEvents() {
-
-        const mouseMove = ev => this.setMouseMove(
-            ev,
+        const mouseMove = ev => (
+            this.mousePos = getMousePos(
+                ev,
+            )
         );
 
         window.removeEventListener(
             'mousemove',
             mouseMove,
+            false
         );
 
-        window.addEventListener(
+        add && window.addEventListener(
             'mousemove',
             mouseMove,
             false,
@@ -248,7 +243,7 @@ export default class CursorFx {
 
     render() {
 
-        requestAnimationFrame(
+        this.$raf = requestAnimationFrame(
             () => this.render(),
         );
 
@@ -286,7 +281,7 @@ export default class CursorFx {
                 dot,
             );
 
-            this.DOM.dot.style.transform = `translateX(${ ( this.lastMousePos.dot.x ) }px) translateY(${ this.lastMousePos.dot.y }px)`;
+            this.DOM.dot.style.transform = `translate3d(${ this.lastMousePos.dot.x }px, ${ this.lastMousePos.dot.y }px, 0)`;
 
         }
 
@@ -303,7 +298,7 @@ export default class CursorFx {
                 circle,
             );
 
-            this.DOM.circle.style.transform = `translateX(${ ( this.lastMousePos.circle.x ) }px) translateY(${ this.lastMousePos.circle.y }px) scale(${ this.lastScale })`;
+            this.DOM.circle.style.transform = `translate3d(${ this.lastMousePos.circle.x }px, ${ this.lastMousePos.circle.y }px, 0) scale(${ this.lastScale })`;
 
         }
 
@@ -320,9 +315,23 @@ export default class CursorFx {
                 custom,
             );
 
-            this.DOM.custom.style.transform = `translateX(${ ( this.lastMousePos.custom.x ) }px) translateY(${ this.lastMousePos.custom.y }px) scale(${ this.lastScale })`;
+            this.DOM.custom.style.transform = `translate3d(${ ( this.lastMousePos.custom.x ) }px, ${ this.lastMousePos.custom.y }px, 0) scale(${ this.lastScale })`;
 
         }
+
+    }
+
+    destroy() {
+
+        this.$raf && cancelAnimationFrame(
+            this.$raf
+        );
+
+        this.initEvents(
+            false
+        );
+
+        this.DOM = null;
 
     }
 
@@ -354,11 +363,17 @@ export default class CursorFx {
 
     enterHidden() {
 
+        if( ! this.DOM )
+            return;
+
         this.DOM.el.style.visibility = 'hidden';
 
     }
 
     leaveHidden() {
+
+        if( ! this.DOM )
+            return;
 
         this.DOM.el.style.visibility = 'visible';
 
@@ -367,6 +382,9 @@ export default class CursorFx {
     mixBlendMode(
         value = this.$options.mixBlendMode,
     ) {
+
+        if( ! this.DOM )
+            return;
 
         this.DOM.el.style.mixBlendMode = value;
 

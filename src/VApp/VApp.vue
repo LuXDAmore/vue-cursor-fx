@@ -2,6 +2,7 @@
     <main class="app">
 
         <cursor-fx
+            ref="cursor"
             :shape="shape"
             :color="color"
             :color-hover="colorHover"
@@ -38,6 +39,13 @@
                             >
                                 GITHUB
                             </a>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>
+                            Other Vue/Nuxt plugins
+                        </h2>
+                        <p>
                             <a
                                 title="Vue Fake 3D Image effect"
                                 class="button"
@@ -46,11 +54,56 @@
                                 href="https://luxdamore.github.io/vue-fake3d-image-effect"
                                 data-cursor-hover
                             >
-                                | Vue Fake 3D Image effect |
+                                Vue Fake 3D Image effect
+                            </a>
+                            <a
+                                title="Cavans 3D Generative Art"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://luxdamore.github.io/generative-art"
+                                data-cursor-hover
+                            >
+                                Cavans 3D Generative Art
+                            </a>
+                            <a
+                                title="Nuxt Prune HTML"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://luxdamore.github.io/nuxt-prune-html"
+                                data-cursor-hover
+                            >
+                                Nuxt Prune HTML
+                            </a>
+                            <a
+                                title="Vue CSS Doodle"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://luxdamore.github.io/vue-css-doodle"
+                                data-cursor-hover
+                            >
+                                Vue CSS Doodle
+                            </a>
+                            <a
+                                title="Nuxt APIs to file"
+                                class="button"
+                                target="_blank"
+                                rel="noopener"
+                                href="https://luxdamore.github.io/nuxt-apis-to-file"
+                                data-cursor-hover
+                            >
+                                Nuxt APIs to file
                             </a>
                         </p>
                     </section>
+                    <hr>
                     <section>
+
+                        <h2>
+                            <strong>Configuration</strong>
+                        </h2>
 
                         <strong>
                             <label for="shape">
@@ -174,9 +227,10 @@
                     </section>
                     <section>
 
-                        <strong>
-                            <h2>Config</h2>
-                        </strong>
+                        <h2>
+                            <strong>Animation</strong>
+                        </h2>
+
 
                         <div class="configs">
 
@@ -317,11 +371,58 @@
                             </button>
                             <button
                                 type="button"
+                                title="hover me (mix-blend-mode)"
                                 data-cursor-hover
                                 data-cursor-mix-blend-mode="difference"
                             >
                                 hover me (mix-blend-mode)
                             </button>
+                        </div>
+
+                    </section>
+                    <section>
+
+                        <h2>
+                            <strong>Methods</strong>
+                        </h2>
+
+
+                        <div class="configs">
+
+                            <div class="configs__item">
+                                <button
+                                    title="Start"
+                                    type="button"
+                                    data-cursor-hover
+                                    data-cursor-mix-blend-mode="difference"
+                                    @click="start"
+                                >
+                                    Start
+                                </button>
+                            </div>
+                            <div class="configs__item">
+                                <button
+                                    title="Refresh"
+                                    type="button"
+                                    data-cursor-hover
+                                    data-cursor-mix-blend-mode="color"
+                                    @click="refresh"
+                                >
+                                    Refresh
+                                </button>
+                            </div>
+                            <div class="configs__item">
+                                <button
+                                    title="Destroy"
+                                    type="button"
+                                    data-cursor-hover
+                                    data-cursor-mix-blend-mode="hard-light"
+                                    @click="destroy"
+                                >
+                                    Destroy
+                                </button>
+                            </div>
+
                         </div>
 
                     </section>
@@ -341,7 +442,7 @@
 
 <script>
     // Highlight
-    import hljs from 'highlight.js/lib/highlight';
+    import hljs from 'highlight.js/lib/core';
     import bash from 'highlight.js/lib/languages/bash';
     import javascript from 'highlight.js/lib/languages/javascript';
     import 'highlight.js/styles/github.css';
@@ -370,7 +471,7 @@
             {
                 shape: 'default',
                 color: '#333333',
-                colorHover: '#333333',
+                colorHover: '#ff2299',
                 outsideSize: 64,
                 insideSize: 6,
                 outsideHide: false,
@@ -404,16 +505,12 @@
 
             },
         },
-        mounted() {
+        async mounted() {
 
-            this.$nextTick(
-                () => {
+            await this.$nextTick();
 
-                    this.initHighlight();
-                    this.initReadmeLinks();
-
-                },
-            );
+            this.initHighlight();
+            this.initReadmeLinks();
 
         },
         methods: {
@@ -482,6 +579,22 @@
                     this.insideHide = false;
                 else
                     this.outsideHide = false;
+
+            },
+            // Events
+            start() {
+
+                this.$refs.cursor.start();
+
+            },
+            refresh() {
+
+                this.$refs.cursor.refresh();
+
+            },
+            destroy() {
+
+                this.$refs.cursor.destroy();
 
             },
         },
