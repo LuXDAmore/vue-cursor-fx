@@ -40,6 +40,10 @@
         name: 'cursor-fx',
         inheritAttrs: false,
         props: {
+            disabled: {
+                type: Boolean,
+                default: false,
+            },
             id: {
                 type: String,
                 default: 'cursor-fx',
@@ -158,6 +162,9 @@
 
         },
         mounted() {
+
+            if( this.disabled )
+                return;
 
             this.touch = this.isTouchDevice();
 
@@ -293,20 +300,24 @@
                     this.$cursor,
                 );
 
+                this.loaded = true;
+
                 document.documentElement.classList.add(
                     'is-cursor-fx-active',
                 );
-
-                this.loaded = true;
 
             },
             async destroy(
                 refresh = false
             ) {
 
+                this.destroyTimeout();
+
                 document.documentElement.classList.remove(
                     'is-cursor-fx-active',
                 );
+
+                this.loaded = false;
 
                 // Events destroy
                 [
@@ -378,9 +389,6 @@
                 );
 
                 // Data destroy
-                this.loaded = false;
-                this.destroyTimeout();
-
                 await this.$nextTick();
 
                 this.$cursor && this.$cursor.destroy();
