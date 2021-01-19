@@ -23,7 +23,7 @@ This package is available on npm.
 
 ```js
 
-    // Component
+    // Global component and css
     import { CursorFx } from '@luxdamore/vue-cursor-fx';
     import '@luxdamore/vue-cursor-fx/dist/CursorFx.css';
 
@@ -33,16 +33,22 @@ This package is available on npm.
         CursorFx
     );
 
-    // Or in a .vue file
+
+    // Or
+    // in a .vue file
+    import { CursorFx } from '@luxdamore/vue-cursor-fx';
+
     export default {
         components: {
             'cursor-fx': CursorFx,
         },
     };
 
+    <style src="@luxdamore/vue-cursor-fx/dist/CursorFx.css"></style>
+
 ```
 
-#### As a plugin
+#### As a global plugin
 
 ```js
 
