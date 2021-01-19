@@ -148,6 +148,20 @@ _N.B.: the cursor is not activated on touchscreen devices._
 
 ```
 
+#### Events
+
+```html
+
+    <cursor-fx
+        @before-start="onBeforeStart"
+        @after-start="onAfterStart"
+        @ready="onReady"
+        @before-destroy="onBeforeDestroy"
+        @after-destroy="onAfterDestroy"
+    ></cursor-fx>
+
+```
+
 #### Props
 
 | Attribute | Type | Default | Required | About |
