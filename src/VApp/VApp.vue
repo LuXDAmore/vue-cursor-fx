@@ -561,15 +561,19 @@
                             links[ i ].textContent,
                         );
 
-                        // fix: links
-                        if(
-                            links[ i ].href.includes(
-                                'http://localhost:8080'
-                            )
-                        ) {
+                        // fix: external href due to github
+                        const isLocalhost = links[ i ].href.includes(
+                                  'http://localhost:8080'
+                              )
+                              , isGithubPages = links[ i ].href.includes(
+                                  'https://luxdamore.github.io/vue-cursor-fx'
+                              )
+                        ;
+
+                        if( isLocalhost || isGithubPages ) {
 
                             const href = links[ i ].href.replace(
-                                'http://localhost:8080',
+                                isLocalhost ? 'http://localhost:8080' : 'https://luxdamore.github.io/vue-cursor-fx',
                                 'https://github.com/LuXDAmore/vue-cursor-fx/tree/master'
                             );
 
