@@ -4,8 +4,11 @@
     "less.validate": false,
     "scss.validate": false,
     "html.validate.styles": false,
+    // Markdown
+    "markdownlint.ignore": [
+        "CHANGELOG.md"
+    ],
     // ESLint
-    "eslint.enable": true,
     "eslint.alwaysShowStatus": true,
     "eslint.options": {
         "extensions": [
@@ -13,16 +16,29 @@
             ".vue"
         ]
     },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true,
+        "source.fixAll.stylelint": true
+    },
     "stylelint.enable": true,
+    "stylelint.snippet": [
+        "css",
+        "less",
+        "postcss",
+        "sass",
+        "scss",
+        "stylus"
+    ],
     // Vue
     "vetur.format.styleInitialIndent": true,
+    "vetur.validation.template": false,
+    "vetur.format.defaultFormatter.css": "prettier",
+    "vetur.format.defaultFormatter.scss": "prettier",
     "vetur.format.defaultFormatter.js": "prettier-eslint",
     "vetur.format.defaultFormatter.ts": "prettier-tslint",
-    "prettier.singleQuote": true,
-    "prettier.tabWidth": 4,
-    "prettier.trailingComma": "all",
-    "prettier.printWidth": 120,
-    "prettier.jsxSingleQuote": true,
+    "vetur.format.options.tabSize": 4,
+    "prettier.vueIndentScriptAndStyle": true,
+    "vetur.experimental.templateInterpolationService": true,
     // Colors
     "workbench.colorCustomizations": {
         "activityBar.background": "#65c89b",
@@ -41,22 +57,21 @@
         "activityBar.activeBackground": "#65c89b"
     },
     "peacock.color": "#42b883",
-    "cSpell.words": [
-        "iaconelli",
-        "lerps",
-        "luxdamore",
-        "otechie",
-        "patreon",
-        "paypal",
-        "preload",
-        "tympanus"
+    // Dictionary
+    "cSpell.language": "en,it",
+    "cSpell.allowCompoundWords": true,
+    "cSpell.ignorePaths": [
+        ".vscode",
+        ".git",
+        ".nuxt",
+        "coverage",
+        "dist",
+        "ssr",
+        "node_modules",
+        "bower_components"
     ],
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    "cSpell.ignoreWords": [
-        "dataset",
-        "hljs",
-        "posx"
-    ]
+    "cSpell.words": [
+        "codrops"
+    ],
+    "cSpell.ignoreWords": []
 }
