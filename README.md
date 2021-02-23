@@ -1,25 +1,47 @@
 # 🎉 Vue Cursor Fx
 
-> An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible
+[![Code Quality][quality-src]][quality-href]
+[![Downloads][npm-downloads-src]][npm-downloads-href]
+[![Dependencies][dependencies-src]][dependencies-href]
+[![Version][npm-version-src]][npm-version-href]
+[![Donate][paypal-donate-src]][paypal-donate-href]
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
-[![License][license-src]][license-href]
+[quality-src]: https://img.shields.io/badge/code%20quality-A-informational?style=flat
+[quality-href]: https://luxdamore.github.io/vue-cursor-fx/
+
+[npm-downloads-src]: https://img.shields.io/npm/dt/@luxdamore/vue-cursor-fx.svg?style=flat&color=darkgreen
+[npm-downloads-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
+
+[dependencies-src]: https://img.shields.io/badge/dependencies-up%20to%20date-darkgreen.svg?style=flat
+[dependencies-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
+
+[npm-version-src]: https://img.shields.io/npm/v/@luxdamore/vue-cursor-fx/latest.svg?style=flat&color=darkorange&label=version
+[npm-version-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
+
+[paypal-donate-src]: https://img.shields.io/badge/paypal-donate-black.svg?style=flat
+[paypal-donate-href]: https://www.paypal.me/luxdamore
+[patreon-donate-href]: https://www.patreon.com/luxdamore
+[kofi-donate-href]: https://ko-fi.com/luxdamore
+
+> An animated custom cursor effects for interactive elements like navigation - w/ VueJS - SSR Compatible
 
 ## Installation
 
-This package is available on npm.
+This package is available on `npm` and `yarn`.
 
 ```bash
 
     # Deps
     npm install --save @luxdamore/vue-cursor-fx
 
+    # Or
+    yarn add @luxdamore/vue-cursor-fx
+
 ```
 
 ### Usage
 
-#### As a component
+#### As component
 
 ```js
 
@@ -34,8 +56,7 @@ This package is available on npm.
     );
 
 
-    // Or
-    // in a .vue file
+    // Or, in a .vue file
     import { CursorFx } from '@luxdamore/vue-cursor-fx';
 
     export default {
@@ -71,18 +92,18 @@ This package is available on npm.
     <html>
         <head>
 
-            <!-- CursorFx style -->
+            <!-- CursorFx styles -->
 
-                <!-- Old way -->
-                <link rel="stylesheet" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" />
-                <!-- end old way -->
+            <!-- Old way -->
+            <link rel="stylesheet" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" />
+            <!-- end old way -->
 
-                <!-- New way -->
-                <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" as="style" onload="this.rel='stylesheet'" />
-                <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js" as="script" />
-                <!-- end new way -->
+            <!-- New way -->
+            <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.css" as="style" onload="this.rel='stylesheet'" />
+            <link rel="preload" href="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js" as="script" />
+            <!-- end new way -->
 
-            <!-- end CursorFx style -->
+            <!-- end CursorFx styles -->
 
         </head>
         <body>
@@ -92,7 +113,7 @@ This package is available on npm.
             -->
 
             <!-- CursorFx script -->
-                <script src="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js"></script>
+            <script src="https://unpkg.com/@luxdamore/vue-cursor-fx@latest/dist/CursorFx.umd.min.js"></script>
             <!-- end CursorFx script -->
 
         </body>
@@ -164,21 +185,21 @@ _N.B.: the cursor is not activated on touchscreen devices._
 
 #### Props
 
-| Attribute | Type | Default | Required | About |
-|:--------------------:|--------------------|:-------:|:--------:|-------------------------------------|
-| config | Object | {} | false | The default options applied to cursor, see below the `BASE_CONFIG` |
-| color | String | #333333 | false | Color for the cursor |
-| color-hover | String | #333333 | false | Color, on hover, for the cursor |
-| outside-size | String | null | false | The size of outer circle |
-| inside-size | String | null | false | The size of inner dot |
-| shape | String | null | false | Only available shapes are `circle` and `square` |
-| delay | String, Number | 60 | false | Activate cursor after x seconds |
-| mix-blend-mode | String | null | false | Set the global `mix-blend-mode` style |
-| force-custom-slot | Boolean | false | false | Show or hide the internal default slot |
-| allow-on-mobile | Boolean | false | false | Allow the cursor on mobile devices |
-| hide-outside | Boolean | false | false | Hide outer circle |
-| hide-inside | Boolean | false | false | Hide inner dot |
-| disabled | Boolean | false | false | Disable the activation of the cursor |
+| Attribute | Type | Default value | About |
+|:--------------------:|--------------------|:-------:|-------------------------------------|
+| config | Object | {} | The default options applied to cursor, see below the `BASE_CONFIG` |
+| color | String | #333333 |Color for the cursor |
+| color-hover | String | #333333 | Color, on hover, for the cursor |
+| outside-size | String | null | The size of outer circle |
+| inside-size | String | null | The size of inner dot |
+| shape | String | null | Only available shapes are `circle` and `square` |
+| delay | String, Number | 60 | Activate cursor after x seconds |
+| mix-blend-mode | String | null | Set the global `mix-blend-mode` style |
+| force-custom-slot | Boolean | false | Show or hide the internal default slot |
+| allow-on-mobile | Boolean | false | Allow the cursor on mobile devices |
+| hide-outside | Boolean | false | Hide outer circle |
+| hide-inside | Boolean | false | Hide inner dot |
+| disabled | Boolean | false | Disable the activation of the cursor |
 
 ```js
 
@@ -202,10 +223,11 @@ _N.B.: the cursor is not activated on touchscreen devices._
 
 ```html
 
-    <!-- App.vue -->
+    <!-- component.vue -->
     <template>
         <div>
 
+            <!-- start it, later -->
             <cursor-fx ref="cursor" disabled />
 
         </div>
@@ -216,13 +238,21 @@ _N.B.: the cursor is not activated on touchscreen devices._
         export default {
             mounted() {
 
+                // start it, on mounted, or wherever you want
                 this.$refs.cursor.start();
 
-                // Other methods
-                // this.$refs.cursor.destroy();
-                // this.$refs.cursor.refresh();
-
             },
+            methods: {
+                others() {
+
+                    // destroy
+                    this.$refs.cursor.destroy();
+
+                    //-> refresh automate: `destroy()` and `start()`
+                    this.$refs.cursor.refresh();
+
+                },
+            }
         },
     </script>
 
@@ -258,7 +288,9 @@ _N.B.: the cursor is not activated on touchscreen devices._
     <template>
         <div>
 
-            <nuxt />
+            <main>
+                <nuxt />
+            </main>
 
             <cursor-fx />
 
@@ -269,49 +301,60 @@ _N.B.: the cursor is not activated on touchscreen devices._
 
 ___
 
-[npm-version-src]: https://img.shields.io/npm/v/@luxdamore/vue-cursor-fx/latest.svg?style=flat-square
-[npm-version-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
+## 👩🏻‍💻👨🏻‍💻 Development
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@luxdamore/vue-cursor-fx.svg?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
-
-[license-src]: https://img.shields.io/npm/l/@luxdamore/vue-cursor-fx.svg?style=flat-square
-[license-href]: https://npmjs.com/package/@luxdamore/vue-cursor-fx
+1. **Clone** the repository:
+   - `git clone https://github.com/LuXDAmore/vue-cursor-fx.git`;
+2. **Install** dependencies:
+   - `yarn install` (or `npm install`);
+3. **Start** a development server:
+   - `yarn dev` (or `npm run dev`);
+4. **Extra**, build the documentation ([*Github Pages*](https://pages.github.com/)):
+   - `yarn build` (or `npm run build`);
+   - _the content is automatically generated into the `/docs` folder_.
 
 ## 🐞 Issues
 
-Please make sure to read the [Issue Reporting Checklist](/.github/ISSUE_TEMPLATE/bug_report.md) before opening an issue. Issues not conforming to the guidelines may be closed immediately.
+Please make sure to read the [**issue reporting checklist**](/.github/ISSUE_TEMPLATE/bug_report.md) before opening an issue.
+*Issues not conforming to the guidelines may be closed immediately*.
+
+## 📝 Discussions
+
+We're using [**Github discussions**](https://github.com/LuXDAmore/vue-cursor-fx/discussions) as a place to connect with other members of our community.
+*You are free to ask questions and share ideas, so enjoy yourself*.
 
 ## 👥 Contribution
 
-Please make sure to read the [Contributing Guide](/.github/ISSUE_TEMPLATE/feature_request.md) before making a pull request.
+Please make sure to read the [**contributing guide**](/.github/ISSUE_TEMPLATE/feature_request.md) before making a pull request.
 
 ## 📖 Changelog
 
 Details changes for each release are documented in the [**release notes**](./CHANGELOG.md).
 
-### 📃 License
+### 🆓 License
 
-[MIT License](./LICENSE) // Copyright (©) 2020-present [Luca Iaconelli](https://lucaiaconelli.it)
-
-#### 💸 Are you feeling generous today?  :)
-
-Do you want to share a beer? We can be good friends.. __[Paypal](https://www.paypal.me/luxdamore) // [Patreon](https://www.patreon.com/luxdamore)__
-
-> _It's always a good day to be magnanimous - cit_
+[MIT License](./LICENSE) // Copyright (©) 2019-now [Luca Iaconelli](https://lucaiaconelli.it)
 
 #### 💼 Hire me
 
-[![Otechie](https://api.otechie.com/consultancy/luxdamore/badge.svg)](https://otechie.com/luxdamore)
+[![Contacts](https://img.shields.io/badge/Contact%20Me-Let's%20Talk-informational?style=social&logo=minutemailer)](https://lucaiaconelli.it)
 
-[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/luxdamore)
+#### 💸 Are you feeling generous today?
+
+If You want to share a beer, we can be really good friends 😄
+
+__[Paypal][paypal-donate-href] // [Patreon][patreon-donate-href] // [Ko-fi][kofi-donate-href]__
+
+> ☀ _It's always a good day to be magnanimous_ - cit.
+
+___
+
+#### 💡 Lighthouse
+
+![Lighthouse audit score](./lighthouse-audit.jpg)
+
+___
 
 #### 💘 Inspired by
 
 [CustomCursors by Tympanus](https://tympanus.net/Tutorials/CustomCursors/index3.html)
-
-___
-
-##### 💡 Lighthouse
-
-![Lighthouse audit score](./lighthouse-audit.jpg)
