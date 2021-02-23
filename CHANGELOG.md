@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.5.0...v1.6.0) (2021-02-23)
+
+- fix: issue with z-index close #2
+
+## [1.5.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.4.0...v1.5.0) (2021-01-01)
+
+- feat: added new events and methods
+- fix: some bugs
+- chore: updated library
+
 ## [1.4.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.3.4...v1.4.0) (2019-01-08)
 
 - feat: added mix-lend-mode prop and buttons
@@ -43,15 +53,11 @@
 
 ## [1.2.2](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.2.1...v1.2.2) (2019-09-18)
 
-## CHORE
-
-- Updated DevDep.
+- chore: updated DevDep.
 
 ## [1.2.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.2.0...v1.2.1) (2019-09-18)
 
-## CHORE
-
-- Updated DevDep.
+- chore: updated DevDep.
 
 ## [1.2.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.1.0...v1.2.0) (2019-08-09)
 
@@ -61,7 +67,7 @@
 
 ## STYLE
 
-- Better colors managment in scss.
+- Better colors management in scss.
 
 ## [1.1.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.3...v1.1.0) (2019-07-29)
 
@@ -88,7 +94,3 @@
 - Added slot default for custom cursors.
 
 ## [1.0.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.0.0...v1.0.1) (2019-07-17)
-
-## Feature
-
-- Initial commit.
