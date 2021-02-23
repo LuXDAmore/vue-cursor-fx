@@ -23,7 +23,6 @@
         "dariofuzinato.vue-peek",
         "christian-kohler.npm-intellisense",
         "sdras.vue-vscode-snippets",
-        "redhat.vscode-yaml",
         "hookyqr.beautify",
         "wmaurer.change-case",
         "naumovs.color-highlight",
@@ -33,8 +32,8 @@
         "cssho.vscode-svgviewer",
         "dotjoshjohnson.xml",
         "cpylua.language-postcss",
-        "donjayamanne.githistory",
-        "eamodio.gitlens"
+        "syler.sass-indented",
+        "stylelint.vscode-stylelint"
     ],
     // List of extensions recommended by VS Code that should not be recommended for users of this workspace.
     "unwantedRecommendations": []
