@@ -4,7 +4,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.6.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.6.0...v1.6.1) (2021-02-23)
 
-## [1.6.1](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.5.0...v1.6.0) (2021-02-23)
+- docs: updated github pages
+
+## [1.6.0](https://github.com/LuXDAmore/vue-cursor-fx/compare/v1.5.0...v1.6.0) (2021-02-23)
 
 - fix: issue with z-index close #2
 
