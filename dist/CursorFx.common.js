@@ -1307,7 +1307,7 @@ module.exports = __webpack_require__("96cf");
 
 "use strict";
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"11b9fe72-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=f3f73494&scoped=true&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"a117f3d6-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/CursorFx/CursorFx.vue?vue&type=template&id=f3f73494&scoped=true&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return (! _vm.destroyed)?_c('div',{directives:[{name:"show",rawName:"v-show",value:(_vm.loaded),expression:"loaded"}],ref:"cursor",staticClass:"cursor-fx",class:_vm.classes,style:(_vm.cssVars),attrs:{"id":_vm.id}},[_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideOutside),expression:"! hideOutside"}],staticClass:"cursor-fx__inner cursor-fx__inner__outside",style:(_vm.outsideSizes)}),_c('div',{directives:[{name:"show",rawName:"v-show",value:(( !! _vm.$slots.default || !! _vm.$scopedSlots.default ) || _vm.forceCustomSlot),expression:"( !! $slots.default || !! $scopedSlots.default ) || forceCustomSlot"}],staticClass:"cursor-fx__inner cursor-fx__inner__custom",style:(_vm.outsideSizes)},[_vm._t("default")],2),_c('div',{directives:[{name:"show",rawName:"v-show",value:(! _vm.hideInside),expression:"! hideInside"}],staticClass:"cursor-fx__inner cursor-fx__inner__inside",style:(_vm.insideSizes)})]):_vm._e()}
 var staticRenderFns = []
 
@@ -1610,59 +1610,59 @@ function CursorFxvue_type_script_lang_js_defineProperty(obj, key, value) { if (k
   props: {
     disabled: {
       type: Boolean,
-      "default": false
+      default: false
     },
     id: {
       type: String,
-      "default": 'cursor-fx'
+      default: 'cursor-fx'
     },
     config: {
       type: Object,
-      "default": function _default() {}
+      default: function _default() {}
     },
     mixBlendMode: {
       type: String,
-      "default": null
+      default: null
     },
     color: {
       type: String,
-      "default": '#333333'
+      default: '#333333'
     },
     colorHover: {
       type: String,
-      "default": '#333333'
+      default: '#333333'
     },
     outsideSize: {
       type: String,
-      "default": null
+      default: null
     },
     insideSize: {
       type: String,
-      "default": null
+      default: null
     },
     shape: {
       type: String,
-      "default": null
+      default: null
     },
     delay: {
       type: [Number, String],
-      "default": 60
+      default: 60
     },
     forceCustomSlot: {
       type: Boolean,
-      "default": false
+      default: false
     },
     allowOnMobile: {
       type: Boolean,
-      "default": false
+      default: false
     },
     hideOutside: {
       type: Boolean,
-      "default": false
+      default: false
     },
     hideInside: {
       type: Boolean,
-      "default": false
+      default: false
     }
   },
   data: function data() {
