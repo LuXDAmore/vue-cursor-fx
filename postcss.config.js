@@ -10,9 +10,6 @@ module.exports = {
             'postcss-url',
         )(),
         require(
-            'postcss-scoped',
-        )(),
-        require(
             'postcss-preset-env',
         )(
             {
