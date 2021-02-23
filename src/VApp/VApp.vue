@@ -529,7 +529,7 @@
             initReadmeLinks() {
 
                 const links = document.querySelectorAll(
-                    '.readme > article a, .readme > article pre',
+                    '.readme > article a, .readme > article code, .readme > article pre',
                 );
 
                 for( let i = 0; i < links.length; i ++ ) {
@@ -556,10 +556,29 @@
                             'noopener',
                         );
 
-                        links[ i ].setAttribute(
+                        links[ i ].textContent && links[ i ].setAttribute(
                             'title',
                             links[ i ].textContent,
                         );
+
+                        // fix: links
+                        if(
+                            links[ i ].href.includes(
+                                'http://localhost:8080'
+                            )
+                        ) {
+
+                            const href = links[ i ].href.replace(
+                                'http://localhost:8080',
+                                'https://github.com/LuXDAmore/vue-cursor-fx/tree/master'
+                            );
+
+                            links[ i ].setAttribute(
+                                'href',
+                                href,
+                            );
+
+                        }
 
                     }
 
