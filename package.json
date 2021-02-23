@@ -25,16 +25,16 @@
         "serve": "vue-cli-service serve",
         "build:library": "vue-cli-service build --dest ./dist --target lib --name CursorFx ./src/CursorFx/index.js",
         "build:docs": "vue-cli-service build --modern --dest ./docs",
-        "build": "npm run build:library && npm run build:docs",
-        "prepare": "npm run build",
+        "build": "yarn build:library && yarn build:docs",
+        "prepare": "yarn build",
         "check-linting": "vue-cli-service lint",
         "eslint": "eslint --ext .js,.vue .",
         "eslint-fix": "eslint --fix --ext .js,.vue .",
         "stylelint": "stylelint ./src/**/*.scss",
         "stylelint-fix": "stylelint ./src/**/*.scss --fix",
-        "lint": "npm run eslint && npm run stylelint",
-        "lint-fix": "npm run eslint-fix",
-        "precommit": "npm run lint"
+        "lint": "yarn eslint && yarn stylelint",
+        "lint-fix": "yarn eslint-fix",
+        "precommit": "yarn lint"
     },
     "dependencies": {
         "vue": "^2.6.11"
@@ -68,7 +68,6 @@
         "postcss-import": "^12.0.1",
         "postcss-loader": "^3.0.0",
         "postcss-preset-env": "^6.7.0",
-        "postcss-scoped": "^0.0.0",
         "postcss-scss": "^2.0.0",
         "postcss-url": "^8.0.0",
         "prettier": "^1.19.1",
