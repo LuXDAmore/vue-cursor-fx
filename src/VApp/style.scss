@@ -45,6 +45,7 @@ $background-color: #fff;
 
         .right {
 
+            overflow: hidden;
             grid-area: right;
 
         }
@@ -60,6 +61,22 @@ $background-color: #fff;
     section {
 
         margin: 0 0 16px;
+
+    }
+
+    /* Better UI for the generated for the Readme */
+    .readme ::v-deep article > p:nth-child(2) {
+
+        display: flex;
+        flex: 1 1 100%;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        min-height: 36px;
+        padding: 6px 12px;
+        overflow-x: auto;
+        font-size: 0;
+        background-color: rgba( 220, 230, 240, .63 );
+        border-radius: 5px;
 
     }
 
