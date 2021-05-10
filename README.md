@@ -301,13 +301,18 @@ _N.B.: the cursor is not activated on touchscreen devices._
 
 ##### Tips
 - Q: How to fix problem with the disappearance of the cursor on nuxt route change ?
-- A: Trigger cursor refresh on route change where component is placed
+- A: Trigger cursor refresh on route change where component is placed.
+
 ```js
-watch: {
-  $route(to, from) {
-    this.$nextTick(() => this.$refs.cursor.refresh);
-  },
-},
+
+    watch: {
+        $route( to, from ) {
+        
+            this.$nextTick( () => this.$refs.cursor.refresh() );
+            
+        },
+    },
+
 ```
 
 ___
