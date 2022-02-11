@@ -68,7 +68,7 @@
         "lint-staged": "^10.5.4",
         "markdownlint": "^0.23.0",
         "modern-normalize": "^1.0.0",
-        "node-sass": "^4.13.0",
+        "node-sass": "^7.0.0",
         "postcss-combine-duplicated-selectors": "^8.1.0",
         "postcss-import": "^12.0.1",
         "postcss-loader": "^3.0.0",
